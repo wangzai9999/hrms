@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+  <settings>
+        <setting name="cacheEnabled" value="true"/>
+         
+        <setting name="lazyLoadingEnabled" value="true"/> 
+        <!-- aggressiveLazyLoading：积极的懒加载，
+         false的话按需加载，默认是true -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+     
+        
+       <setting name="logImpl" value="Log4J"/>
+  </settings>
+
+ <typeAliases>
+     <!-- <typeAlias type="com.entity.Student" alias="stu"/>
+     <typeAlias type="com.entity.Userinfo" alias="xuser"/> -->
+     <package name="com.entity"/>
+     
+ </typeAliases>
+
+ 
+ 
+  
+</configuration>	
+	
