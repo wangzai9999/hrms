@@ -43,7 +43,6 @@ public class UserinfoAction {
     }
 
     @RequestMapping("/get")
-    @ResponseBody
     public ModelAndView get(Long id,ModelAndView mv){
         Userinfo userinfo=biz.getOne(id);
         mv.setViewName("mod");
