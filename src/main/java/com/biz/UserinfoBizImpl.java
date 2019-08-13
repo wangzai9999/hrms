@@ -31,9 +31,26 @@ public class UserinfoBizImpl implements UserinfoBiz{
     }
 
     @Override
-    public PageBean getAll(int page, int pagesize) {
+    public void add(Userinfo u) {
+
+    }
+
+    @Override
+    public void del(Long id) {
+
+    }
+
+    @Override
+    public void mod(Userinfo userinfo) {
+
+    }
+
+    @Override
+    public PageBean getAll(int page) {
         PageBean pageBean=new PageBean();
         pageBean.setCurrpage(page);
-        return null;
+        pageBean.setTotalNum(dao.rowCount().intValue());
+        pageBean.setList(dao.getAll(page,pageBean.getPageSize()));
+        return pageBean;
     }
 }

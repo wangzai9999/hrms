@@ -6,6 +6,7 @@ import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,12 +32,12 @@ public class UserinfoAction {
         if (u != null) {
             if (u.getUs_password().equals(password)) {
                 req.getSession().setAttribute("loger", u);
-                return "";
+                return "index";
             } else {
-                return "";
+                return "login";
             }
         } else {
-            return "";
+            return "login";
         }
     }
 
@@ -47,8 +48,9 @@ public class UserinfoAction {
     }
 
     @RequestMapping("/list")
-    public PageBean list(){
-        PageBean pageBean=new PageBean();
+    @ResponseBody
+    public PageBean list(@RequestParam(defaultValue = "1") int page){
+        PageBean pageBean=biz.getAll(page);
 
         return pageBean;
     }
