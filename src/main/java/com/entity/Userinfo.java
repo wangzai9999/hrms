@@ -6,7 +6,7 @@ public class Userinfo implements Serializable {
 
     private Long us_id;
     private String us_name;
-    private String us_password;
+    private String us_password="123";
     private Role ro_id;
     private Department us_dep;
     private Position us_pos;

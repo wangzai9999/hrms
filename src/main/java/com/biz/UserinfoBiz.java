@@ -4,6 +4,7 @@ import com.entity.Userinfo;
 
 public interface UserinfoBiz {
 
-    public Userinfo UserLogin(String name,String password);
+    public Userinfo UserLogin(String name);
+    public Userinfo getOne(Long id);
 
 }

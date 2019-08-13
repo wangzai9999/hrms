@@ -20,7 +20,12 @@ public class UserinfoBizImpl implements UserinfoBiz{
     }
 
     @Override
-    public Userinfo UserLogin(String name, String password) {
-        return dao.UserLogin(name,password);
+    public Userinfo UserLogin(String name) {
+        return dao.UserLogin(name);
+    }
+
+    @Override
+    public Userinfo getOne(Long id) {
+        return dao.getOne(id);
     }
 }

@@ -5,6 +5,7 @@ import com.entity.Userinfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,14 +25,26 @@ public class UserinfoAction {
     }
 
     @RequestMapping("login")
-    public String UserLogin(String name, String password, HttpServletRequest req){
-        Userinfo u = biz.UserLogin(name,password);
-        if(u!=null){
-            req.getSession().setAttribute("loger",u);
-            return "";
-        }else{
+    public String UserLogin(String name, String password, HttpServletRequest req) {
+        Userinfo u = biz.UserLogin(name);
+        if (u != null) {
+            if (u.getUs_password().equals(password)) {
+                req.getSession().setAttribute("loger", u);
+                return "";
+            } else {
+                return "";
+            }
+        } else {
             return "";
         }
     }
+
+    @RequestMapping("get")
+    @ResponseBody
+    public String get(Long id){
+
+       return biz.getOne(id).getUs_pos().getPos_name();
+    }
+
 
 }
