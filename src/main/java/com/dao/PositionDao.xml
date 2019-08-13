@@ -9,13 +9,13 @@
         select * from position where pos_id = #{id}
     </select>
 
-    <insert id="add">
+    <insert id="add" parameterType="position">
         insert into position values (pos_seq.nextval,#{pos_name})
     </insert>
-    <delete id="del">
+    <delete id="del" >
         delete from position where pos_id=#{id}
     </delete>
-    <update id="mod">
+    <update id="mod" parameterType="position">
         update position set pos_name=#{pos_name} where pos_id=#{pos_id}
     </update>
 
