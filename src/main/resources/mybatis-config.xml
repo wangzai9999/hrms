@@ -23,7 +23,10 @@
      
  </typeAliases>
 
- 
+ <mappers>
+     <mapper resource="com/dao/PositionDao.xml"/>
+
+ </mappers>
  
   
 </configuration>	

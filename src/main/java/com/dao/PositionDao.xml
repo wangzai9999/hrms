@@ -5,7 +5,7 @@
     <select id="getAll">
         select  * from position
     </select>
-    <select id="getOne">
+    <select id="getOne" resultType="position">
         select * from position where pos_id = #{id}
     </select>
 

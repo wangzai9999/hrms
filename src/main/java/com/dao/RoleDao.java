@@ -12,4 +12,7 @@ public interface RoleDao {
     @Select("select * from role")
     public List<Role> getAllRole();
 
+    @Select("select * from role where ro_id=#{id}")
+    public Role getOne(Long id);
+
 }
