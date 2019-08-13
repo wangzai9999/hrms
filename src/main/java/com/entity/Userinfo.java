@@ -7,5 +7,55 @@ public class Userinfo implements Serializable {
     private Long us_id;
     private String us_name;
     private String us_password;
+    private Role ro_id;
+    private Department us_dep;
+    private Position us_pos;
 
+    public Long getUs_id() {
+        return us_id;
+    }
+
+    public void setUs_id(Long us_id) {
+        this.us_id = us_id;
+    }
+
+    public String getUs_name() {
+        return us_name;
+    }
+
+    public void setUs_name(String us_name) {
+        this.us_name = us_name;
+    }
+
+    public String getUs_password() {
+        return us_password;
+    }
+
+    public void setUs_password(String us_password) {
+        this.us_password = us_password;
+    }
+
+    public Role getRo_id() {
+        return ro_id;
+    }
+
+    public void setRo_id(Role ro_id) {
+        this.ro_id = ro_id;
+    }
+
+    public Department getUs_dep() {
+        return us_dep;
+    }
+
+    public void setUs_dep(Department us_dep) {
+        this.us_dep = us_dep;
+    }
+
+    public Position getUs_pos() {
+        return us_pos;
+    }
+
+    public void setUs_pos(Position us_pos) {
+        this.us_pos = us_pos;
+    }
 }
