@@ -26,7 +26,6 @@ public class PositionBizImpl implements PositionBiz {
 
     @Override
     public void add(Position p) {
-
         dao.add(p);
     }
 
