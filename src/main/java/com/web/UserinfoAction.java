@@ -51,7 +51,6 @@ public class UserinfoAction {
     @ResponseBody
     public PageBean list(@RequestParam(defaultValue = "1") int page){
         PageBean pageBean=biz.getAll(page);
-
         return pageBean;
     }
 
