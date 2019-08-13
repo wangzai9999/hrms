@@ -5,7 +5,7 @@ import com.entity.Position;
 import java.util.List;
 
 public interface PositionDao {
-    public List<Position> list();
+    public List<Position> getAll();
 
     public void add(Position p);
 

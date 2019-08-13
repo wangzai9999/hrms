@@ -20,8 +20,8 @@ public class PositionBizImpl implements PositionBiz {
     }
 
     @Override
-    public List<Position> list() {
-        return dao.list();
+    public List<Position> getAll() {
+        return dao.getAll();
     }
 
     @Override
