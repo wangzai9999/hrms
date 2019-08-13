@@ -19,7 +19,11 @@ public interface UserinfoDao {
             "ro_id={ro_id.id},us_dep=#{us_dep.id},us_pos=#{us_pos.id} where ")
     public void mod(Userinfo userinfo);
 
-    @Select("")
+
+
+    @ResultMap("us")
+    @Select("select * from (select u.*,rownum r from(select * from userinfo order by us_id)u)s " +
+            "where s.r between (#{0}-1)*#{1} and #{0}*#{1}")
     public List<Userinfo> getAll(int page,int pagesize);
 
     @Results(value = {
@@ -30,4 +34,6 @@ public interface UserinfoDao {
     @Select("select * from userinfo where us_id =#{id}")
     public Userinfo getOne(Long id);
 
+    @Select("select count(1) from userinfo")
+    public Long getN(Long id);
 }

@@ -2,6 +2,7 @@ package com.web;
 
 import com.biz.UserinfoBiz;
 import com.entity.Userinfo;
+import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class UserinfoAction {
         this.biz = biz;
     }
 
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public String UserLogin(String name, String password, HttpServletRequest req) {
         Userinfo u = biz.UserLogin(name);
         if (u != null) {
@@ -39,11 +40,17 @@ public class UserinfoAction {
         }
     }
 
-    @RequestMapping("get")
+    @RequestMapping("/get")
     @ResponseBody
-    public String get(Long id){
+    public Userinfo get(Long id){
+       return biz.getOne(id);
+    }
 
-       return biz.getOne(id).getUs_pos().getPos_name();
+    @RequestMapping("/list")
+    public PageBean list(){
+        PageBean pageBean=new PageBean();
+
+        return pageBean;
     }
 
 
