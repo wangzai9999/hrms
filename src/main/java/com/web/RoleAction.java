@@ -4,6 +4,7 @@ import com.biz.RoleBiz;
 import com.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,4 +31,21 @@ public class RoleAction {
         return biz.getAllRole();
     }
 
+    @RequestMapping("/getone")
+    public String getOne(Long id, Model m){
+        Role r = biz.getOne(id);
+        m.addAttribute("r",r);
+        return "";
+    }
+
+    @RequestMapping("/add")
+    public String add(Role r){
+        biz.add(r);
+        return "";
+    }
+    @RequestMapping("/del")
+    public String del(Long id){
+        biz.del(id);
+        return "";
+    }
 }

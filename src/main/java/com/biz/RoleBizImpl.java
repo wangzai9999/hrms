@@ -25,4 +25,19 @@ public class RoleBizImpl implements RoleBiz{
     public List<Role> getAllRole() {
         return dao.getAllRole();
     }
+
+    @Override
+    public Role getOne(Long id) {
+        return dao.getOne(id);
+    }
+
+    @Override
+    public void add(Role r) {
+        dao.add(r);
+    }
+
+    @Override
+    public void del(Long id) {
+        dao.del(id);
+    }
 }
