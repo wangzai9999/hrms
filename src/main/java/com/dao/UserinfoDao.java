@@ -19,7 +19,8 @@ public interface UserinfoDao {
             "ro_id={ro_id.id},us_dep=#{us_dep.id},us_pos=#{us_pos.id} where ")
     public void mod(Userinfo userinfo);
 
-
+    @Delete("delete from userinfo where us_id=#{id}")
+    public void  del(Long id);
 
     @ResultMap("us")
     @Select("select * from (select u.*,rownum r from(select * from userinfo order by us_id)u)s " +
@@ -35,5 +36,5 @@ public interface UserinfoDao {
     public Userinfo getOne(Long id);
 
     @Select("select count(1) from userinfo")
-    public Long getN(Long id);
+    public Long rowCount();
 }
