@@ -5,7 +5,7 @@ import java.util.List;
 public class Department {
     private Long de_id;
     private String de_name;
-    private List<Department> de_fa;
+    private Department de_fa;
 
     public Long getDe_id() {
         return de_id;
@@ -23,11 +23,11 @@ public class Department {
         this.de_name = de_name;
     }
 
-    public List<Department> getDe_fa() {
+    public Department getDe_fa() {
         return de_fa;
     }
 
-    public void setDe_fa(List<Department> de_fa) {
+    public void setDe_fa(Department de_fa) {
         this.de_fa = de_fa;
     }
 }

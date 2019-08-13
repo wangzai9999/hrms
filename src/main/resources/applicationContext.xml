@@ -15,7 +15,7 @@
     
     <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl">
+		<property name="url" value="jdbc:oracle:thin:@192.168.1.112:1521:orcl">
 		</property>
 		<property name="username" value="hrms"></property>
 		<property name="password" value="123"></property>
