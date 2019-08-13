@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,7 +33,7 @@ public class UserinfoAction {
         if (u != null) {
             if (u.getUs_password().equals(password)) {
                 req.getSession().setAttribute("loger", u);
-                return "index";
+                return "user/list";
             } else {
                 return "login";
             }
@@ -43,15 +44,36 @@ public class UserinfoAction {
 
     @RequestMapping("/get")
     @ResponseBody
-    public Userinfo get(Long id){
-       return biz.getOne(id);
+    public ModelAndView get(Long id,ModelAndView mv){
+        Userinfo userinfo=biz.getOne(id);
+        mv.setViewName("mod");
+        mv.addObject("us",userinfo);
+       return mv;
     }
 
     @RequestMapping("/list")
     @ResponseBody
     public PageBean list(@RequestParam(defaultValue = "1") int page){
-        PageBean pageBean=biz.getAll(page);
-        return pageBean;
+
+        return biz.getAll(page);
+    }
+
+    @RequestMapping("/mod")
+    public String mod(Userinfo userinfo){
+        biz.mod(userinfo);
+        return "list";
+    }
+
+    @RequestMapping("/add")
+    public String add(Userinfo userinfo){
+        biz.add(userinfo);
+        return "list";
+    }
+
+    @RequestMapping("/del")
+    public String del(Long id){
+        biz.del(id);
+        return "list";
     }
 
 
