@@ -1,6 +1,7 @@
 package com.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Resume implements Serializable {
 
@@ -8,6 +9,7 @@ public class Resume implements Serializable {
     private String re_name;
     private String re_position;
     private EngageMajorRelease re_enid;
+    private Date re_time;
     private String re_url;
 
     public Long getRe_id() {
@@ -48,5 +50,13 @@ public class Resume implements Serializable {
 
     public void setRe_url(String re_url) {
         this.re_url = re_url;
+    }
+
+    public Date getRe_time() {
+        return re_time;
+    }
+
+    public void setRe_time(Date re_time) {
+        this.re_time = re_time;
     }
 }

@@ -12,6 +12,9 @@ public class EngageMajorRelease implements Serializable {
     private Date en_deadline;
     private String en_major_describe;
     private String en_experience;
+    private Userinfo en_creater;
+    private Date en_createtime;
+    private String en_status;
 
     public Long getEn_id() {
         return en_id;
@@ -67,5 +70,29 @@ public class EngageMajorRelease implements Serializable {
 
     public void setEn_experience(String en_experience) {
         this.en_experience = en_experience;
+    }
+
+    public Userinfo getEn_creater() {
+        return en_creater;
+    }
+
+    public void setEn_creater(Userinfo en_creater) {
+        this.en_creater = en_creater;
+    }
+
+    public Date getEn_createtime() {
+        return en_createtime;
+    }
+
+    public void setEn_createtime(Date en_createtime) {
+        this.en_createtime = en_createtime;
+    }
+
+    public String getEn_status() {
+        return en_status;
+    }
+
+    public void setEn_status(String en_status) {
+        this.en_status = en_status;
     }
 }
