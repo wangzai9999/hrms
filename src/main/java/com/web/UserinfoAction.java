@@ -55,7 +55,7 @@ public class UserinfoAction {
     @ResponseBody
     public PageBean getAll(@RequestParam(defaultValue = "1") int page,UserinfoParam us){
 
-        return biz.getAll(page);
+        return biz.getAll(page,us);
     }
 
     @RequestMapping("/mod")

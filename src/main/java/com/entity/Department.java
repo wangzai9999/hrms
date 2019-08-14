@@ -2,11 +2,13 @@ package com.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 public class Department  implements Serializable {
     private Long de_id;
     private String de_name;
     private Department de_fa;
+    private Userinfo de_man;
 
     public Department(){
 
@@ -37,5 +39,13 @@ public class Department  implements Serializable {
 
     public void setDe_fa(Department de_fa) {
         this.de_fa = de_fa;
+    }
+
+    public Userinfo getDe_man() {
+        return de_man;
+    }
+
+    public void setDe_man(Userinfo de_man) {
+        this.de_man = de_man;
     }
 }

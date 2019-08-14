@@ -24,9 +24,14 @@ public interface UserinfoDao {
     public void  del(Long id);
 
     @ResultMap("us")
-    @Select("select * from (select u.*,rownum r from(select * from userinfo order by us_id)u)s " +
-            "where s.r between (#{0}-1)*#{1} and #{0}*#{1}")
-    public List<Userinfo> getAll(int page, int pagesize);
+    @Select("<script>select * from (select u.*,rownum r from(select * from userinfo " +
+            "<where> <if test='param3.name!=null and param3.name!=\"\"'> and us_name like '%'||#{2.name}||'%'</if>" +
+            " <if test='param3.ro_id!=null and param3.ro_id!=0'> and ro_id=#{2.ro_id} </if>" +
+            " <if test='param3.de_id!=null and param3.de_id!=0'> and us_dep=#{2.de_id}</if>" +
+            " <if test='param3.pos_id!=null and param3.pos_id!=0'> and us_pos=#{2.pos_id} </if> " +
+            " </where> order by us_id)u)s " +
+            "where s.r between (#{0}-1)*#{1} and #{0}*#{1}</script>")
+    public List<Userinfo> getAll(int page, int pagesize,UserinfoParam param);
 
     @Results(value = {
             @Result(column = "us_pos",property = "us_pos",one = @One(select = "com.dao.PositionDao.getOne",fetchType = FetchType.EAGER)),
@@ -36,6 +41,11 @@ public interface UserinfoDao {
     @Select("select * from userinfo where us_id =#{id}")
     public Userinfo getOne(Long id);
 
-    @Select("select count(1) from userinfo")
-    public Long rowCount();
+    @Select("<script>select count(1) from userinfo " +
+            "<where> <if test='name!=null and name!=\"\"'> and us_name like '%'||#{2.name}||'%'</if>" +
+            " <if test='ro_id!=null and ro_id!=0'> and ro_id=#{2.ro_id} </if>" +
+            " <if test='de_id!=null and de_id!=0'> and us_dep=#{2.de_id}</if>" +
+            " <if test='pos_id!=null and pos_id!=0'> and us_pos=#{2.pos_id} </if> " +
+            "</where></script> ")
+    public Long rowCount(UserinfoParam param);
 }
