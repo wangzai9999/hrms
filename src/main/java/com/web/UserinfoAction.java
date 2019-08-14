@@ -3,6 +3,7 @@ package com.web;
 import com.biz.UserinfoBiz;
 import com.entity.Userinfo;
 import com.util.PageBean;
+import com.util.UserinfoParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,22 +46,23 @@ public class UserinfoAction {
     @RequestMapping("/get")
     public ModelAndView get(Long id,ModelAndView mv){
         Userinfo userinfo=biz.getOne(id);
-        mv.setViewName("mod");
+        mv.setViewName("user/mod");
         mv.addObject("us",userinfo);
        return mv;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/getall")
     @ResponseBody
-    public PageBean list(@RequestParam(defaultValue = "1") int page){
+    public PageBean getAll(@RequestParam(defaultValue = "1") int page,UserinfoParam us){
 
         return biz.getAll(page);
     }
 
     @RequestMapping("/mod")
+    @ResponseBody
     public String mod(Userinfo userinfo){
         biz.mod(userinfo);
-        return "list";
+        return "1";
     }
 
     @RequestMapping("/add")
@@ -73,7 +75,7 @@ public class UserinfoAction {
     @RequestMapping("/del")
     public String del(Long id){
         biz.del(id);
-        return "list";
+        return "user/list";
     }
 
 

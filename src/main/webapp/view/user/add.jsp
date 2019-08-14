@@ -46,12 +46,13 @@
 
             }, "json");
         })
-        function save(prop){
+        function save(prop,url){
             var us=$("#form_us").serialize();
             $.post("user/add.action",us,function (res) {
                 alert(res);
                 if(res=="1") {
                     alert(prop+'成功！');
+
                 } else {
                     alert(prop+"失败");
                 }
@@ -67,7 +68,7 @@
         <hr class="hr1" />
     </div>
     <div class="operation_button">
-        <button title="保存" onclick="save('保存')">保存</button>
+        <button title="保存" onclick="save('保存','list.jsp')">保存</button>
     </div>
     <div class="out_bg">
         <form id="form_us" method="post">
@@ -77,7 +78,7 @@
                     <td width="126"></td>
                     <td width="126"></td>
                     <td width="126">姓名</td>
-                    <td width="411"><input type="text" name="us_name"  /></td>
+                    <td width="411"><input type="text" name="us_name"   /></td>
                     <td width="126"></td>
                     <td  width="411"></td>
                 </tr>

@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.Userinfo;
+import com.util.UserinfoParam;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -25,7 +26,7 @@ public interface UserinfoDao {
     @ResultMap("us")
     @Select("select * from (select u.*,rownum r from(select * from userinfo order by us_id)u)s " +
             "where s.r between (#{0}-1)*#{1} and #{0}*#{1}")
-    public List<Userinfo> getAll(int page,int pagesize);
+    public List<Userinfo> getAll(int page, int pagesize);
 
     @Results(value = {
             @Result(column = "us_pos",property = "us_pos",one = @One(select = "com.dao.PositionDao.getOne",fetchType = FetchType.EAGER)),
