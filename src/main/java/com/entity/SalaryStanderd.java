@@ -2,6 +2,7 @@ package com.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class SalaryStanderd implements Serializable {
     private Long sa_id;
@@ -11,6 +12,7 @@ public class SalaryStanderd implements Serializable {
     private Userinfo sa_cre_id;
     private Date sa_date;
     private Department sa_dep;
+    private List<SalaryStanderdDetailed> list;
 
     public Long getSa_id() {
         return sa_id;
@@ -66,5 +68,13 @@ public class SalaryStanderd implements Serializable {
 
     public void setSa_dep(Department sa_dep) {
         this.sa_dep = sa_dep;
+    }
+
+    public List<SalaryStanderdDetailed> getList() {
+        return list;
+    }
+
+    public void setList(List<SalaryStanderdDetailed> list) {
+        this.list = list;
     }
 }

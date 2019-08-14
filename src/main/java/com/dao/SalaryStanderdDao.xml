@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SalaryStanderdDao">
+   <resultMap id="salstmap" type="salaryStanderd">
+       <id property="sa_id" column="sa_id"/>
+       <result property="sa_name" column="sa_name"/>
+       <result property="sa_totalmoney" column="sa_totalmoney"/>
+       <result property="sa_remark" column="sa_remark"/>
+       <result property="sa_date" column="sa_date"/>
+       <association property="sa_cre_id" column="sa_cre_id" select="com.dao.UserinfoDao.getOne"/>
+       <association property="sa_dep" column="sa_dep" select="com.dao.DepartmentDao.getOne"/>
+       <collection property="list" column="sa_id" ofType="salaryStanderdDetailed" select="com.dao.SalaryStanderdDetailedDao.getAllById"/>
+   </resultMap>
+
+    <select id="getAll" resultMap="salstmap">
+        select * from
+        (select a.*,rownum r from
+        (select * from salary_standard order by sa_date desc) a) s where s.r>=(#{0}-1)*#{1} and s.r &lt;=#{0}*#{1}
+    </select>
+
+    <insert id="add">
+        begin
+          insert into salary_standard values (sa_seq.nextval,#{sa_name},#{sa_totalmoney},#{sa_remark},#{sa_cre_id.us_id},sysdate,#{sa_dep.de_id});
+          <foreach collection="list" item="ssd">
+              insert into  salary_standard_detailed values (si_seq.nextval,sa_seq.currval,#{ssd.si_name},#{ssd.si_money});
+          </foreach>
+        end;
+    </insert>
+    <select id="getOne" resultMap="salstmap">
+        select * from salary_standard where sa_id=#{id}
+    </select>
+    <select id="totalNum" resultType="long">
+        select count(1) from  salary_standard
+    </select>
+
+    <delete id="del">
+        begin
+            delete from salary_standard_detailed where sa_id=#{id};
+            delete from salary_standard where sa_id=#{id};
+        end;
+    </delete>
+    <update id="mod">
+
+    </update>
+
+</mapper>

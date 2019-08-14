@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SalaryStanderdDetailedDao">
+    <resultMap id="salsdmap" type="salaryStanderdDetailed">
+        <id property="si_id" column="si_id"/>
+        <result property="si_name" column="si_name"/>
+        <result property="si_money" column="si_money"/>
+        <association property="sa_id" column="sa_id" select="com.dao.SalaryStanderdDao.getOne" />
+    </resultMap>
+
+    <select id="getAllById" resultMap="salsdmap">
+        select * from salary_standard_detailed where sa_id=#{sid}
+    </select>
+
+</mapper>
