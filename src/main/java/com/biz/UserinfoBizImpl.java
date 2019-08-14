@@ -32,17 +32,17 @@ public class UserinfoBizImpl implements UserinfoBiz{
 
     @Override
     public void add(Userinfo u) {
-
+        dao.add(u);
     }
 
     @Override
     public void del(Long id) {
-
+        dao.del(id);
     }
 
     @Override
     public void mod(Userinfo userinfo) {
-
+        dao.mod(userinfo);
     }
 
     @Override

@@ -64,9 +64,10 @@ public class UserinfoAction {
     }
 
     @RequestMapping("/add")
+    @ResponseBody
     public String add(Userinfo userinfo){
         biz.add(userinfo);
-        return "list";
+        return "1";
     }
 
     @RequestMapping("/del")

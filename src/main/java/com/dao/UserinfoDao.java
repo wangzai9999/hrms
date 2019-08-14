@@ -12,7 +12,7 @@ public interface UserinfoDao {
     @Select("select * from userinfo where us_name=#{name}")
     public Userinfo UserLogin( String name);
 
-    @Insert("insert into userinfo values(us_seq.nextval,#{us_name},#{us_password},#{ro_id.id},#{us_dep.id},#{us_pos.id})")
+    @Insert("insert into userinfo values(us_seq.nextval,#{us_name},#{us_password},#{ro_id.ro_id},#{us_dep.de_id},#{us_pos.pos_id})")
     public void add(Userinfo u);
 
     @Update("update userinfo  set us_name=#{us_name},us_password=#{us_password}," +
