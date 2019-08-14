@@ -58,7 +58,7 @@
     
     function list(page) {
         var us=$("#form_us").serialize();
-        $.post("user/getall.action",us+"$page="+page,function (res) {
+        $.post("user/getall.action",us,function (res) {
             var us=res.list;
             $("#thead1").html("");
             for(var i=0;i<us.length;i++){
@@ -97,29 +97,29 @@
      <div style="padding:5px;">
          <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
              <hr class="hr1" />
-         </div>
+         </div><a href="view/user/add.jsp"><button >添加员工</button></a>
          <div class="operation_button">
-             <button value="查询" onclick="query()"></button>查询</a>
+             <button value="查询" onclick="query()">查询</button>
          </div>
          <div class="search_input">
              <form id="form_us">
              <ul class="txt">
                  <li>员工名称：
-                     <input type="text" size="30" />
+                     <input type="text" size="30" name="name"/>
                  </li>
                  <li>角色：
-                     <select name="ro_id.ro_id" id="roid">
-                         <option>请选择...</option>
+                     <select name="ro_id" id="roid">
+                         <option value="0">请选择...</option>
                      </select>
                  </li>
                  <li>部门：
-                     <select name="us_dep.de_id" id="deoid">
-                         <option>请选择...</option>
+                     <select name="de_id" id="deoid">
+                         <option value="0">请选择...</option>
                      </select>
                  </li>
                  <li>职位：
-                     <select name="us_pos.pos_id" id="posid">
-                         <option>请选择...</option>
+                     <select name="pos_id" id="posid">
+                         <option value="0">请选择...</option>
                      </select>
                  </li>
              </ul>

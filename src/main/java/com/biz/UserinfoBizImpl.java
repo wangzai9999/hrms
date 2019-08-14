@@ -3,6 +3,7 @@ package com.biz;
 import com.dao.UserinfoDao;
 import com.entity.Userinfo;
 import com.util.PageBean;
+import com.util.UserinfoParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,11 +47,11 @@ public class UserinfoBizImpl implements UserinfoBiz{
     }
 
     @Override
-    public PageBean getAll(int page) {
+    public PageBean getAll(int page,UserinfoParam param) {
         PageBean pageBean=new PageBean();
         pageBean.setCurrpage(page);
-        pageBean.setTotalNum(dao.rowCount().intValue());
-        pageBean.setList(dao.getAll(page,pageBean.getPageSize()));
+        pageBean.setTotalNum(dao.rowCount(param).intValue());
+        pageBean.setList(dao.getAll(page,pageBean.getPageSize(),param));
         return pageBean;
     }
 }
