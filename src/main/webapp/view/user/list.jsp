@@ -17,12 +17,12 @@
 <head>
     <base href="<%=basePath%>">
     <title>Title</title>
-    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="/js/simpla.jquery.configuration.js"></script>
-    <script type="text/javascript" src="/js/javascript.js"></script>
-    <script type="text/javascript" src="/datepicker/WdatePicker.js"> </script>
+    <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/simpla.jquery.configuration.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="datepicker/WdatePicker.js"> </script>
 </head>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
