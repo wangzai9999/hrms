@@ -66,10 +66,4 @@ public class Userinfo implements Serializable {
         this.us_pos = us_pos;
     }
 
-    public Userinfo() {
-    }
-
-    public Userinfo(Long us_id) {
-        this.us_id = us_id;
-    }
 }
