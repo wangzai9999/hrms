@@ -65,7 +65,7 @@
 <div style="padding:5px;">
     <div class="txt" style="padding-top:3px;" >当前位置：客户服务管理&nbsp;&gt;&nbsp;添加员工
         <hr class="hr1" />
-    </div>
+    </div><a href="view/user/list.jsp"><button >列表员工</button></a>
     <div class="operation_button">
         <button title="保存" onclick="save('保存','list.jsp')">保存</button>
     </div>
