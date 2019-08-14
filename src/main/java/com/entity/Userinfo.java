@@ -11,6 +11,13 @@ public class Userinfo implements Serializable {
     private Department us_dep;
     private Position us_pos;
 
+    public Userinfo(){
+
+    }
+    public Userinfo(Long us_id){
+        this.us_id=us_id;
+    }
+
     public Long getUs_id() {
         return us_id;
     }
@@ -59,10 +66,4 @@ public class Userinfo implements Serializable {
         this.us_pos = us_pos;
     }
 
-    public Userinfo() {
-    }
-
-    public Userinfo(Long us_id) {
-        this.us_id = us_id;
-    }
 }

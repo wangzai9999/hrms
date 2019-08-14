@@ -1,13 +1,21 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.PrimitiveIterator;
 
-public class Department {
+public class Department  implements Serializable {
     private Long de_id;
     private String de_name;
     private Department de_fa;
     private Userinfo de_man;
+
+    public Department(){
+
+    }
+    public Department(Long de_id){
+        this.de_id= de_id;
+    }
 
     public Long getDe_id() {
         return de_id;
