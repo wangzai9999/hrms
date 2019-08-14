@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.Userinfo;
+import com.util.UserinfoParam;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -12,7 +13,7 @@ public interface UserinfoDao {
     @Select("select * from userinfo where us_name=#{name}")
     public Userinfo UserLogin( String name);
 
-    @Insert("insert into userinfo values(us_seq.nextval,#{us_name},#{us_password},#{ro_id.id},#{us_dep.id},#{us_pos.id})")
+    @Insert("insert into userinfo values(us_seq.nextval,#{us_name},#{us_password},#{ro_id.ro_id},#{us_dep.de_id},#{us_pos.pos_id})")
     public void add(Userinfo u);
 
     @Update("update userinfo  set us_name=#{us_name},us_password=#{us_password}," +
@@ -25,7 +26,7 @@ public interface UserinfoDao {
     @ResultMap("us")
     @Select("select * from (select u.*,rownum r from(select * from userinfo order by us_id)u)s " +
             "where s.r between (#{0}-1)*#{1} and #{0}*#{1}")
-    public List<Userinfo> getAll(int page,int pagesize);
+    public List<Userinfo> getAll(int page, int pagesize);
 
     @Results(value = {
             @Result(column = "us_pos",property = "us_pos",one = @One(select = "com.dao.PositionDao.getOne",fetchType = FetchType.EAGER)),

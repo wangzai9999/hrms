@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style2.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="js/jquery.js"></script>
 <script src="js/cloud.js" type="text/javascript"></script>
 

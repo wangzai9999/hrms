@@ -25,9 +25,9 @@ public class RoleAction {
         this.biz = biz;
     }
 
-    @RequestMapping("/queryall")
+    @RequestMapping("/getall")
     @ResponseBody
-    public List<Role> getAllRole(){
+    public List<Role> getAll(){
         return biz.getAllRole();
     }
 
