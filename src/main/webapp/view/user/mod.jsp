@@ -24,8 +24,8 @@
         $(function() {
             $.get("role/getall.action", "", function (res) {
                 for (var i = 0; i < res.length; i++) {
-                    if (res[i].ro_id==${us.us_id}){
-                        $("#roid").append("<option value='" + res[i].ro_id + "'>" + res[i].ro_name + "</option>");
+                    if (res[i].ro_id==${us.ro_id.ro_id}){
+                        $("#roid").append("<option value='" + res[i].ro_id + "'selected='selected'>" + res[i].ro_name + "</option>");
                     }else
                     {
                         $("#roid").append("<option value='" + res[i].ro_id + "'>" + res[i].ro_name + "</option>");
@@ -36,26 +36,33 @@
 
             $.get("pos/getall.action", "", function (res) {
                 for (var i = 0; i < res.length; i++) {
+                    if (res[i].pos_id==${us.us_pos.pos_id}){
+                        $("#posid").append("<option value='" + res[i].pos_id + "'selected='selected'>" + res[i].pos_name + "</option>");
+                    }else
+                    {
+                        $("#posid").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
+                    }
 
-                    $("#posid").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
                 }
 
             }, "json");
 
             $.post("dep/getall.action", "", function (res) {
                 for (var i = 0; i < res.length; i++) {
+                    var sel=null;
+                    if (res[i].de_id==${us.us_dep.de_id}) sel="selected='selected'";
+                        $("#deoid").append("<option value='" + res[i].de_id + "'"+sel+">" + res[i].de_name + "</option>");
 
-                    $("#deoid").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
                 }
 
             }, "json");
         })
-        function save(prop){
+        function save(prop,url){
             var us=$("#form_us").serialize();
             $.post("user/mod.action",us,function (res) {
-                alert(res);
                 if(res=="1") {
                     alert(prop+'成功！');
+                    location.href=url;
                 } else {
                     alert(prop+"失败");
                 }
@@ -71,7 +78,7 @@
         <hr class="hr1" />
     </div>
     <div class="operation_button">
-        <button title="保存" onclick="save('保存')">保存</button>
+        <button title="保存" onclick="save('修改','view/user/list.jsp')">保存</button>
     </div>
     <div class="out_bg">
         <form id="form_us" method="post">
@@ -110,7 +117,7 @@
                     <td ></td><td></td>
                     <td>职位</td>
                     <td><select name="us_pos.pos_id" id="posid">
-                        <option>请选择...</option>
+                        <option >请选择...</option>
                     </select></td>
                 </tr>
 
