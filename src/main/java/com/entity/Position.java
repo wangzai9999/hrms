@@ -7,6 +7,13 @@ public class Position implements Serializable {
     private Long pos_id;//职位编号
     private String pos_name;//职位名
 
+    public Position(){
+
+    }
+    public Position(Long pos_id){
+        this.pos_id = pos_id;
+    }
+
     public Long getPos_id() {
         return pos_id;
     }

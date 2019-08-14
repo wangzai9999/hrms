@@ -1,11 +1,19 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Department {
+public class Department  implements Serializable {
     private Long de_id;
     private String de_name;
     private Department de_fa;
+
+    public Department(){
+
+    }
+    public Department(Long de_id){
+        this.de_id= de_id;
+    }
 
     public Long getDe_id() {
         return de_id;

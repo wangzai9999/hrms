@@ -1,8 +1,9 @@
 package com.util;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PageBean {
+public class PageBean  implements Serializable {
 	private int currpage;//当前页
 	private int pageSize=5;//一页显示的条数
 	private int totalNum;//总条数
