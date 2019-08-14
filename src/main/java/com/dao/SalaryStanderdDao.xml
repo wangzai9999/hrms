@@ -9,7 +9,7 @@
        <result property="sa_remark" column="sa_remark"/>
        <result property="sa_date" column="sa_date"/>
        <association property="sa_cre_id" column="sa_cre_id" select="com.dao.UserinfoDao.getOne"/>
-       <association property="sa_dep" column="sa_dep" select="com.dao.DepartmentDao.getOne"/>
+       <association property="sa_pos" column="sa_pos" select="com.dao.PositionDao.getOne"/>
        <collection property="list" column="sa_id" ofType="salaryStanderdDetailed" select="com.dao.SalaryStanderdDetailedDao.getAllById"/>
    </resultMap>
 
@@ -21,8 +21,8 @@
 
     <insert id="add">
         begin
-          insert into salary_standard values (sa_seq.nextval,#{sa_name},#{sa_totalmoney},#{sa_remark},#{sa_cre_id.us_id},sysdate,#{sa_dep.de_id});
-          <foreach collection="list" item="ssd">
+          insert into salary_standard values (sa_seq.nextval,#{sa_name},#{sa_totalmoney},#{sa_remark},#{sa_cre_id.us_id},sysdate,#{sa_pos.pos_id});
+        <foreach collection="list" item="ssd">
               insert into  salary_standard_detailed values (si_seq.nextval,sa_seq.currval,#{ssd.si_name},#{ssd.si_money});
           </foreach>
         end;

@@ -68,9 +68,7 @@ public class SalaryStanderdAction {
         Userinfo us= (Userinfo) request.getSession().getAttribute("loger");
         sst.setList((List<SalaryStanderdDetailed>) request.getSession().getAttribute("ssdlist"));
         sst.setSa_totalmoney((Double) request.getSession().getAttribute("totalmoney"));
-        Userinfo userinfo=new Userinfo();
-        userinfo.setUs_id(1l);
-        sst.setSa_cre_id(userinfo);
+        sst.setSa_cre_id(us);
         biz.add(sst);
         request.getSession().removeAttribute("ssdlist");
         request.getSession().removeAttribute("totalmoney");

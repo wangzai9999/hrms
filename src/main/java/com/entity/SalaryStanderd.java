@@ -11,7 +11,7 @@ public class SalaryStanderd implements Serializable {
     private String sa_remark;
     private Userinfo sa_cre_id;
     private Date sa_date;
-    private Department sa_dep;
+    private Position sa_pos;
     private List<SalaryStanderdDetailed> list;
 
     public Long getSa_id() {
@@ -62,12 +62,12 @@ public class SalaryStanderd implements Serializable {
         this.sa_date = sa_date;
     }
 
-    public Department getSa_dep() {
-        return sa_dep;
+    public Position getSa_pos() {
+        return sa_pos;
     }
 
-    public void setSa_dep(Department sa_dep) {
-        this.sa_dep = sa_dep;
+    public void setSa_pos(Position sa_pos) {
+        this.sa_pos = sa_pos;
     }
 
     public List<SalaryStanderdDetailed> getList() {

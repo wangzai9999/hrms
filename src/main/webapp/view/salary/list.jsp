@@ -35,7 +35,7 @@
           <th width="10%">薪酬标准编号</th>
           <th width="10%">薪酬标准名称</th>
           <th width="25%">薪酬标准总金额</th>
-          <th width="10%">薪酬标准的部门</th>
+          <th width="10%">薪酬标准的职位</th>
           <th width="10%">创建人</th>
           <th width="15%">创建日期</th>
           <th width="10%">操作</th>
@@ -47,7 +47,7 @@
           <td>${sd.sa_id}</td>
           <td><a href="#">${sd.sa_name}</a></td>
           <td>${sd.sa_totalmoney}</td>
-          <td>${sd.sa_dep.de_name}</td>
+          <td>${sd.sa_pos.pos_name}</td>
           <td>${sd.sa_cre_id.us_id}</td>
           <td><fmt:formatDate value="${sd.sa_date}" pattern="yyyy-MM-dd HH:mm" /></td>
           <td><a href="salt/delst.action?delsaid=${sd.sa_id}">删除</a>|<a href="salt/getonest.action?gsid=${sd.sa_id}">修改</a></td>
