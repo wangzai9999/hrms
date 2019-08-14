@@ -16,7 +16,7 @@ public interface DepartmentDao {
     @Delete("delete from department where de_id=#{id}")
     public void del (Long id);
 
-    @Update("update department where ")
+    @Update("update department set de_name=#{de_name},de_fa=#{de_fa.de_id},de_man={de_man.us_id}  where de_id=#{de_id} ")
     public void mod(Department department);
 
     @Select("select * from department where de_id=#{id}")
