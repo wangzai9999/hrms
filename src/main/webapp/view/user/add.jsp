@@ -67,7 +67,7 @@
         <hr class="hr1" />
     </div><a href="view/user/list.jsp"><button >列表员工</button></a>
     <div class="operation_button">
-        <button title="保存" onclick="save('保存','list.jsp')">保存</button>
+        <button title="保存" onclick="save('保存','view/user/list.jsp')">保存</button>
     </div>
     <div class="out_bg">
         <form id="form_us" method="post">
