@@ -1,11 +1,13 @@
 package com.entity;
 
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 public class Department {
     private Long de_id;
     private String de_name;
     private Department de_fa;
+    private Userinfo de_man;
 
     public Long getDe_id() {
         return de_id;
@@ -29,5 +31,13 @@ public class Department {
 
     public void setDe_fa(Department de_fa) {
         this.de_fa = de_fa;
+    }
+
+    public Userinfo getDe_man() {
+        return de_man;
+    }
+
+    public void setDe_man(Userinfo de_man) {
+        this.de_man = de_man;
     }
 }
