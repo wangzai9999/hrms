@@ -49,10 +49,9 @@
         function save(prop,url){
             var us=$("#form_us").serialize();
             $.post("user/add.action",us,function (res) {
-                alert(res);
                 if(res=="1") {
                     alert(prop+'成功！');
-
+                    location.href=url;
                 } else {
                     alert(prop+"失败");
                 }
