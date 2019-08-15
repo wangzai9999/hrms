@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -17,23 +18,20 @@
 <head>
     <base href="<%=basePath%>">
     <title>Title</title>
-    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="/js/simpla.jquery.configuration.js"></script>
-    <script type="text/javascript" src="/js/javascript.js"></script>
-    <script type="text/javascript" src="/datepicker/WdatePicker.js"> </script>
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/simpla.jquery.configuration.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="datepicker/WdatePicker.js"> </script>
 </head>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
     $(function(){
-        alert("aaa");
         $.post("en/getall.action","",function (res) {
-            alert("--");
             for (var i=0;i<res.list.length;i++) {
                 var en = res.list[i];
                 var tr=$("<tr></tr>");
-                alert(en.en_id);
                 var td1=$("<td>"+en.en_id+"</td>");
                 tr.append(td1);
                 var td2=$("<td>"+en.en_dep.de_name+"</td>");
@@ -78,6 +76,7 @@
     <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
         <hr class="hr1" />
     </div>
+    <a href="view/en/add.jsp">发布招聘信息</a>
     <div class="operation_button">
         <button value="查询" onclick="query()"></button>查询</a>
     </div>
@@ -101,7 +100,6 @@
         </form>
     </div>
     <div>
-        <a href="add.jsp">发布招聘信息</a>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list" >
             <thead>
             <tr>

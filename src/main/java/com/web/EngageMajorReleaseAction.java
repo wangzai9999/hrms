@@ -2,6 +2,7 @@ package com.web;
 
 import com.biz.EngageMajorReleaseBiz;
 import com.entity.EngageMajorRelease;
+import com.entity.Userinfo;
 import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -41,7 +43,6 @@ public class EngageMajorReleaseAction {
     @RequestMapping("/getall")
     @ResponseBody
     public PageBean getAllByPage(@RequestParam(defaultValue = "1") int page){
-        System.out.println("lasldjlajsldjljls*********************");
         return biz.getAllByPage(page);
     }
 
@@ -53,7 +54,10 @@ public class EngageMajorReleaseAction {
     }
 
     @RequestMapping("/add")
-    public String add(EngageMajorRelease en){
+    public String add(EngageMajorRelease en, HttpServletRequest req){
+        en.setEn_creater((Userinfo) req.getSession().getAttribute("loger"));
+        //en.getEn_creater().setUs_id((Long)((Userinfo) req.getSession().getAttribute("loger")).getUs_id());
+        en.setEn_creater(new Userinfo(3l));
         biz.add(en);
         return "en/list";
     }
@@ -66,6 +70,7 @@ public class EngageMajorReleaseAction {
 
     @RequestMapping("/update")
     public String update(EngageMajorRelease en){
+        en.setEn_creater(new Userinfo(3l));
         biz.update(en);
         return "en/list";
     }

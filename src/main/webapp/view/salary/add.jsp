@@ -17,10 +17,10 @@
   <script type="text/javascript">
 
     $(function () {
-      $.post("dep/getall.action","",function (res) {
+      $.post("pos/getall.action","",function (res) {
         for (var i=0;i<res.length;i++){
-          var dept=res[i];
-          $("#depname").append("<option value='"+dept.de_id+"'>"+dept.de_name+"</option>");
+          var pos=res[i];
+          $("#posname").append("<option value='"+pos.pos_id+"'>"+pos.pos_name+"</option>");
         }
 
       },"json");
@@ -93,9 +93,9 @@
           <td width="200"><input type="text" name="sa_name"/></td>
         </tr>
         <tr>
-          <td width="100">薪酬标准所属部门</td>
+          <td width="100">薪酬标准所属职位</td>
           <td width="200">
-            <select name="sa_dep.de_id" id="depname">
+            <select name="sa_pos.pos_id" id="posname">
             </select>
           </td>
         </tr>
