@@ -58,7 +58,7 @@
     
     function list(page) {
         var us=$("#form_us").serialize();
-        $.post("user/getall.action",us,function (res) {
+        $.post("user/getall.action",param,function (res) {
             var us=res.list;
             $("#thead1").html("");
             for(var i=0;i<us.length;i++){
@@ -97,7 +97,7 @@
      <div style="padding:5px;">
          <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
              <hr class="hr1" />
-         </div><a href="view/user/add.jsp"><button >添加员工</button></a>
+         </div>
          <div class="operation_button">
              <button value="查询" onclick="query()">查询</button>
          </div>
