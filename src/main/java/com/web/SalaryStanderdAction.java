@@ -1,6 +1,7 @@
 package com.web;
 
 import com.biz.SalaryStanderdBiz;
+import com.biz.SalaryStanderdDetailedBiz;
 import com.entity.SalaryStanderd;
 import com.entity.SalaryStanderdDetailed;
 import com.entity.Userinfo;
@@ -22,6 +23,16 @@ import java.util.List;
 public class SalaryStanderdAction {
     @Autowired
     private SalaryStanderdBiz biz;
+    @Autowired
+    private SalaryStanderdDetailedBiz dbiz;
+
+    public SalaryStanderdDetailedBiz getDbiz() {
+        return dbiz;
+    }
+
+    public void setDbiz(SalaryStanderdDetailedBiz dbiz) {
+        this.dbiz = dbiz;
+    }
 
     public SalaryStanderdBiz getBiz() {
         return biz;
@@ -87,11 +98,22 @@ public class SalaryStanderdAction {
     }
 
     @RequestMapping("/modst")
-    public String modSalLevel(){
-
+    public String modSalLevel(SalaryStanderd modst){
+        biz.mod(modst);
         return "redirect:getall.action";
     }
 
+
+    @RequestMapping("/modaddsd")
+    public String modSalAddDetail(long stid,SalaryStanderdDetailed ssdadd){
+        dbiz.add(ssdadd,stid);
+        return "redirect:getonest.action?gsid="+stid;
+    }
+    @RequestMapping("/moddelsd")
+    public String modSaldelDetail(long stid,long ssdid){
+        dbiz.del(ssdid,stid);
+        return "redirect:getonest.action?gsid="+stid;
+    }
 
 
 

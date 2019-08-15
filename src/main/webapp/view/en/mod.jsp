@@ -25,12 +25,15 @@
         $(function(){
             $.get("pos/getall.action","", function (res) {
                 for (var i = 0; i < res.length; i++) {
-                    $("#posi").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
+                    var sel="";
+                    if((res[i].pos_id)==(${en.en_pos.pos_id})) {alert("aa"); sel='selected';}
+                    $("#posi").append("<option value='" + res[i].pos_id + "' "+sel+">" + res[i].pos_name + "</option>");
                 }
             }, "json");
 
             $.post("dep/getall.action","", function (res) {
                 for (var i = 0; i < res.length; i++) {
+
                     $("#depi").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
                 }
 

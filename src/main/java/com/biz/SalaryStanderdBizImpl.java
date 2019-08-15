@@ -36,8 +36,8 @@ public class SalaryStanderdBizImpl implements SalaryStanderdBiz {
     }
 
     @Override
-    public SalaryStanderd mod(SalaryStanderd salst) {
-        return dao.mod(salst);
+    public void mod(SalaryStanderd salst) {
+         dao.mod(salst);
     }
 
     @Override
