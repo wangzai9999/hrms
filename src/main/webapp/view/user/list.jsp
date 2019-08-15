@@ -96,7 +96,7 @@
                 $("#papa").append(" <a name='"+i+"' class='"+cla+"'>"+i+"</a>");
             }
             $("#papa").append(" <a name='"+(res.currpage+1)+"' title='下一页'>下一页&raquo;</a> <a name='"+res.totalPage+"' title='末页'>末页&raquo;</a> ");
-            $("#papa").append("转到&nbsp;<input name='ppp' size='2' id='page'/>&nbsp;页<button name='跳转页面按钮' id='gosalpage' onclick='gopage()'>GO</button>");
+            $("#papa").append("转到&nbsp;<input size='2' id='page'/>&nbsp;页<button  id='gosalpage' onclick='gopage()'>GO</button>");
 
 
 
@@ -121,6 +121,7 @@
          <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
              <hr class="hr1" />
          </div>
+         <a href="view/user/add.jsp">添加</a>
          <div class="operation_button">
              <button value="查询" onclick="query()">查询</button>
          </div>

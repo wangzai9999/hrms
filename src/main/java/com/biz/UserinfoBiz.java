@@ -12,5 +12,5 @@ public interface UserinfoBiz {
     public void  del(Long id);
     public void mod(Userinfo userinfo);
     public PageBean getAll(int page,UserinfoParam param);
-
+    public Long getNowID();
 }

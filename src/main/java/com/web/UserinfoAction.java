@@ -69,7 +69,8 @@ public class UserinfoAction {
     @ResponseBody
     public String add(Userinfo userinfo){
         biz.add(userinfo);
-        return "1";
+        Long a=biz.getNowID();
+        return ""+a;
     }
 
     @RequestMapping("/del")
