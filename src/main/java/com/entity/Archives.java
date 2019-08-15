@@ -248,4 +248,5 @@ public class Archives implements Serializable {
     public void setAr_qq(String ar_qq) {
         this.ar_qq = ar_qq;
     }
+
 }
