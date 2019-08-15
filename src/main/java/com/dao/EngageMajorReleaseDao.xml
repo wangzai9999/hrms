@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EngageMajorReleaseDao">
+    <cache></cache>
+    <select id="getAll" resultMap="en">
+            select * from (select e.*,rownum r from engage_major_release e
+            <where>
+                <if test='enp.depid!=null'> and e.en_dep=#{enp.depid}</if>
+                <if test='enp.posid!=null'> and e.en_pos=#{enp.posid}</if>
+                <if test='enp.minaccount!=null'> and e.en_account>=#{enp.minaccount}</if>
+                <if test='enp.maxaccount!=null'> and e.en_account<![CDATA[<=]]>#{enp.maxaccount}</if>
+                <if test='enp.mintime!=null'> and e.en_createtime>=#{enp.mintime}</if>
+                <if test='enp.maxtime!=null'> and e.en_deadline <![CDATA[<=]]> #{enp.maxtime}</if>
+                <if test='enp.experience!=null'> and e.en_experience like '%'||#{enp.experience}||'%' </if>
+            </where>
+            ) x where x.r>(#{page}-1)*#{pagesize} and x.r &lt;= #{page}*#{pagesize}
+    </select>
+    <select  id="getCount" resultType="Long">
+        select count(1) from engage_major_release e
+        <where>
+            <if test='enp.depid!=null'> and e.en_dep=#{enp.depid}</if>
+            <if test='enp.posid!=null'> and e.en_pos=#{enp.posid}</if>
+            <if test='enp.minaccount!=null'> and e.en_account>=#{enp.minaccount}</if>
+            <if test='enp.maxaccount!=null'> and e.en_account<![CDATA[<=]]>#{enp.maxaccount}</if>
+            <if test='enp.mintime!=null'> and e.en_createtime>=#{enp.mintime}</if>
+            <if test='enp.maxtime!=null'> and e.en_deadline <![CDATA[<=]]> #{enp.maxtime}</if>
+            <if test='enp.experience!=null'> and e.en_experience like '%'||#{enp.experience}||'%' </if>
+        </where>
+    </select>
+
+</mapper>

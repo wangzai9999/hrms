@@ -19,7 +19,7 @@
     <base href="<%=basePath%>">
     <title>Title</title>
     <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="js/simpla.jquery.configuration.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
@@ -29,12 +29,44 @@
 <script type="text/javascript">
     $(function(){
 
-        show();
+        $.get("pos/getall.action", "", function (res) {
+            for (var i = 0; i < res.length; i++) {
+                $("#pos").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
+            }
+        }, "json");
 
+        $.post("dep/getall.action", "", function (res) {
+            for (var i = 0; i < res.length; i++) {
+                $("#dep").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
+            }
+        }, "json");
+
+        show(1);
+
+        $("body").on("click","#pages a",function () {
+            var page = $(this).attr("name");
+            show(page);
+        });
+        $("#select").click(function () {
+            show(1);
+        })
     })
+    function formateTime(time)
+    {
+        var date = new Date(time);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':';
+        s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+        return Y+M+D+h+m+s;
+    }
 
-    function show(){
-        $.post("en/getall.action","",function (res) {
+    function show(page){
+        var getall = $("#getall").serialize()+"&page="+page;
+        $.post("en/getall.action",getall,function (res) {
+            $("#ens").html("");
             for (var i=0;i<res.list.length;i++) {
                 var en = res.list[i];
                 var tr=$("<tr></tr>");
@@ -46,7 +78,7 @@
                 tr.append(td3);
                 var td4=$("<td>"+en.en_account+"</td>");
                 tr.append(td4);
-                var td5=$("<td>"+en.en_deadline+"</td>");
+                var td5=$("<td>"+formateTime(en.en_deadline)+"</td>");
                 tr.append(td5);
                 var td6=$("<td>"+en.en_major_describe+"</td>");
                 tr.append(td6);
@@ -54,7 +86,7 @@
                 tr.append(td7);
                 var td8=$("<td>"+en.en_creater.us_name+"</td>");
                 tr.append(td8);
-                var td9=$("<td>"+en.en_createtime+"</td>");
+                var td9=$("<td>"+formateTime(en.en_createtime)+"</td>");
                 tr.append(td9);
                 var td10=$("<td>"+en.en_status+"</td>");
                 tr.append(td10);
@@ -62,14 +94,16 @@
                 tr.append(td11);
                 $("#ens").append(tr);
             }
-            /*var a1=$("<a name='1'>首页</a>");
+
+            $("#pages").html("");
+            var a1=$("<a name='1'>首页</a>");
             $("#pages").append(a1);
-            var a2=$("<a name='"+(${res.currpage}-1)+"'>&laquo;上一页</a>");
+            var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
             $("#pages").append(a2);
-            var a3=$("<a name='"+(${res.currpage}+1)+"'>下一页&raquo;</a>");
+            var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
             $("#pages").append(a3);
-            var a4=$("<a name='"+(${res.totalPage})+"'>尾页</a>");
-            $("#pages").append(a4);*/
+            var a4=$("<a name='"+(res.totalPage)+"'>尾页</a>");
+            $("#pages").append(a4);
 
         },"json")
     }
@@ -93,25 +127,44 @@
     </div>
     <a href="view/en/add.jsp">发布招聘信息</a>
     <div class="operation_button">
-        <button value="查询" onclick="query()"></button>查询</a>
+
     </div>
     <div class="search_input">
-        <form id="form_us">
+        <form id="getall">
             <ul class="txt">
-                <li>员工名称：
-                    <input type="text" size="30" />
+                <li>最少人数：
+                    <input type="text" name="minaccount" size="30" />
+                </li>
+                <li>最多人数：
+                    <input type="text" name="miaxaccount" size="30" />
+                </li>
+                <li>开始时间：
+                    <input type="text" name="mintime" size="30" />
+                </li>
+                <li>截止时间：
+                    <input type="text" name="maxtime" size="30" />
+                </li>
+                <li>工作经验：
+                    <select name="experience">
+                        <option></option>
+                        <option value="不限">不限</option>
+                        <option value="1-2年">1-2年</option>
+                        <option value="2-5年">2-5年</option>
+                        <option value="5年以上">5年以上</option>
+                    </select>
                 </li>
                 <li>部门：
-                    <select name="us_dep.de_id" id="deoid">
-                        <option>请选择...</option>
+                    <select name="depid" id="dep">
+                            <option value="">请选择<option>
                     </select>
                 </li>
                 <li>职位：
-                    <select name="us_pos.pos_id" id="posid">
-                        <option>请选择...</option>
+                    <select name="posid" id="pos">
+                        <option value="">请选择</option>
                     </select>
                 </li>
             </ul>
+            <input type="button" id="select" value="查询">
         </form>
     </div>
     <div>
