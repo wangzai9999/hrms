@@ -23,17 +23,17 @@ public class ArchivesBizImpl implements ArchivesBiz {
 
     @Override
     public void add(Archives archives) {
-        dao.insertSelective(archives);
+        dao.add(archives);
     }
 
     @Override
     public void del(Long id) {
-        dao.deleteByPrimaryKey(id);
+        dao.del(id);
     }
 
     @Override
     public void mod(Archives archives) {
-        dao.updateByPrimaryKeySelective(archives);
+        dao.mod(archives);
     }
 
     @Override

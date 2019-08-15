@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ArchivesDao">
+
+    <insert id="add">
+       insert into archives values (ar_seq.nextval,#{ar_uid.us_id},#{ar_id_card},#{ar_photo},#{ar_regist},#{ar_change},
+        sysdate,#{ar_change_time},#{ar_status},#{ar_address},#{ar_telephone},#{ar_email},#{ar_speciality},
+        #{ar_sex},#{ar_party},#{ar_nationality},#{ar_race},#{ar_birthday},#{ar_birthplace},#{ar_age},#{ar_educated_degree},
+        #{ar_educated_major},#{ar_gzjl},#{ar_gl},#{ar_love},#{ar_qq})
+    </insert>
+    
+    <update id="mod">
+        update archives
+        set  ar_id_card= #{ar_id_card}, ar_photo= #{ar_photo},ar_change = #{ar_change}, ar_change_time=#{ar_change_time},
+             ar_status = #{ar_status},ar_address=#{ar_address},ar_telephone=#{ar_telephone},ar_email=#{ar_email},ar_speciality=#{ar_speciality},
+             ar_sex=#{ar_sex},ar_party=#{ar_party},ar_nationality=#{ar_nationality},ar_race=#{ar_race},ar_birthday=#{ar_birthday},ar_age=#{ar_age},
+             ar_educated_degree=#{ar_educated_degree},ar_educated_major=#{ar_educated_major},ar_gzjl=#{ar_gzjl},ar_love=#{ar_love},ar_qq=#{ar_qq}
+        where ar_id=#{ar_id}
+    </update>
+
+</mapper>

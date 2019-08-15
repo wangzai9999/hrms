@@ -19,14 +19,14 @@ public class Archives implements Serializable {
     private String ar_id_card;
     private String ar_photo;
     private String ar_regist;
-    private String ar_change;
+    private String ar_change="尚未变更记录，无变更人";
     private Date ar_regist_time;
     private Date ar_change_time;
-    private String ar_status;
+    private String ar_status="正常";
     private String ar_address;
     private String ar_telephone;
-    private String ar_email;
-    private String ar_speciality;
+    private String ar_email="无";
+    private String ar_speciality="无";
     private String ar_sex;
     private String ar_party;
     private String ar_nationality;
@@ -36,10 +36,10 @@ public class Archives implements Serializable {
     private Long ar_age;
     private String ar_educated_degree;
     private String ar_educated_major;
-    private String ar_gzjl;
+    private String ar_gzjl="无";
     private Long ar_gl;
-    private String ar_love;
-    private String ar_qq;
+    private String ar_love="无";
+    private String ar_qq="无";
 
     public Long getAr_id() {
         return ar_id;

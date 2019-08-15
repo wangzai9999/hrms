@@ -43,21 +43,18 @@ public class ArchivesAction {
     }
 
     @RequestMapping("/add")
-    @ResponseBody
     public String add(Archives archives){
         biz.add(archives);
         return "1" ;
     }
 
     @RequestMapping("/mod")
-    @ResponseBody
     public String mod(Archives archives){
         biz.mod(archives);
         return "1" ;
     }
 
     @RequestMapping("/del")
-    @ResponseBody
     public String del(Long  id){
         biz.del(id);
         return "1" ;
