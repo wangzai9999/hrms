@@ -51,7 +51,7 @@
             $.post("user/add.action",us,function (res) {
                 if(res!=null) {
                     alert(prop+'成功！');
-                    location.href=url+"?id"+res;
+                    location.href=url+"?id="+res;
                 } else {
                     alert(prop+"失败");
                 }
