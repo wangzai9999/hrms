@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.entity.Achievements;
 import com.entity.Archives;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
@@ -18,4 +19,11 @@ public interface ArchivesDao extends Mapper<Archives>{
     },id = "ar")
     @Select("select * from archives where ar_id=#{id}")
     public Archives getOne(Long id);
+
+    public void add(Archives ar);
+
+    public void del(Long arid);
+
+    public void mod(Archives ar);
+
 }

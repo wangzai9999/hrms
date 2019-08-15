@@ -113,7 +113,7 @@
         </tr>
         <tr>
           <td valign="top">薪酬标准备注</td>
-          <td><textarea rows="6" cols="36" name="sa_remark" />${st.sa_remark} </textarea></td>
+          <td><textarea rows="6" cols="36" name="sa_remark" >${st.sa_remark} </textarea></td>
           <td><input type="submit" value="修改"></td>
           <td></td>
         </tr>
