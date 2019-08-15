@@ -55,4 +55,9 @@ public class UserinfoBizImpl implements UserinfoBiz{
         pageBean.setList(dao.getAll(page,pageBean.getPageSize(),param));
         return pageBean;
     }
+
+    @Override
+    public Long getNowID() {
+        return dao.getNowID();
+    }
 }

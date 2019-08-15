@@ -48,4 +48,7 @@ public interface UserinfoDao {
             " <if test='pos_id!=null and pos_id!=0'> and us_pos=#{pos_id} </if> " +
             "</where></script> ")
     public Long rowCount(UserinfoParam param);
+
+    @Select("select us_seq.currval from dual")
+    public Long getNowID();
 }

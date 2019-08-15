@@ -66,11 +66,16 @@
   <div class="position"> 
   	共${pb.totalNum}条记录&nbsp;每页${pb.pageSize}条&nbsp;第${pb.currpage}页/共${pb.totalPage}页
     <a href="salt/getall.action?page=1" title="首页">&laquo;首页</a>
+    <c:if test="${pb.currpage >1}">
     <a href="salt/getall.action?page=${pb.currpage-1}" title="上一页">&laquo; 上一页</a>
+    </c:if>
     <c:forEach begin="1" var="pa" end="${pb.totalPage}">
         <a href="salt/getall.action?page=${pa}" class="number ${pb.currpage == pa?'current':''}" title="${pa}">${pa}</a>
     </c:forEach>
-    <a href="salt/getall.action?page=${pb.currpage+1}" title="下一页">下一页&raquo;</a><a href="salt/getall.action?page=${pb.totalPage}" title="末页">末页&raquo;</a> 转到&nbsp;
+    <c:if test="${pb.currpage < pb.totalPage}">
+    <a href="salt/getall.action?page=${pb.currpage+1}" title="下一页">下一页&raquo;</a>
+    </c:if>
+    <a href="salt/getall.action?page=${pb.totalPage}" title="末页">末页&raquo;</a> 转到&nbsp;
     <input value="" size="2" id="page"/>
     &nbsp;页
     <button name="跳转页面按钮" id="gosalpage" onclick="gopage()">GO</button>
