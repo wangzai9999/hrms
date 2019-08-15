@@ -54,7 +54,7 @@ public class UserinfoAction {
     @RequestMapping("/getall")
     @ResponseBody
     public PageBean getAll(@RequestParam(defaultValue = "1") int page,UserinfoParam param){
-
+        if (page<1) page=1;
         return biz.getAll(page,param);
     }
 

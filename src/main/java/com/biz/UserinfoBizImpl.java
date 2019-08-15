@@ -49,8 +49,9 @@ public class UserinfoBizImpl implements UserinfoBiz{
     @Override
     public PageBean getAll(int page,UserinfoParam param) {
         PageBean pageBean=new PageBean();
-        pageBean.setCurrpage(page);
         pageBean.setTotalNum(dao.rowCount(param).intValue());
+        if (page>pageBean.getTotalPage()) page=pageBean.getTotalPage();
+        pageBean.setCurrpage(page);
         pageBean.setList(dao.getAll(page,pageBean.getPageSize(),param));
         return pageBean;
     }
