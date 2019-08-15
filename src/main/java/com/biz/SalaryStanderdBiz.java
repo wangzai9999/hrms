@@ -11,7 +11,7 @@ public interface SalaryStanderdBiz {
 
     public SalaryStanderd getOne(Long id);
 
-    public SalaryStanderd mod(SalaryStanderd salst);
+    public void mod(SalaryStanderd salst);
 
     public PageBean getAll(int page);
 }

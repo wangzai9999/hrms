@@ -12,7 +12,7 @@ public interface SalaryStanderdDao {
 
     public SalaryStanderd getOne(Long id);
 
-    public SalaryStanderd mod(SalaryStanderd salst);
+    public void mod(SalaryStanderd salst);
 
     public List<SalaryStanderd> getAll(int page,int rows);
 

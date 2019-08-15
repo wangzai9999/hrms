@@ -41,7 +41,7 @@
         end;
     </delete>
     <update id="mod">
-
+         update salary_standard set sa_name=#{sa_name},sa_remark=#{sa_remark},sa_pos=#{sa_pos.pos_id} where sa_id=#{sa_id}
     </update>
 
 </mapper>

@@ -12,5 +12,20 @@
     <select id="getAllById" resultMap="salsdmap">
         select * from salary_standard_detailed where sa_id=#{sid}
     </select>
+    <insert id="add">
+      begin
+        insert into salary_standard_detailed values (si_seq.nextval,#{1},#{0.si_name},#{0.si_money});
+        update salary_standard set sa_totalmoney=sa_totalmoney+#{0.si_money} where sa_id=#{1};
+      end ;
+    </insert>
+     <delete id="del">
+         begin
+         delete from salary_standard_detailed where si_id=#{0.si_id};
+         update salary_standard set sa_totalmoney=sa_totalmoney-#{0.si_money} where sa_id=#{1};
+         end ;
+     </delete>
+    <select id="getOne" resultMap="salsdmap">
+        select * from salary_standard_detailed where si_id=#{ssdid}
+    </select>
 
 </mapper>
