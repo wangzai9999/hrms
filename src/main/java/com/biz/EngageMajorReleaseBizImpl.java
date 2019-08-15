@@ -2,6 +2,7 @@ package com.biz;
 
 import com.dao.EngageMajorReleaseDao;
 import com.entity.EngageMajorRelease;
+import com.util.EngageParam;
 import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,11 @@ public class EngageMajorReleaseBizImpl implements EngageMajorReleaseBiz{
     }
 
     @Override
-    public PageBean getAllByPage(int page) {
+    public PageBean getAllByPage(int page, EngageParam enp) {
         PageBean pb = new PageBean();
         pb.setCurrpage(page);
-        pb.setTotalNum(dao.getCount().intValue());
-        pb.setList(dao.getAll(page,5));
+        pb.setTotalNum(dao.getCount(enp).intValue());
+        pb.setList(dao.getAll(page,5,enp));
         return pb;
     }
 

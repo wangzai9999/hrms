@@ -7,9 +7,11 @@ public class EngageParam implements Serializable {
 
     private Long depid;
     private Long posid;
-    private Long account;
+    private Long minaccount;
+    private Long maxaccount;
     private Date mintime;
     private Date maxtime;
+    private String experience;
 
     public Long getDepid() {
         return depid;
@@ -27,12 +29,20 @@ public class EngageParam implements Serializable {
         this.posid = posid;
     }
 
-    public Long getAccount() {
-        return account;
+    public Long getMinaccount() {
+        return minaccount;
     }
 
-    public void setAccount(Long account) {
-        this.account = account;
+    public void setMinaccount(Long minaccount) {
+        this.minaccount = minaccount;
+    }
+
+    public Long getMaxaccount() {
+        return maxaccount;
+    }
+
+    public void setMaxaccount(Long maxaccount) {
+        this.maxaccount = maxaccount;
     }
 
     public Date getMintime() {
@@ -49,5 +59,13 @@ public class EngageParam implements Serializable {
 
     public void setMaxtime(Date maxtime) {
         this.maxtime = maxtime;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
     }
 }

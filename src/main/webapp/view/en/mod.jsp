@@ -26,15 +26,16 @@
             $.get("pos/getall.action","", function (res) {
                 for (var i = 0; i < res.length; i++) {
                     var sel="";
-                    if((res[i].pos_id)==(${en.en_pos.pos_id})) {alert("aa"); sel='selected';}
+                    if((res[i].pos_id)==(${en.en_pos.pos_id})) { sel='selected';}
                     $("#posi").append("<option value='" + res[i].pos_id + "' "+sel+">" + res[i].pos_name + "</option>");
                 }
             }, "json");
 
             $.post("dep/getall.action","", function (res) {
                 for (var i = 0; i < res.length; i++) {
-
-                    $("#depi").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
+                    var sel="";
+                    if((res[i].de_id)==(${en.en_dep.de_id})) { sel='selected';}
+                    $("#depi").append("<option value='" + res[i].de_id + "'  "+sel+">" + res[i].de_name + "</option>");
                 }
 
             }, "json");

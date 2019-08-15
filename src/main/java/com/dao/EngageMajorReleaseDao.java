@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.EngageMajorRelease;
+import com.util.EngageParam;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -8,20 +9,19 @@ import java.util.List;
 
 public interface EngageMajorReleaseDao {
 
-    @Results({
-            @Result(column = "en_dep",property = "en_dep",one = @One(select = "com.dao.DepartmentDao.getOne",fetchType = FetchType.EAGER)),
-            @Result(column = "en_pos",property = "en_pos",one = @One(select = "com.dao.PositionDao.getOne",fetchType = FetchType.EAGER)),
-            @Result(column = "en_creater",property = "en_creater",one = @One(select = "com.dao.UserinfoDao.getOne",fetchType = FetchType.EAGER))
-    })
-    @Select("select * from (select e.*,rownum r from engage_major_release e) x where x.r>(#{page}-1)*#{pagesize} and x.r<=#{page}*#{pagesize}")
-    public List<EngageMajorRelease> getAll(@Param("page") int page, @Param("pagesize") int pagesize);
+    @ResultMap("en")
+    public List<EngageMajorRelease> getAll(@Param("page") int page, @Param("pagesize") int pagesize, @Param("enp")EngageParam enp);
 
-    @Select("select count(1) from engage_major_release")
-    public Long getCount();
+    public Long getCount(@Param("enp") EngageParam enp);
 
     @Delete("delete from engage_major_release where en_id=#{en_id}")
     public void del(Long en_id);
 
+    @Results(value = {
+            @Result(column = "en_dep",property = "en_dep",one = @One(select = "com.dao.DepartmentDao.getOne",fetchType = FetchType.EAGER)),
+            @Result(column = "en_pos",property = "en_pos",one = @One(select = "com.dao.PositionDao.getOne",fetchType = FetchType.EAGER)),
+            @Result(column = "en_creater",property = "en_creater",one = @One(select = "com.dao.UserinfoDao.getOne",fetchType = FetchType.EAGER))
+    },id="en")
     @Select("select * from engage_major_release where en_id=#{en_id}")
     public EngageMajorRelease getOne(Long en_id);
 

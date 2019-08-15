@@ -3,6 +3,7 @@ package com.web;
 import com.biz.EngageMajorReleaseBiz;
 import com.entity.EngageMajorRelease;
 import com.entity.Userinfo;
+import com.util.EngageParam;
 import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,10 @@ public class EngageMajorReleaseAction {
 
     @RequestMapping("/getall")
     @ResponseBody
-    public PageBean getAllByPage(@RequestParam(defaultValue = "1") int page){
-        return biz.getAllByPage(page);
+    public PageBean getAllByPage(@RequestParam(defaultValue = "1") int page, EngageParam enp){
+        System.out.println(enp.getMinaccount());
+        if(enp==null)enp=new EngageParam();
+        return biz.getAllByPage(page,enp);
     }
 
     @RequestMapping("/getone")
