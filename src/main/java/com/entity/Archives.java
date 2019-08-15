@@ -1,20 +1,16 @@
 package com.entity;
 
 import org.apache.ibatis.annotations.ResultMap;
-import tk.mybatis.mapper.annotation.ColumnType;
 
-import javax.persistence.*;
+
+
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
 public class Archives implements Serializable {
 
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY,
-            generator = "select ar_seq.nextval from dual")
     private Long ar_id;
-    @Transient
     private Userinfo ar_uid;
     private String ar_id_card;
     private String ar_photo;
