@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TrainingInfo implements Serializable {
+
     private Long tr_id;
     private String tr_man;
     private String tr_subject;

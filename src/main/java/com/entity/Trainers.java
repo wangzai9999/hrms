@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Trainers implements Serializable {
 
     private Long ts_id;
+    private Userinfo ts_usid;
     private Resume ts_trid;
     private String ts_comm;
 
@@ -14,6 +15,14 @@ public class Trainers implements Serializable {
 
     public void setTs_id(Long ts_id) {
         this.ts_id = ts_id;
+    }
+
+    public Userinfo getTs_usid() {
+        return ts_usid;
+    }
+
+    public void setTs_usid(Userinfo ts_usid) {
+        this.ts_usid = ts_usid;
     }
 
     public Resume getTs_trid() {
