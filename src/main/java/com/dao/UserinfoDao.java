@@ -30,7 +30,7 @@ public interface UserinfoDao {
             " <if test='param3.de_id!=null and param3.de_id!=0'> and us_dep=#{2.de_id}</if>" +
             " <if test='param3.pos_id!=null and param3.pos_id!=0'> and us_pos=#{2.pos_id} </if> " +
             " </where> order by us_id)u)s " +
-            "where s.r between (#{0}-1)*#{1} and #{0}*#{1}</script>")
+            "where s.r>(#{0}-1)*#{1} and  s.r<![CDATA[<=]]>#{0}*#{1}</script>")
     public List<Userinfo> getAll(int page, int pagesize,UserinfoParam param);
 
     @Results(value = {
@@ -42,10 +42,10 @@ public interface UserinfoDao {
     public Userinfo getOne(Long id);
 
     @Select("<script>select count(1) from userinfo " +
-            "<where> <if test='name!=null and name!=\"\"'> and us_name like '%'||#{2.name}||'%'</if>" +
-            " <if test='ro_id!=null and ro_id!=0'> and ro_id=#{2.ro_id} </if>" +
-            " <if test='de_id!=null and de_id!=0'> and us_dep=#{2.de_id}</if>" +
-            " <if test='pos_id!=null and pos_id!=0'> and us_pos=#{2.pos_id} </if> " +
+            "<where> <if test='name!=null and name!=\"\"'> and us_name like '%'||#{name}||'%'</if>" +
+            " <if test='ro_id!=null and ro_id!=0'> and ro_id=#{ro_id} </if>" +
+            " <if test='de_id!=null and de_id!=0'> and us_dep=#{de_id}</if>" +
+            " <if test='pos_id!=null and pos_id!=0'> and us_pos=#{pos_id} </if> " +
             "</where></script> ")
     public Long rowCount(UserinfoParam param);
 }

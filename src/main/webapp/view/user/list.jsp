@@ -51,16 +51,25 @@
 
         }, "json");
         list(1);
+
+        $("body").on("click","#papa a",function(){
+            var pp=$(this).attr("name");
+            list(pp);
+        })
     })
     function query() {
         list(1);
     }
+    function gopage() {
+        var page=document.getElementById("page").value;
+        list(page);
+    }
     
     function list(page) {
-        var us=$("#form_us").serialize();
+        var param=$("#form_us").serialize()+"&page="+page;
         $.post("user/getall.action",param,function (res) {
             var us=res.list;
-            $("#thead1").html("");
+            $("#us").html("");
             for(var i=0;i<us.length;i++){
                 var  tr=$("<tr></tr>");
                 var td1=$("<td>"+us[i].us_id+"</td>");
@@ -77,6 +86,20 @@
                 tr.append(td6);
                 $("#us").append(tr);
             }
+            $("#papa").html("");
+
+            $("#papa").append("共"+res.totalNum+"条记录&nbsp;每页"+res.pageSize+"条&nbsp;第"+res.currpage+"页/共"+res.totalPage+"页");
+            $("#papa").append("<a name='1' title='首页'>&laquo;首页</a><a name='"+(res.currpage-1)+"' title='上一页'>&laquo; 上一页</a>")
+            for(var i=1;i<=res.totalPage;i++) {
+                var cla="";
+                if(i==res.currpage) cla="current";
+                $("#papa").append(" <a name='"+i+"' class='"+cla+"'>"+i+"</a>");
+            }
+            $("#papa").append(" <a name='"+(res.currpage+1)+"' title='下一页'>下一页&raquo;</a> <a name='"+res.totalPage+"' title='末页'>末页&raquo;</a> ");
+            $("#papa").append("转到&nbsp;<input name='ppp' size='2' id='page'/>&nbsp;页<button name='跳转页面按钮' id='gosalpage' onclick='gopage()'>GO</button>");
+
+
+
 
         },"json")
 
@@ -142,13 +165,18 @@
                  </tbody>
              </table>
          </div>
-         <div class="position">
-             共59条记录&nbsp;每页10条&nbsp;第1页/共5页
-             <a href="#" title="首页">&laquo;首页</a><a href="#" title="上一页">&laquo; 上一页</a> <a href="#" class="number current" title="1">1</a> <a href="#" class="number" title="2">2</a> <a href="#" class="number" title="3">3</a> <a href="#" class="number" title="4">4</a> <a href="#" title="下一页">下一页&raquo;</a><a href="#" title="末页">末页&raquo;</a> 转到&nbsp;
-             <input value="1" size="2" />
-             &nbsp;页<a href="#">GO</a>
-             </li>
-         </div>
+             <div class="position" id="papa">
+                 共${pb.totalNum}条记录&nbsp;每页${pb.pageSize}条&nbsp;第${pb.currpage}页/共${pb.totalPage}页
+                 <a name='1' title='首页'>&laquo;首页</a>
+                 <a name='"+(res.currpage-1)+"' title="上一页">&laquo; 上一页</a>
+                 <c:forEach begin='1' var='pa' end='"+res.totalPage+"'>
+                     <a href="salt/getall.action?page=${pa}" class="number ${pb.currpage == pa?'current':''}" title="${pa}">${pa}</a>
+                 </c:forEach>
+                 <a name='"+(res.currpage+1)"' title='下一页'>下一页&raquo;</a>
+                 <a name='"+res.totalPage+"' title="末页">末页&raquo;</a>
+                 转到&nbsp;<input name="ppp" size="2" id="page"/>&nbsp;页
+                 <button name="跳转页面按钮" id="gosalpage" onclick="gopage()">GO</button>
+             </div>
      </div>
 </body>
 </html>

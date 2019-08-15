@@ -48,14 +48,14 @@ public class UserinfoAction {
         Userinfo userinfo=biz.getOne(id);
         mv.setViewName("user/mod");
         mv.addObject("us",userinfo);
-       return mv;
+        return mv;
     }
 
     @RequestMapping("/getall")
     @ResponseBody
-    public PageBean getAll(@RequestParam(defaultValue = "1") int page,UserinfoParam us){
+    public PageBean getAll(@RequestParam(defaultValue = "1") int page,UserinfoParam param){
 
-        return biz.getAll(page,us);
+        return biz.getAll(page,param);
     }
 
     @RequestMapping("/mod")
