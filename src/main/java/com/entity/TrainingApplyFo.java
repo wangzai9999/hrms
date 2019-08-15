@@ -1,12 +1,16 @@
 package com.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
 public class TrainingApplyFo implements Serializable{
 
+
     private Long tf_id;
-    private  Userinfo tf_us_id;
+    private Userinfo tf_us_id;
     private TrainingInfo tf_tr_id;
     private String tf_status;
     private Date tf_date;

@@ -1,10 +1,17 @@
 package com.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
 public class TrainingInfo implements Serializable {
 
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "select tr_seq.nextval from dual")
     private Long tr_id;
     private String tr_man;
     private String tr_subject;
