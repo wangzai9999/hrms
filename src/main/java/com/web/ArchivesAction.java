@@ -52,7 +52,7 @@ public class ArchivesAction {
     @RequestMapping("/getOne")
     public ModelAndView getOne(Long id,ModelAndView mv){
         Archives archives=biz.getOne(id);
-        mv.setViewName("arc/mod");
+        mv.setViewName("arcs/mod");
         mv.addObject("arc",archives);
         return mv;
     }
@@ -72,15 +72,28 @@ public class ArchivesAction {
             e.printStackTrace();
         }
         biz.add(archives);
-
-        System.out.println(archives.toString());
         return "user/list" ;
     }
 
     @RequestMapping("/mod")
-    public String mod(Archives archives){
+    public String mod(Archives archives, MultipartFile file, HttpServletRequest req){
+        Userinfo us=(Userinfo) req.getSession().getAttribute("loger");
+        archives.setAr_change(us.getUs_name());
+        if (file!=null){
+            String filename=file.getOriginalFilename();
+
+            String path=req.getServletContext().getRealPath("files/images");
+            archives.setAr_photo("files/images/"+filename);
+            File newfile= new File(path+"\\"+filename);
+            try {
+                file.transferTo(newfile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(archives.toString());
         biz.mod(archives);
-        return "1" ;
+        return "user/list" ;
     }
 
     @RequestMapping("/del")
