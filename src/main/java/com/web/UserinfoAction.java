@@ -51,6 +51,13 @@ public class UserinfoAction {
         return mv;
     }
 
+    @RequestMapping("/getone")
+    @ResponseBody
+    public Userinfo getOneById(Long usid){
+        Userinfo userinfo=biz.getOne(usid);
+        return userinfo;
+    }
+
     @RequestMapping("/getall")
     @ResponseBody
     public PageBean getAll(@RequestParam(defaultValue = "1") int page,UserinfoParam param){
