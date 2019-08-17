@@ -1,36 +1,33 @@
 package com.entity;
 
 import org.apache.ibatis.annotations.ResultMap;
-import tk.mybatis.mapper.annotation.ColumnType;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
 public class Archives implements Serializable {
 
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY,
-            generator = "select ar_seq.nextval from dual")
     private Long ar_id;
-    @Transient
     private Userinfo ar_uid;
     private String ar_id_card;
     private String ar_photo;
     private String ar_regist;
-    private String ar_change="尚未变更记录，无变更人";
+    private String ar_change="新增，无变更人";
     private Date ar_regist_time;
     private Date ar_change_time;
     private String ar_status="正常";
     private String ar_address;
     private String ar_telephone;
-    private String ar_email="无";
+    private String ar_email;
     private String ar_speciality="无";
     private String ar_sex;
     private String ar_party;
     private String ar_nationality;
     private String ar_race;
+
     private Date ar_birthday;
     private String ar_birthplace;
     private Long ar_age;
@@ -247,5 +244,36 @@ public class Archives implements Serializable {
 
     public void setAr_qq(String ar_qq) {
         this.ar_qq = ar_qq;
+    }
+
+    @Override
+    public String toString() {
+        return "Archives{" +
+                "ar_id=" + ar_id +
+                ", ar_id_card='" + ar_id_card + '\'' +
+                ", ar_photo='" + ar_photo + '\'' +
+                ", ar_regist='" + ar_regist + '\'' +
+                ", ar_change='" + ar_change + '\'' +
+                ", ar_regist_time=" + ar_regist_time +
+                ", ar_change_time=" + ar_change_time +
+                ", ar_status='" + ar_status + '\'' +
+                ", ar_address='" + ar_address + '\'' +
+                ", ar_telephone='" + ar_telephone + '\'' +
+                ", ar_email='" + ar_email + '\'' +
+                ", ar_speciality='" + ar_speciality + '\'' +
+                ", ar_sex='" + ar_sex + '\'' +
+                ", ar_party='" + ar_party + '\'' +
+                ", ar_nationality='" + ar_nationality + '\'' +
+                ", ar_race='" + ar_race + '\'' +
+                ", ar_birthday=" + ar_birthday +
+                ", ar_birthplace='" + ar_birthplace + '\'' +
+                ", ar_age=" + ar_age +
+                ", ar_educated_degree='" + ar_educated_degree + '\'' +
+                ", ar_educated_major='" + ar_educated_major + '\'' +
+                ", ar_gzjl='" + ar_gzjl + '\'' +
+                ", ar_gl=" + ar_gl +
+                ", ar_love='" + ar_love + '\'' +
+                ", ar_qq='" + ar_qq + '\'' +
+                '}';
     }
 }

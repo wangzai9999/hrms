@@ -1,14 +1,13 @@
 package com.dao;
 
-import com.entity.Achievements;
 import com.entity.Archives;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
-import tk.mybatis.mapper.common.Mapper;
+
 
 import java.util.List;
 
-public interface ArchivesDao extends Mapper<Archives>{
+public interface ArchivesDao {
 
     @ResultMap("ar")
     @Select("select * from archives")
