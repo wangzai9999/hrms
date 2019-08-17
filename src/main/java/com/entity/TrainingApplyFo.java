@@ -12,10 +12,10 @@ public class TrainingApplyFo implements Serializable{
     private Long tf_id;
     private Userinfo tf_us_id;
     private TrainingInfo tf_tr_id;
-    private String tf_status;
+    private String tf_status="申请中";
     private Date tf_date;
-    private String tf_auditor;
-    private String tf_opinion;
+    private String tf_auditor="暂无";
+    private String tf_opinion="暂无";
 
     public Long getTf_id() {
         return tf_id;

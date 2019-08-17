@@ -7,6 +7,8 @@ import com.util.TrainingInfoParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TrainingInfoBizImpl implements TrainingInfoBiz{
 
@@ -47,8 +49,13 @@ public class TrainingInfoBizImpl implements TrainingInfoBiz{
         pageBean.setTotalNum(dao.getCount(param).intValue());
         if (page>pageBean.getTotalPage()) page=pageBean.getTotalPage();
         pageBean.setCurrpage(page);
-        pageBean.setList(dao.getAll(page,pageBean.getPageSize(),param));
+        pageBean.setList(dao.getAllByParam(page,pageBean.getPageSize(),param));
         return pageBean;
+    }
+
+    @Override
+    public List<TrainingInfo> getAll() {
+        return dao.selectAll();
     }
 
 

@@ -76,7 +76,7 @@
                 tr.append(td7);
                 var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|"
                 if (tra[i].tr_status=="本次培训已结束") {update="";}
-                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a></td>");
+                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>|<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a></td>");
                 tr.append(td8);
                 $("#us").append(tr);
             }

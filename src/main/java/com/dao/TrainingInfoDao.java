@@ -19,7 +19,7 @@ public interface TrainingInfoDao extends Mapper<TrainingInfo> {
             " <if test='param3.minstarttime!=null' > and tr_starttime >=#{2.minstarttime}</if>" +
             " <if test='param3.maxstarttime!=null' > and tr_starttime &lt;=#{2.maxstarttime} </if> " +
             " </where> order by tr_id asc)t)a where a.r>(#{0}-1)*#{1} and a.r<![CDATA[<=]]>#{0}*#{1} </script>")
-    public List<TrainingInfo> getAll(int page, int pagesize, TrainingInfoParam param);
+    public List<TrainingInfo> getAllByParam(int page, int pagesize, TrainingInfoParam param);
 
     @Select("<script> select count(1) from training_info " +
             "<where> <if test='tr_subject!=null and tr_subject!=\"\"'> and tr_subject like '%'||#{tr_subject}||'%'</if>" +
