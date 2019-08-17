@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,10 +51,21 @@ public class ArchivesAction {
     }
 
     @RequestMapping("/getOne")
-    public ModelAndView getOne(Long id,ModelAndView mv){
-        Archives archives=biz.getOne(id);
-        mv.setViewName("arcs/mod");
-        mv.addObject("arc",archives);
+    public ModelAndView getOne(Long id, @RequestParam(defaultValue = "1") Long goid, ModelAndView mv){
+       if(goid==null){
+           Archives archives=biz.getOne(id);
+           mv.setViewName("arcs/show");
+           mv.addObject("arc",archives);
+
+       }else if (goid==1){
+           Archives archives=biz.getOne(id);
+           mv.setViewName("arcs/mod");
+           mv.addObject("arc",archives);
+       }else {
+           mv.setViewName("user/list");
+       }
+
+
         return mv;
     }
 
