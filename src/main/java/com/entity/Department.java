@@ -7,7 +7,7 @@ import java.util.PrimitiveIterator;
 public class Department  implements Serializable {
     private Long de_id;
     private String de_name;
-    private Department de_fa;
+    private Position list;
     private Userinfo de_man;
 
     public Department(){
@@ -33,12 +33,12 @@ public class Department  implements Serializable {
         this.de_name = de_name;
     }
 
-    public Department getDe_fa() {
-        return de_fa;
+    public Position getList() {
+        return list;
     }
 
-    public void setDe_fa(Department de_fa) {
-        this.de_fa = de_fa;
+    public void setList(Position list) {
+        this.list = list;
     }
 
     public Userinfo getDe_man() {
