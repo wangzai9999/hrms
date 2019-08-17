@@ -48,37 +48,39 @@
     </div>
     <div class="out_bg">
         <div class="in_bg">
-            <table border="0" cellpadding="0" cellspacing="0" class="table_input txt">
-                <tr>
-                    <td width="126">编号</td>
-                    <td width="411"><input type="text" value="1" disabled="disabled" /></td>
-                    <td width="126">创建人</td>
-                    <td width="442"><input type="text" value="Mr.Shi" disabled="disabled" /></td>
-                </tr>
-                <tr>
-                    <td>创建时间</td>
-                    <td><input type="text" value="2013-12-12" disabled="disabled" /></td>
-                    <td>状态</td>
-                    <td>新创建</td>
-                </tr>
-                <tr>
-                    <td>客户</td>
-                    <td><input type="text" /></td>
-                    <td>服务类型</td>
-                    <td><select>
-                        <option>请选择...</option>
-                        <option>咨询</option>
-                        <option>投诉</option>
-                        <option>建议</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td valign="top">服务请求</td>
-                    <td><textarea rows="6" cols="36" /></textarea></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+            <form action="en/add.action" method="post">
+                <table border="0" cellpadding="0" cellspacing="0" class="table_input txt">
+                    <tr>
+                        <td width="126">计划招聘人数</td>
+                        <td width="411"><input type="text" name="en_account" /></td>
+                        <td width="126">职位描述</td>
+                        <td width="442"><input type="text" name="en_major_describe"/></td>
+                    </tr>
+                    <tr>
+                        <td>创建时间</td>
+                        <td><input type="text" name="en_createtime"/></td>
+                        <td>截止时间</td>
+                        <td><input type="text" name="en_deadline"/></td>
+                    </tr>
+                    <tr>
+                        <td>工作经验</td>
+                        <td><input type="text" name="en_experience"/></td>
+                        <td>状态</td>
+                        <td><input type="text" name="en_status"/></td>
+                    </tr>
+                    <tr>
+                        <td>所属职位</td>
+                        <td><select id="posi" name="en_pos.pos_id"></select></td>
+                        <td>所属部门</td>
+                        <td><select id="depi" name="en_dep.de_id"></select></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="添加"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
         </div>
     </div>
 </div>
