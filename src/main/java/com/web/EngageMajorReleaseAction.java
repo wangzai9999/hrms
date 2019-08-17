@@ -59,8 +59,6 @@ public class EngageMajorReleaseAction {
     @RequestMapping("/add")
     public String add(EngageMajorRelease en, HttpServletRequest req){
         en.setEn_creater((Userinfo) req.getSession().getAttribute("loger"));
-        //en.getEn_creater().setUs_id((Long)((Userinfo) req.getSession().getAttribute("loger")).getUs_id());
-        en.setEn_creater(new Userinfo(3l));
         biz.add(en);
         return "en/list";
     }
@@ -73,7 +71,6 @@ public class EngageMajorReleaseAction {
 
     @RequestMapping("/update")
     public String update(EngageMajorRelease en){
-        en.setEn_creater(new Userinfo(3l));
         biz.update(en);
         return "en/list";
     }
