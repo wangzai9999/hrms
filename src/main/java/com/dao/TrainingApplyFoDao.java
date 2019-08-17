@@ -35,7 +35,7 @@ public interface TrainingApplyFoDao {
     @Select("<script> select count(1) from training_apply_fo <where>" +
             " <if test='tf_id!=null and tf_id!=0'> and tf_id=#{tf_id}</if>" +
             " <if test='tf_status!=null and tf_status!=\"\"'> and tf_status=#{tf_status} </if> " +
-            "</where></script")
+            "</where></script>")
     public Long getCoount(TrainingApplyFoParam param);
 
     @ResultMap("td")
