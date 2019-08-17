@@ -15,4 +15,6 @@ public interface PositionDao {
 
     public Position getOne(Long id);
 
+    public List<Position> getAllByDid(Long did);
+
 }

@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.PositionDao">
+    <resultMap id="posmap" type="position">
+        <id property="id" column="pos_id"/>
+        <result property="text" column="pos_name"/>
+
+    </resultMap>
+
     <select id="getAll" resultType="position">
         select  * from position
     </select>
@@ -10,13 +16,16 @@
     </select>
 
     <insert id="add" parameterType="position">
-        insert into position values (pos_seq.nextval,#{pos_name})
+        insert into position values (pos_seq.nextval,#{pos_name},#{pos_dep.de_id})
     </insert>
     <delete id="del" >
         delete from position where pos_id=#{id}
     </delete>
     <update id="mod" parameterType="position">
-        update position set pos_name=#{pos_name} where pos_id=#{pos_id}
+        update position set pos_name=#{pos_name},de_id=#{pos_dep.de_id} where pos_id=#{pos_id}
     </update>
+    <select id="getAllByDid" resultMap="posmap">
+        select * from position where pos_dep = #{did}
+    </select>
 
 </mapper>
