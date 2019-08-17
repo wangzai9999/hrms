@@ -51,8 +51,8 @@ public class ArchivesAction {
     }
 
     @RequestMapping("/getOne")
-    public ModelAndView getOne(Long id, @RequestParam(defaultValue = "1") Long goid, ModelAndView mv){
-       if(goid==null){
+    public ModelAndView getOne(Long id, @RequestParam(defaultValue = "0") Long goid, ModelAndView mv){
+       if(goid==0){
            Archives archives=biz.getOne(id);
            mv.setViewName("arcs/show");
            mv.addObject("arc",archives);

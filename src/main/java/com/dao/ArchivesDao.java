@@ -16,7 +16,7 @@ public interface ArchivesDao {
     @Results(value = {
             @Result(column = "ar_uid",property = "ar_uid",one = @One(select = "com.dao.UserinfoDao.getOne",fetchType = FetchType.EAGER))
     },id = "ar")
-    @Select("select * from archives where ar_id=#{id}")
+    @Select("select * from archives where ar_id=#{id} or ar_uid=#{id}")
     public Archives getOne(Long id);
 
     public void add(Archives ar);
