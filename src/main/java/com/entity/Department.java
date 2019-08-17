@@ -7,8 +7,12 @@ import java.util.PrimitiveIterator;
 public class Department  implements Serializable {
     private Long de_id;
     private String de_name;
-    private Position list;
+    private List<Position> children;
     private Userinfo de_man;
+
+    private Long id;
+    private String text;
+
 
     public Department(){
 
@@ -33,12 +37,31 @@ public class Department  implements Serializable {
         this.de_name = de_name;
     }
 
-    public Position getList() {
-        return list;
+    public List<Position> getChildren() {
+        return children;
     }
 
-    public void setList(Position list) {
-        this.list = list;
+    public void setChildren(List<Position> children) {
+        this.children = children;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+        this.de_id=id;
+    }
+
+    public String getText() {
+        return text;
+
+    }
+
+    public void setText(String text) {
+        this.text = text;
+        this.de_name=text;
     }
 
     public Userinfo getDe_man() {
