@@ -76,7 +76,7 @@
                 tr.append(td7);
                 var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|"
                 if (tra[i].tr_status=="本次培训已结束") {update="";}
-                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a></td>");
+                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>|<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a></td>");
                 tr.append(td8);
                 $("#us").append(tr);
             }
@@ -109,10 +109,11 @@
 
      </div>
      <div style="padding:5px;">
-         <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
+         <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;培训信息
              <hr class="hr1" />
          </div>
          <a href="view/tra/add.jsp">添加</a>
+         <a>申请</a>
          <div class="operation_button">
              <button value="查询" onclick="query()">查询</button>
          </div>
@@ -159,16 +160,7 @@
              </table>
          </div>
              <div class="position" id="papa">
-                 共${pb.totalNum}条记录&nbsp;每页${pb.pageSize}条&nbsp;第${pb.currpage}页/共${pb.totalPage}页
-                 <a name='1' title='首页'>&laquo;首页</a>
-                 <a name='"+(res.currpage-1)+"' title="上一页">&laquo; 上一页</a>
-                 <c:forEach begin='1' var='pa' end='"+res.totalPage+"'>
-                     <a href="salt/getall.action?page=${pa}" class="number ${pb.currpage == pa?'current':''}" title="${pa}">${pa}</a>
-                 </c:forEach>
-                 <a name='"+(res.currpage+1)"' title='下一页'>下一页&raquo;</a>
-                 <a name='"+res.totalPage+"' title="末页">末页&raquo;</a>
-                 转到&nbsp;<input name="ppp" size="2" id="page"/>&nbsp;页
-                 <button name="跳转页面按钮" id="gosalpage" onclick="gopage()">GO</button>
+
              </div>
      </div>
 </body>

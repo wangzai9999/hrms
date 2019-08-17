@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/tra")
@@ -49,6 +50,12 @@ public class TrainingInfoAction {
     public PageBean getAll(@RequestParam(defaultValue = "1") int page, TrainingInfoParam param){
         if (page<1) page=1;
         return biz.getAllByPage(page,param);
+    }
+
+    @RequestMapping("/all")
+    @ResponseBody
+    public List<TrainingInfo> getAll(){
+        return biz.getAll();
     }
 
     @RequestMapping("/mod")
