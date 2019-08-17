@@ -74,7 +74,7 @@
                 var  tr=$("<tr></tr>");
                 var td1=$("<td>"+us[i].us_id+"</td>");
                 tr.append(td1);
-                var td2=$("<td>"+us[i].us_name+"</td>");
+                var td2=$("<td><a href='arc/getOne.action?id="+us[i].us_id+"'>"+us[i].us_name+"</a></td>");
                 tr.append(td2);
                 var td3=$("<td>"+us[i].ro_id.ro_name+"</td>");
                 tr.append(td3);

@@ -1,5 +1,6 @@
 package com.biz;
 
+import com.dao.ArchivesDao;
 import com.dao.UserinfoDao;
 import com.entity.Userinfo;
 import com.util.PageBean;
@@ -20,6 +21,16 @@ public class UserinfoBizImpl implements UserinfoBiz{
     public void setDao(UserinfoDao dao) {
         this.dao = dao;
     }
+    @Autowired
+    private ArchivesDao adao;
+
+    public ArchivesDao getAdao() {
+        return adao;
+    }
+
+    public void setAdao(ArchivesDao adao) {
+        this.adao = adao;
+    }
 
     @Override
     public Userinfo UserLogin(String name) {
@@ -38,6 +49,7 @@ public class UserinfoBizImpl implements UserinfoBiz{
 
     @Override
     public void del(Long id) {
+        adao.del(id);
         dao.del(id);
     }
 
