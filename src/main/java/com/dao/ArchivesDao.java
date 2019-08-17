@@ -21,7 +21,8 @@ public interface ArchivesDao {
 
     public void add(Archives ar);
 
-    public void del(Long arid);
+    @Delete("delete from archives where ar_uid=@{uid}")
+    public void del(Long uid);
 
     public void mod(Archives ar);
 
