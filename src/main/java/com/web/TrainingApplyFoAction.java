@@ -92,6 +92,4 @@ public class TrainingApplyFoAction {
         PageBean pageBean=biz.getAllByParam(page,param);
         return pageBean;
     }
-
-
 }
