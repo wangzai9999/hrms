@@ -11,7 +11,8 @@ public class WorkTime implements Serializable {
     private Userinfo us_id;
     private Date wt_begin;
     private Date wt_end;
-    private String wt_status;
+    private String wt_bstatus;
+    private String wt_estatus;
 
     public Long getWt_id() {
         return wt_id;
@@ -45,11 +46,31 @@ public class WorkTime implements Serializable {
         this.wt_end = wt_end;
     }
 
-    public String getWt_status() {
-        return wt_status;
+    public String getWt_bstatus() {
+        return wt_bstatus;
     }
 
-    public void setWt_status(String wt_status) {
-        this.wt_status = wt_status;
+    public void setWt_bstatus(String wt_bstatus) {
+        this.wt_bstatus = wt_bstatus;
+    }
+
+    public String getWt_estatus() {
+        return wt_estatus;
+    }
+
+    public void setWt_estatus(String wt_estatus) {
+        this.wt_estatus = wt_estatus;
+    }
+
+    @Override
+    public String toString() {
+        return "WorkTime{" +
+                "wt_id=" + wt_id +
+                ", us_id=" + us_id +
+                ", wt_begin=" + wt_begin +
+                ", wt_end=" + wt_end +
+                ", wt_bstatus='" + wt_bstatus + '\'' +
+                ", wt_estatus='" + wt_estatus + '\'' +
+                '}';
     }
 }

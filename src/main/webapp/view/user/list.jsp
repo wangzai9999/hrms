@@ -104,6 +104,18 @@
         },"json")
 
     }
+    
+    function signin() {
+       $.post("wt/add.action","",function (res) {
+           alert(res);
+       },"json");
+    }
+    function signout() {
+        $.post("wt/mod.action","",function (res) {
+           alert(res);
+        },"json");
+    }
+    
 </script>
 <body>
      <div id="div1">
@@ -120,6 +132,7 @@
      <div style="padding:5px;">
          <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
              <hr class="hr1" />
+             <button onclick="signin()">签到</button><button onclick="signout()">签退</button>
          </div>
          <a href="view/user/add.jsp">添加</a>
          <div class="operation_button">
