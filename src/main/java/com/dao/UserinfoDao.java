@@ -17,7 +17,7 @@ public interface UserinfoDao {
     public void add(Userinfo u);
 
     @Update("update userinfo  set us_name=#{us_name},us_password=#{us_password}," +
-            "ro_id={ro_id.id},us_dep=#{us_dep.id},us_pos=#{us_pos.id} where ")
+            "ro_id={ro_id.ro_id},us_dep=#{us_dep.de_id},us_pos=#{us_pos.pos_id} where ")
     public void mod(Userinfo userinfo);
 
     @Delete("delete from userinfo where us_id=#{id}")
