@@ -13,9 +13,11 @@ public class TrainingInfo implements Serializable {
             strategy = GenerationType.IDENTITY,
             generator = "select tr_seq.nextval from dual")
     private Long tr_id;
+
     private String tr_man;
     private String tr_subject;
-    private String tr_status;
+    private String tr_status="新增，请等待";
+    private Long tr_num;
     private Date tr_starttime;
     private Date tr_endtime;
     private String tr_remark;
@@ -74,5 +76,13 @@ public class TrainingInfo implements Serializable {
 
     public void setTr_remark(String tr_remark) {
         this.tr_remark = tr_remark;
+    }
+
+    public Long getTr_num() {
+        return tr_num;
+    }
+
+    public void setTr_num(Long tr_num) {
+        this.tr_num = tr_num;
     }
 }
