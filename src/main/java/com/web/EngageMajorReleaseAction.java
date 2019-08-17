@@ -44,16 +44,20 @@ public class EngageMajorReleaseAction {
     @RequestMapping("/getall")
     @ResponseBody
     public PageBean getAllByPage(@RequestParam(defaultValue = "1") int page, EngageParam enp){
-        System.out.println(enp.getMinaccount());
         if(enp==null)enp=new EngageParam();
         return biz.getAllByPage(page,enp);
     }
 
     @RequestMapping("/getone")
-    public String getOne(Long en_id, Model m){
+    public String getOne(Long en_id,String whats,Model m){
         EngageMajorRelease en = biz.getOne(en_id);
         m.addAttribute("en",en);
-        return "en/mod";
+        if(whats.equals("0")){
+            return "en/mod";
+        }else{
+            return "resume/add";
+        }
+
     }
 
     @RequestMapping("/add")

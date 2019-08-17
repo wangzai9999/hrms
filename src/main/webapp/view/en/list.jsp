@@ -90,7 +90,7 @@
                 tr.append(td9);
                 var td10=$("<td>"+en.en_status+"</td>");
                 tr.append(td10);
-                var td11=$("<td><a href='en/getone.action?en_id="+en.en_id+"'>修改</a><a href='en/del.action?en_id="+en.en_id+"'>删除</a></td>");
+                var td11=$("<td><a href='en/getone.action?en_id="+en.en_id+'&whats='+0+"'>修改</a><a href='en/del.action?en_id="+en.en_id+"'>删除</a><a href='en/getone.action?en_id="+en.en_id+'&whats='+1+"'>投简</a></td>");
                 tr.append(td11);
                 $("#ens").append(tr);
             }
