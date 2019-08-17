@@ -49,15 +49,15 @@
         <tr>
           <input type="hidden" name="ar_uid.us_id" value="" id="usid">
           <td>员工姓名：<input type="text" name="name" value="" id="usname" disabled></td>
-          <td>身份证号：<input type="text" name="ar_id_card" required /></td>
+          <td>身份证号：<input type="text" name="ar_id_card" required size="18" pattern="/^\d{15}$)|(^\d{17}([0-9]|X)$/" /></td>
         </tr>
         <tr>
           <td>性别：男<input type="radio" name="ar_sex" value="男" checked/>女<input type="radio" name="ar_sex" value="女"/></td>
-          <td>年龄：<input type="number" name="ar_age" required /></td>
+          <td>年龄：<input type="number" name="ar_age" required min="18" max="65"/></td>
 
         </tr>
         <tr>
-          <td>工龄：<input type="text" name="ar_gl" required></td>
+          <td>工龄：<input type="number" name="ar_gl" required max="60"></td>
           <td>国籍：<input type="text" name="ar_nationality" required></td>
 
         </tr>
@@ -68,7 +68,7 @@
 
         </tr>
         <tr>
-          <td>出生日期：<input type="date" name="ar_birthday" required></td>
+          <td>出生日期：<input type="date" name="ar_birthday" required max="2001-12-31" min="1959-12-31"></td>
           <td>出生地：<input type="text" name="ar_birthplace" required /></td>
         </tr>
         <tr>
@@ -86,7 +86,7 @@
         </tr>
         <tr>
           <td>电子邮件：<input type="email" name="ar_email" required></td>
-          <td>手机号码：<input type="text" name="ar_telephone" required /></td>
+          <td>手机号码：<input type="text" name="ar_telephone" required size="11"/></td>
 
         </tr>
         <tr>
