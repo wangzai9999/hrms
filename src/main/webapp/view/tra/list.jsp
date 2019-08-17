@@ -27,29 +27,6 @@
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
     $(function(){
-        $.get("role/getall.action", "", function (res) {
-            for (var i = 0; i < res.length; i++) {
-
-                $("#roid").append("<option value='" + res[i].ro_id + "'>" + res[i].ro_name + "</option>");
-            }
-
-        }, "json");
-
-        $.get("pos/getall.action", "", function (res) {
-            for (var i = 0; i < res.length; i++) {
-
-                $("#posid").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
-            }
-
-        }, "json");
-
-        $.post("dep/getall.action", "", function (res) {
-            for (var i = 0; i < res.length; i++) {
-
-                $("#deoid").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
-            }
-
-        }, "json");
         list(1);
 
         $("body").on("click","#papa a",function(){
@@ -64,26 +41,43 @@
         var page=document.getElementById("page").value;
         list(page);
     }
+    function formateTime(time)
+    {
+        var date = new Date(time);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+//        h = date.getHours() + ':';
+//        m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':';
+//        s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+        return Y+M+D;
+    }
     
     function list(page) {
         var param=$("#form_us").serialize()+"&page="+page;
-        $.post("user/getall.action",param,function (res) {
-            var us=res.list;
+        $.post("tra/getall.action",param,function (res) {
+            var tra=res.list;
             $("#us").html("");
-            for(var i=0;i<us.length;i++){
+            for(var i=0;i<tra.length;i++){
                 var  tr=$("<tr></tr>");
-                var td1=$("<td>"+us[i].us_id+"</td>");
+                var td1=$("<td>"+tra[i].tr_man+"</td>");
                 tr.append(td1);
-                var td2=$("<td><a href='arc/getOne.action?id="+us[i].us_id+"'>"+us[i].us_name+"</a></td>");
+                var td2=$("<td>"+tra[i].tr_subject+"</td>");
                 tr.append(td2);
-                var td3=$("<td>"+us[i].ro_id.ro_name+"</td>");
+                var td3=$("<td>"+tra[i].tr_status+"</td>");
                 tr.append(td3);
-                var td4=$("<td>"+us[i].us_dep.de_name+"</td>");
+                var td4=$("<td>"+formateTime(tra[i].tr_starttime)+"</td>");
                 tr.append(td4);
-                var td5=$("<td>"+us[i].us_pos.pos_name+"</td>");
+                var td5=$("<td>"+formateTime(tra[i].tr_endtime)+"</td>");
                 tr.append(td5);
-                var td6=$("<td><a href='user/get.action?id="+us[i].us_id+"'>修改</a>|<a href='user/del.action?id="+us[i].us_id+"'>删除</a></td>");
+                var td6=$("<td>"+tra[i].tr_remark+"</td>");
                 tr.append(td6);
+                var td7=$("<td>"+tra[i].tr_num+"</td>");
+                tr.append(td7);
+                var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|"
+                if (tra[i].tr_status=="本次培训已结束") {update="";}
+                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>|<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a></td>");
+                tr.append(td8);
                 $("#us").append(tr);
             }
             $("#papa").html("");
@@ -98,22 +92,9 @@
             $("#papa").append(" <a name='"+(res.currpage+1)+"' title='下一页'>下一页&raquo;</a> <a name='"+res.totalPage+"' title='末页'>末页&raquo;</a> ");
             $("#papa").append("转到&nbsp;<input size='2' id='page'/>&nbsp;页<button  id='gosalpage' onclick='gopage()'>GO</button>");
 
-
         },"json")
 
     }
-    
-    function signin() {
-       $.post("wt/add.action","",function (res) {
-           alert(res);
-       },"json");
-    }
-    function signout() {
-        $.post("wt/mod.action","",function (res) {
-           alert(res);
-        },"json");
-    }
-    
 </script>
 <body>
      <div id="div1">
@@ -128,34 +109,33 @@
 
      </div>
      <div style="padding:5px;">
-         <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
+         <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;培训信息
              <hr class="hr1" />
-             <button onclick="signin()">签到</button><button onclick="signout()">签退</button>
          </div>
-         <a href="view/user/add.jsp">添加</a>
+         <a href="view/tra/add.jsp">添加</a>
+         <a>申请</a>
          <div class="operation_button">
              <button value="查询" onclick="query()">查询</button>
          </div>
          <div class="search_input">
              <form id="form_us">
              <ul class="txt">
-                 <li>员工名称：
-                     <input type="text" size="30" name="name"/>
+                 <li>培训项目：
+                     <input type="text" size="30" name="tr_subject"/>
                  </li>
-                 <li>角色：
-                     <select name="ro_id" id="roid">
-                         <option value="0">请选择...</option>
+                 <li>状态：
+                     <select name="tr_status">
+                         <option value="">请选择...</option>
+                         <option value="新增，请等待">新增，请等待</option>
+                         <option value="正在招募">正在招募</option>
+                         <option value="已结束招募">已结束招募</option>
+                         <option value="本次培训已结束">本次培训已结束</option>
                      </select>
                  </li>
-                 <li>部门：
-                     <select name="de_id" id="deoid">
-                         <option value="0">请选择...</option>
-                     </select>
-                 </li>
-                 <li>职位：
-                     <select name="pos_id" id="posid">
-                         <option value="0">请选择...</option>
-                     </select>
+                 <li>开始时间：
+                     <input type="text" size="30" name="minstarttime"/>
+                 ~
+                     <input type="text" size="30" name="maxstarttime"/>
                  </li>
              </ul>
              </form>
@@ -164,12 +144,14 @@
              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list" >
                  <thead>
                  <tr>
-                     <th width="15%">员工编号</th>
-                     <th width="10%">员工名</th>
-                     <th width="15%">角色</th>
-                     <th width="20%">部门</th>
-                     <th width="20%">职位</th>
-                     <th width="20%">操作</th>
+                     <th width="10%">培训人</th>
+                     <th width="13%">培训项目</th>
+                     <th width="13%">状态</th>
+                     <th width="13%">培训开始时间</th>
+                     <th width="13%">培训结束时间</th>
+                     <th width="13%">备注</th>
+                     <th width="13%">培训人数</th>
+                     <th width="14%">操作</th>
                  </tr>
                  </thead>
                  <tbody id="us">

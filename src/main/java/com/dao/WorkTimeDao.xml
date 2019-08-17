@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.WorkTimeDao">
+    <insert id="add">
+        insert into worktime values (wt_seq.nextval,#{us_id.us_id},sysdate,'',#{wt_bstatus},'')
+    </insert>
+<update id="mod">
+    update worktime set wt_end=sysdate,wt_estatus=#{wt_estatus} where wt_id=#{wt_id} and us_id=#{us_id.us_id}
+</update>
+<select id="getWtId" resultType="workTime">
+    select * from worktime where wt_id=(select max(wt_id) from worktime where us_id=#{us_id.us_id})
+</select>
+
+
+</mapper>

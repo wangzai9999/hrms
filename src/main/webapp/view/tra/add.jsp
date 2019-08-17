@@ -21,37 +21,13 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $.get("role/getall.action", "", function (res) {
-                for (var i = 0; i < res.length; i++) {
 
-                    $("#roid").append("<option value='" + res[i].ro_id + "'>" + res[i].ro_name + "</option>");
-                }
-
-            }, "json");
-
-            $.get("pos/getall.action", "", function (res) {
-                for (var i = 0; i < res.length; i++) {
-
-                    $("#posid").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
-                }
-
-            }, "json");
-
-            $.post("dep/getall.action", "", function (res) {
-                for (var i = 0; i < res.length; i++) {
-
-                    $("#deoid").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
-                }
-
-            }, "json");
-        })
         function save(prop,url){
-            var us=$("#form_us").serialize();
-            $.post("user/add.action",us,function (res) {
+            var tra=$("#form_tra").serialize();
+            $.post("tra/add.action",tra,function (res) {
                 if(res!=null) {
                     alert(prop+'成功！');
-                    location.href=url+"?id="+res;
+                    location.href=url;
                 } else {
                     alert(prop+"失败");
                 }
@@ -65,50 +41,47 @@
 <div style="padding:5px;">
     <div class="txt" style="padding-top:3px;" >当前位置：客户服务管理&nbsp;&gt;&nbsp;添加员工
         <hr class="hr1" />
-    </div><a href="view/user/list.jsp"><button >列表员工</button></a>
+    </div><a href="view/tra/list.jsp"><button >列表员工</button></a>
     <div class="operation_button">
-        <button title="保存" onclick="save('保存','view/arcs/add.jsp')">保存</button>
+        <button title="保存" onclick="save('保存','view/tra/list.jsp')">保存</button>
     </div>
     <div class="out_bg">
-        <form id="form_us" method="post">
+        <form id="form_tra" method="post">
         <div class="in_bg" >
             <table border="0" cellpadding="0" cellspacing="0" class="table_input txt" style="text-align: center;">
                 <tr style="margin: auto">
                     <td width="126"></td>
                     <td width="126"></td>
-                    <td width="126">姓名</td>
-                    <td width="411"><input type="text" name="us_name"   /></td>
+                    <td>培训人</td>
+                    <td><input type="text"  name="tr_man"/></td>
                     <td width="126"></td>
                     <td  width="411"></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
-                    <td>密码</td>
-                    <td><input type="text" value="123" disabled="disabled" /></td>
+                    <td>培训项目</td>
+                    <td><input type="text"  name="tr_subject" /></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
-                    <td>角色</td>
-                    <td>
-                        <select name="ro_id.ro_id" id="roid">
-                            <option>请选择...</option>
-                    </select></td>
+                    <td>培训开始时间</td>
+                    <td><input type="text"  name="tr_starttime" /></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
-                    <td>部门</td>
-                    <td><select name="us_dep.de_id" id="deoid">
-                        <option>请选择...</option>
-                    </select></td>
+                    <td>培训结束时间</td>
+                    <td><input type="text"name="tr_endtime" /></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
-                    <td>职位</td>
-                    <td><select name="us_pos.pos_id" id="posid">
-                        <option>请选择...</option>
-                    </select></td>
+                    <td>培训人数</td>
+                    <td><input type="text"  name="tr_num" /></td>
                 </tr>
-
+                <tr>
+                    <td ></td><td></td>
+                    <td>备注</td>
+                    <td><textarea rows="6" cols="72" name="tr_remark" ></textarea></td>
+                </tr>
             </table>
         </div>
         </form>
