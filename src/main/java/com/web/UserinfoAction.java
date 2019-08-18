@@ -34,7 +34,7 @@ public class UserinfoAction {
         if (u != null) {
             if (u.getUs_password().equals(password)) {
                 req.getSession().setAttribute("loger", u);
-                return "user/list";
+                return "main";
             } else {
                 return "login";
             }

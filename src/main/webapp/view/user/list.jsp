@@ -132,7 +132,6 @@
              <hr class="hr1" />
              <button onclick="signin()">签到</button><button onclick="signout()">签退</button>
          </div>
-         <a href="view/user/add.jsp">添加</a>
          <div class="operation_button">
              <button value="查询" onclick="query()">查询</button>
          </div>
