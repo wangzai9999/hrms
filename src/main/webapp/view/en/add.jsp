@@ -25,14 +25,14 @@
             $.get("pos/getall.action", "", function (res) {
                 for (var i = 0; i < res.length; i++) {
 
-                    $("#posid").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
+                    $("#posi").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
                 }
             }, "json");
 
             $.post("dep/getall.action", "", function (res) {
                 for (var i = 0; i < res.length; i++) {
 
-                    $("#deoid").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
+                    $("#depi").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
                 }
             }, "json");
         })
@@ -81,6 +81,7 @@
                         <td></td>
                     </tr>
                 </table>
+            </form>
         </div>
     </div>
 </div>

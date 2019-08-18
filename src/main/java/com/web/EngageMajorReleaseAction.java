@@ -74,7 +74,8 @@ public class EngageMajorReleaseAction {
     }
 
     @RequestMapping("/update")
-    public String update(EngageMajorRelease en){
+    public String update(EngageMajorRelease en,HttpServletRequest req){
+        en.setEn_creater((Userinfo) req.getSession().getAttribute("loger"));
         biz.update(en);
         return "en/list";
     }

@@ -81,7 +81,7 @@
                     <tr>
                         <td><input type="submit" value="修改"></td>
                         <td><input type="hidden" name="en_id" value="${en.en_id}"></td>
-                        <td><input type="hidden" name="en_creater" value="${en.en_creater.us_id}"></td>
+                        <td></td>
                         <td></td>
                     </tr>
                 </table>

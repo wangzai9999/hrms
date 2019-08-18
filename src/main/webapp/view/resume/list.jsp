@@ -37,6 +37,18 @@
 
         })
 
+        function formateTime(time)
+        {
+            var date = new Date(time);
+            Y = date.getFullYear() + '-';
+            M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            D = date.getDate() + ' ';
+            h = date.getHours() + ':';
+            m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':';
+            s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+            return Y+M+D+h+m+s;
+        }
+
         function show(page){
             $.post("resume/getall.action","page="+page,function (res) {
                 $("#resumes").html("");
@@ -52,7 +64,7 @@
                     tr1.append(td3);
                     var td4=$("<td>"+re.re_enid.en_major_describe+"</td>");
                     tr1.append(td4);
-                    var td5=$("<td>"+re.re_time+"</td>");
+                    var td5=$("<td>"+formateTime(re.re_time)+"</td>");
                     tr1.append(td5);
                     var td6=$("<td><a href='resume/download.action?filename="+re.re_url+"'>查看<a/></td>");
                     tr1.append(td6);
