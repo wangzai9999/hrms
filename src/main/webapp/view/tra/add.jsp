@@ -52,7 +52,7 @@
                 <tr style="margin: auto">
                     <td width="126"></td>
                     <td width="126"></td>
-                    <td>培训人</td>
+                    <td width="126">培训人</td>
                     <td><input type="text"  name="tr_man"/></td>
                     <td width="126"></td>
                     <td  width="411"></td>
