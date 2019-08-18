@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
 
+
+
 import java.util.List;
 
 public interface ArchivesDao {
@@ -21,7 +23,7 @@ public interface ArchivesDao {
 
     public void add(Archives ar);
 
-    @Delete("delete from archives where ar_uid=@{uid}")
+    @Delete("delete from archives where ar_uid=#{uid}")
     public void del(Long uid);
 
     public void mod(Archives ar);
