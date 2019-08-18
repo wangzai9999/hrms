@@ -49,7 +49,7 @@
                 <li> <a href="#" class="nav-top-item" id="man_nav_3" onclick="list_sub_nav(id)"> 薪酬标准管理 </a>
                     <ul>
                         <li><a href="view/salary/add.jsp" target="rightFrame" id="a_nav_5" onclick="a_sub_nav(id)">薪酬标准添加</a></li>
-                        <li><a href="view/salary/list.jsp" target="rightFrame" id="a_nav_6" onclick="a_sub_nav(id)">薪酬标准展示</a></li>
+                        <li><a href="salt/getall.action" target="rightFrame" id="a_nav_6" onclick="a_sub_nav(id)">薪酬标准展示</a></li>
                     </ul>
                 </li>
                 <li> <a href="#" class="nav-top-item" id="man_nav_4" onclick="list_sub_nav(id)"> 招聘管理 </a>
