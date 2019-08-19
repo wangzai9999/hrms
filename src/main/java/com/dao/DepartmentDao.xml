@@ -6,7 +6,7 @@
     <resultMap id="dposmap" type="department">
         <id property="id" column="de_id"/>
         <result property="text" column="de_name"/>
-        <collection property="children" column="de_id" ofType="position" select="com.dao.PositionDao.getAllByDid" fetchType="eager"/>
+        <collection property="children" column="de_id" ofType="userinfo" select="com.dao" fetchType="eager"/>
     </resultMap>
     <select id="getAll" resultMap="dposmap">
         select * from department

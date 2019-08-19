@@ -16,16 +16,14 @@
     </select>
 
     <insert id="add" parameterType="position">
-        insert into position values (pos_seq.nextval,#{pos_name},#{pos_dep.de_id})
+        insert into position values (pos_seq.nextval,#{pos_name})
     </insert>
     <delete id="del" >
         delete from position where pos_id=#{id}
     </delete>
     <update id="mod" parameterType="position">
-        update position set pos_name=#{pos_name},de_id=#{pos_dep.de_id} where pos_id=#{pos_id}
+        update position set pos_name=#{pos_name} where pos_id=#{pos_id}
     </update>
-    <select id="getAllByDid" resultMap="posmap">
-        select * from position where pos_dep = #{did}
-    </select>
+
 
 </mapper>
