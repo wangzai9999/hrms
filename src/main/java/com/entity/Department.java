@@ -7,7 +7,7 @@ import java.util.PrimitiveIterator;
 public class Department  implements Serializable {
     private Long de_id;
     private String de_name;
-    private List<Position> children;
+    private List<Userinfo> children;
     private Userinfo de_man;
 
     private Long id;
@@ -37,11 +37,11 @@ public class Department  implements Serializable {
         this.de_name = de_name;
     }
 
-    public List<Position> getChildren() {
+    public List<Userinfo> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Position> children) {
+    public void setChildren(List<Userinfo> children) {
         this.children = children;
     }
 
