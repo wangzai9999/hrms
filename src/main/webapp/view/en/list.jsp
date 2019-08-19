@@ -30,12 +30,16 @@
     $(function(){
 
         $.get("pos/getall.action", "", function (res) {
+            $("#pos").html("");
+            $("#pos").append("<option value=''>请选择</option>")
             for (var i = 0; i < res.length; i++) {
                 $("#pos").append("<option value='" + res[i].pos_id + "'>" + res[i].pos_name + "</option>");
             }
         }, "json");
 
         $.post("dep/getall.action", "", function (res) {
+            $("#dep").html("");
+            $("#dep").append("<option value=''>请选择</option>")
             for (var i = 0; i < res.length; i++) {
                 $("#dep").append("<option value='" + res[i].de_id + "'>" + res[i].de_name + "</option>");
             }
@@ -90,6 +94,8 @@
                 tr.append(td9);
                 var td10=$("<td>"+en.en_status+"</td>");
                 tr.append(td10);
+                var td12=$("<td><a href='resume/getenid.action?enid="+en.en_id+"'>查看</a></td>");
+                tr.append(td12);
                 var td11=$("<td><a href='en/getone.action?en_id="+en.en_id+'&whats='+0+"'>修改</a><a href='en/del.action?en_id="+en.en_id+"'>删除</a><a href='en/getone.action?en_id="+en.en_id+'&whats='+1+"'>投简</a></td>");
                 tr.append(td11);
                 $("#ens").append(tr);
@@ -146,7 +152,7 @@
                 </li>
                 <li>工作经验：
                     <select name="experience">
-                        <option></option>
+                        <option value="">请选择</option>
                         <option value="不限">不限</option>
                         <option value="1-2年">1-2年</option>
                         <option value="2-5年">2-5年</option>
@@ -155,12 +161,10 @@
                 </li>
                 <li>部门：
                     <select name="depid" id="dep">
-                            <option value="">请选择<option>
                     </select>
                 </li>
                 <li>职位：
                     <select name="posid" id="pos">
-                        <option value="">请选择</option>
                     </select>
                 </li>
             </ul>
@@ -172,15 +176,16 @@
             <thead>
             <tr>
                 <th width="9%">招聘职位编号</th>
-                <th width="9%">岗位所属部门</th>
-                <th width="9%">所属职位</th>
-                <th width="9%">招聘人数</th>
+                <th width="7%">岗位所属部门</th>
+                <th width="7%">所属职位</th>
+                <th width="7%">招聘人数</th>
                 <th width="9%">发布时间</th>
                 <th width="9%">职位描述</th>
                 <th width="9%">工作经验</th>
                 <th width="9%">发布人</th>
                 <th width="9%">截止时间</th>
                 <th width="9%">状态</th>
+                <th width="7%">查看简历</th>
                 <th width="10%">操作</th>
             </tr>
             </thead>

@@ -37,22 +37,22 @@
             <form action="resume/add.action" method="post" enctype="multipart/form-data">
                 <table border="0" cellpadding="0" cellspacing="0" class="table_input txt">
                     <tr>
-                        <td width="126">招聘人数</td>
-                        <td width="411"><input type="text" name="re_name" value="${en.en_account}" disabled="disabled"/></td>
-                        <td width="126">职位描述</td>
-                        <td width="442"><input type="text" name="re_position" value="${en.en_major_describe}" disabled="disabled"/></td>
+                        <td>招聘人数</td>
+                        <td ><input type="text" name="re_name" value="${en.en_account}" disabled="disabled"/></td>
+                        <td >职位描述</td>
+                        <td><input type="text" name="re_position" value="${en.en_major_describe}" disabled="disabled"/></td>
                     </tr>
                     <tr>
-                        <td width="126">工作经验</td>
-                        <td width="411"><input type="text" name="re_name" value="${en.en_experience}" disabled="disabled"/></td>
-                        <td width="126">截止日期</td>
-                        <td width="442"><input type="text" name="re_position" value="<fmt:formatDate value='${en.en_deadline}'/>" disabled="disabled"/></td>
+                        <td>工作经验</td>
+                        <td><input type="text" name="re_name" value="${en.en_experience}" disabled="disabled"/></td>
+                        <td>截止日期</td>
+                        <td><input type="text" name="re_position" value="<fmt:formatDate value='${en.en_deadline}'/>" disabled="disabled"/></td>
                     </tr>
                     <tr>
-                        <td width="126">投简人</td>
-                        <td width="411"><input type="text" name="re_name"/></td>
-                        <td width="126">应聘职位</td>
-                        <td width="442"><input type="text" name="re_position"/></td>
+                        <td>投简人</td>
+                        <td><input type="text" name="re_name"/></td>
+                        <td>应聘职位</td>
+                        <td><input type="text" name="re_position"/></td>
                     </tr>
                     <tr>
                         <td>上传简历</td>

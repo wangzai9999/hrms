@@ -6,6 +6,8 @@ import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ResumeBizImpl implements ResumeBiz{
 
@@ -22,11 +24,11 @@ public class ResumeBizImpl implements ResumeBiz{
 
 
     @Override
-    public PageBean getAllByPage(int page) {
+    public PageBean getAllByPage(int page,Long enid) {
         PageBean pb = new PageBean();
         pb.setCurrpage(page);
-        pb.setList(dao.getAll(page,5));
-        pb.setTotalNum(dao.getCount().intValue());
+        pb.setList(dao.getAll(page,5,enid));
+        pb.setTotalNum(dao.getCount(enid).intValue());
         return pb;
     }
 
@@ -39,4 +41,10 @@ public class ResumeBizImpl implements ResumeBiz{
     public void del(Long id) {
         dao.del(id);
     }
+
+    @Override
+    public Resume getOne(Long re_id) {
+        return dao.getOne(re_id);
+    }
+
 }

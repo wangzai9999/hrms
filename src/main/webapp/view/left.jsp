@@ -49,9 +49,9 @@
                 </li>
                 <li> <a href="#" class="nav-top-item" id="man_nav_4" onclick="list_sub_nav(id)"> 招聘管理 </a>
                     <ul>
-                        <li><a href="view/resume/list.jsp" target="rightFrame" id="a_nav_10" onclick="a_sub_nav(id)">简历展示</a></li>
-                        <li><a href="view/resume/add.jsp" target="rightFrame" id="a_nav_11" onclick="a_sub_nav(id)">简历添加</a></li>
                         <li><a href="view/en/list.jsp" target="rightFrame" id="a_nav_12" onclick="a_sub_nav(id)">招聘信息</a></li>
+                        <li><a href="view/resume/list.jsp" target="rightFrame" id="a_nav_10" onclick="a_sub_nav(id)">简历展示</a></li>
+                        <li><a href="view/ach/list.jsp" target="rightFrame" id="a_nav_11" onclick="a_sub_nav(id)">招聘成绩</a></li>
                         <li><a href="view/en/add.jsp" target="rightFrame" id="a_nav_13" onclick="a_sub_nav(id)">招聘信息添加</a></li>
                     </ul>
                 </li>

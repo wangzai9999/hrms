@@ -28,7 +28,6 @@
     <script type="text/javascript">
 
         $(function () {
-            alert("**********");
             show(1);
 
             $("body").on("click","#pages a",function(){
@@ -38,52 +37,31 @@
 
         })
 
-        function formateTime(time)
-        {
-            var date = new Date(time);
-            Y = date.getFullYear() + '-';
-            M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-            D = date.getDate() + ' ';
-            h = date.getHours() + ':';
-            m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':';
-            s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
-            return Y+M+D+h+m+s;
-        }
-
         function show(page){
-            alert("------");
-            var enid = ${enid};
-            alert(enid);
-            $.post("resume/getall.action","page="+page+"&enid="+enid,function (res) {
-                $("#resumes").html("");
+            $.post("ach/getall.action","page="+page,function (res) {
+                $("#achs").html("");
                 for (var i=0;i<res.list.length;i++){
-                    var re = res.list[i];
+                    var ach = res.list[i];
                     var tr1=$("<tr></tr>");
 
-                    var td1=$("<td>"+re.re_id+"</td>");
+                    var td1=$("<td>"+ach.ach_id+"</td>");
                     tr1.append(td1);
-                    var td2=$("<td>"+re.re_name+"</td>");
+                    var td2=$("<td>"+ach.ach_resid.re_name+"</td>");
                     tr1.append(td2);
-                    var td3=$("<td>"+re.re_position+"</td>");
+                    var td3=$("<td>"+ach.ach_exam+"</td>");
                     tr1.append(td3);
-                    var td4=$("<td>"+re.re_enid.en_major_describe+"</td>");
+                    var td4=$("<td>"+ach.ach_interview+"</td>");
                     tr1.append(td4);
-                    var td5=$("<td>"+formateTime(re.re_time)+"</td>");
+                    var td5=$("<td>"+ach.ach_auditor.us_name+"</td>");
                     tr1.append(td5);
-                    var td8=$("<td>"+re.re_status+"</td>");
-                    tr1.append(td8);
-                    var td6=$("<td><a href='resume/download.action?filename="+re.re_url+"'>查看<a/></td>");
+                    var td6=$("<td>"+ach.ach_status+"</td>");
                     tr1.append(td6);
-                    if(re.re_status=="新增"){
-                        var td7=$("<td><a href='resume/getone.action?re_id="+re.re_id+"'>考核<a/>||<a href='resume/del.action?re_id="+re.re_id+"'>删除</a></td>");
-                        tr1.append(td7);
-                    }
-                    if(re.re_status=="未通过"){
-                        var td7 = $("<td><a href='resume/del.action?re_id="+re.re_id+"'>删除</a></td>");
-                        tr1.append(td7);
-                    }
+                    var td7=$("<td>"+ach.ach_comm+"</td>");
+                    tr1.append(td7);
+                    var td8=$("<td><a href='ach/getone.action?ach_id="+ach.ach_id+"'>修改<a/>||<a href='ach/del.action?ach_id="+ach.ach_id+"'>删除<a/></td>");
+                    tr1.append(td8);
 
-                    $("#resumes").append(tr1);
+                    $("#achs").append(tr1);
                 }
                 $("#pages").html("");
                 var a1=$("<a name='1'>首页</a>");
@@ -112,7 +90,7 @@
 
 </div>
 <div style="padding:5px;">
-    <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
+    <div class="txt" style="padding-top:3px;" >
         <hr class="hr1" />
     </div>
     <div class="operation_button">
@@ -122,17 +100,17 @@
         <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list" >
             <thead>
             <tr>
-                <th width="9%">简历编号</th>
-                <th width="9%">姓名</th>
-                <th width="9%">应聘职位</th>
-                <th width="9%">职位信息</th>
-                <th width="9%">投简时间</th>
-                <th width="9%">状态</th>
-                <th width="9%">简历</th>
-                <th width="9%">操作</th>
+                <th width="12%">考核编号</th>
+                <th width="12%">投简人</th>
+                <th width="12%">笔试成绩</th>
+                <th width="12%">面试成绩</th>
+                <th width="12%">审核人</th>
+                <th width="12%">状态</th>
+                <th width="12%">审核意见</th>
+                <th width="16%">操作</th>
             </tr>
             </thead>
-            <tbody id="resumes">
+            <tbody id="achs">
 
             </tbody>
         </table>

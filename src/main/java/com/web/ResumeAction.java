@@ -6,6 +6,7 @@ import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,8 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/resume")
@@ -40,12 +43,13 @@ public class ResumeAction {
 
     @RequestMapping("getall")
     @ResponseBody
-    public PageBean getAllByPage(@RequestParam(defaultValue = "1") int page){
-        return biz.getAllByPage(page);
+    public PageBean getAllByPage(@RequestParam(defaultValue = "1") int page,Long enid){
+        return biz.getAllByPage(page,enid);
     }
 
     @RequestMapping("/add")
     public String add(Resume re, MultipartFile file, HttpServletRequest req){
+        re.setRe_status("新增");
         re.setRe_time(new Date());
         String filename = file.getOriginalFilename();
         String path = req.getServletContext().getRealPath("files/file");
@@ -100,6 +104,18 @@ public class ResumeAction {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @RequestMapping("/getenid")
+    public String getEnid(Long enid,Model m){
+        m.addAttribute("enid",enid);
+        return "resume/list";
+    }
+
+    @RequestMapping("/getone")
+    public String getOne(Long re_id, Model m){
+        m.addAttribute("re",biz.getOne(re_id));
+        return "ach/add";
     }
 
 }

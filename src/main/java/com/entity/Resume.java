@@ -11,6 +11,14 @@ public class Resume implements Serializable {
     private EngageMajorRelease re_enid;
     private Date re_time;
     private String re_url;
+    private String re_status;
+
+    public Resume(){
+
+    }
+    public Resume(Long re_id){
+        this.re_id=re_id;
+    }
 
     public Long getRe_id() {
         return re_id;
@@ -58,5 +66,13 @@ public class Resume implements Serializable {
 
     public void setRe_time(Date re_time) {
         this.re_time = re_time;
+    }
+
+    public String getRe_status() {
+        return re_status;
+    }
+
+    public void setRe_status(String re_status) {
+        this.re_status = re_status;
     }
 }
