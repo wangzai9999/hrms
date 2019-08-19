@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DepartmentDao {
 
-    @Insert("insert into department values(de_seq.nextval,#{de_name},#{de_fa.id})")
+
     public  void add(Department department);
 
     @Delete("delete from department where de_id=#{id}")
@@ -16,7 +16,7 @@ public interface DepartmentDao {
     @Update("update department set de_name=#{de_name},de_fa=#{de_fa.de_id},de_man={de_man.us_id}  where de_id=#{de_id} ")
     public void mod(Department department);
 
-    @Select("select * from department where de_id=#{id}")
+
     public Department getOne(Long id);
 
 

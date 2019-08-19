@@ -8,6 +8,8 @@ import com.util.UserinfoParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserinfoBizImpl implements UserinfoBiz{
 
@@ -71,5 +73,10 @@ public class UserinfoBizImpl implements UserinfoBiz{
     @Override
     public Long getNowID() {
         return dao.getNowID();
+    }
+
+    @Override
+    public List<Userinfo> getAllNotDm() {
+        return dao.getAllNotDm();
     }
 }

@@ -55,5 +55,10 @@ public interface UserinfoDao {
     @Select("select * from userinfo where us_id=#{id}")
     public Userinfo getAllByUsid(Long id);
 
+    @Select("select * from userinfo where us_dep=#{id}")
+    public List<Userinfo> getAllByDep(Long id);
+    @Select("select * from userinfo where us_id not in (select de_man from department)")
+    public List<Userinfo> getAllNotDm();
+
 
 }

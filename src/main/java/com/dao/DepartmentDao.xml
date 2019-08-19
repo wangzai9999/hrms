@@ -3,14 +3,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.DepartmentDao">
 
-    <resultMap id="dposmap" type="department">
+    <resultMap id="dusmap" type="department">
         <id property="id" column="de_id"/>
         <result property="text" column="de_name"/>
         <association property="de_man" column="de_man" select="com.dao.UserinfoDao.getOne" fetchType="eager"/>
         <collection property="children" column="de_id" ofType="userinfo" select="com.dao.UserinfoDao.getAllByDep" fetchType="eager"/>
     </resultMap>
-    <select id="getAll" resultMap="dposmap">
+    <resultMap id="dusonemap" type="department">
+        <id property="id" column="de_id"/>
+        <result property="text" column="de_name"/>
+        <association property="de_man" column="de_man" select="com.dao.UserinfoDao.getAllByUsid" fetchType="eager"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="dusmap">
         select * from department
+    </select>
+
+    <insert id="add">
+      begin
+        insert into department values(de_seq.nextval,#{de_name},#{de_man.us_id});
+        update userinfo set us_dep=de_seq.currval where us_id=#{de_man.us_id};
+      end;
+    </insert>
+    <select id="getOne" resultMap="dusonemap">
+        select * from department where de_id=#{id}
     </select>
 
 </mapper>

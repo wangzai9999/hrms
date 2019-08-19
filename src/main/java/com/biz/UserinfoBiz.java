@@ -4,6 +4,8 @@ import com.entity.Userinfo;
 import com.util.PageBean;
 import com.util.UserinfoParam;
 
+import java.util.List;
+
 public interface UserinfoBiz {
 
     public Userinfo UserLogin(String name);
@@ -13,4 +15,6 @@ public interface UserinfoBiz {
     public void mod(Userinfo userinfo);
     public PageBean getAll(int page,UserinfoParam param);
     public Long getNowID();
+
+    public List<Userinfo> getAllNotDm();
 }
