@@ -34,6 +34,8 @@
             list(pp);
         })
 
+
+
         $.post("tra/all.action", "", function (res) {
             for (var i = 0; i < res.length; i++) {
 

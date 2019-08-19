@@ -25,11 +25,6 @@
 </head>
 <body>
 <div>
-    <div id="loader"><img src="images/1d_2.gif"/></div>
-    <div class="current_user attention">
-        <div> 欢迎您，<strong>Mr.Shi</strong><br />
-            [系统管理员，<a href="view/login.jsp">退出</a>] </div>
-    </div>
     <div id="sidebar">
         <div id="sidebar-wrapper">
             <ul id="main-nav">

@@ -18,8 +18,9 @@
     <base href="<%=basePath%>">
     <title>Title</title>
 </head>
-<frameset cols="240,7,*" frameborder="0" border="0" framespacing="0" name="myFrame" >
-    <div id="loader"><img src="../images/loader.gif"/></div>
+<frameset rows="110,*" frameborder="0" border="0" framespacing="0">
+    <frame style="height: 20px" src="view/top.jsp" scrolling="no" noresize="noresize" marginheight="0" marginwidth="0" >
+    <frameset cols="240,7,*" frameborder="0" border="0" framespacing="0" name="myFrame" >
     <frame src="view/left.jsp" scrolling="no" noresize="noresize" marginheight="0" marginwidth="0" />
     <frame src="view/switch.jsp" scrolling="no" noresize="noresize" marginheight="0" marginwidth="0" />
     <frame src="view/right.jsp" noresize="noresize" marginheight="0" marginwidth="0" name="rightFrame" target="_self" />

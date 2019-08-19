@@ -33,6 +33,9 @@
             var pp=$(this).attr("name");
             list(pp);
         })
+
+        $("#")
+
     })
     function query() {
         list(1);
@@ -74,9 +77,9 @@
                 tr.append(td6);
                 var td7=$("<td>"+tra[i].tr_num+"</td>");
                 tr.append(td7);
-                var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|"
+                var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a>|"
                 if (tra[i].tr_status=="本次培训已结束") {update="";}
-                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>|<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a></td>");
+                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a></td>");
                 tr.append(td8);
                 $("#us").append(tr);
             }
@@ -121,10 +124,10 @@
              <form id="form_us">
              <ul class="txt">
                  <li>培训项目：
-                     <input type="text" size="30" name="tr_subject"/>
+                     <input type="text" size="30" id="sub" name="tr_subject"/>
                  </li>
                  <li>状态：
-                     <select name="tr_status">
+                     <select name="tr_status" id="sta">
                          <option value="">请选择...</option>
                          <option value="新增，请等待">新增，请等待</option>
                          <option value="正在招募">正在招募</option>
@@ -133,9 +136,9 @@
                      </select>
                  </li>
                  <li>开始时间：
-                     <input type="text" size="30" name="minstarttime"/>
+                     <input type="text" size="30" id="mint" name="minstarttime"/>
                  ~
-                     <input type="text" size="30" name="maxstarttime"/>
+                     <input type="text" size="30" id="maxt" name="maxstarttime"/>
                  </li>
              </ul>
              </form>
