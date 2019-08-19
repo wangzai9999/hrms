@@ -42,8 +42,8 @@ function signout() {
         <ul class="shortcut_buttons_set">
             <li>
                 <div class="current_user attention">
-                    <div> 欢迎您，<strong>${requestScope.loger.us_name}</strong><br />
-                        [系统管理员，<a href="view/login.jsp">退出</a>] </div>
+                    <div> 欢迎您，<strong>${sessionScope.loger.us_name}</strong><br />
+                        [系统管理员，<a href="user/out.action">退出</a>] </div>
                 </div>
             </li>
             <li><a class="shortcut_button" href="view/main.jsp"><span> <img src="images/home.ico" alt="icon" /><br />

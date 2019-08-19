@@ -51,4 +51,7 @@ public interface UserinfoDao {
 
     @Select("select us_seq.currval from dual")
     public Long getNowID();
+
+    @Select("select * from userinfo where us_dep=#{id}")
+    public List<Userinfo> getAllByDep(Long id);
 }

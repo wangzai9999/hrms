@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -86,5 +87,10 @@ public class UserinfoAction {
         return "user/list";
     }
 
+    @RequestMapping("/out")
+    public String out(HttpServletRequest request){
+        request.removeAttribute("loger");
+        return "login";
+    }
 
 }
