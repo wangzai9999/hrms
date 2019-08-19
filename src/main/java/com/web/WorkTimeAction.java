@@ -36,7 +36,6 @@ public class WorkTimeAction {
         Calendar nt =Calendar.getInstance();
         int nh=nt.get(Calendar.HOUR_OF_DAY);
         String st="正常";
-        System.out.println(nh);
         if(nh>=9){
            st="迟到";
         }
@@ -50,7 +49,7 @@ public class WorkTimeAction {
     public String mod(WorkTime wt,HttpServletRequest req){
         Userinfo us= (Userinfo) req.getSession().getAttribute("loger");
         wt=biz.getWtId(us.getUs_id());
-        System.out.println(wt.toString());
+
         Calendar nt =Calendar.getInstance();
         int nh=nt.get(Calendar.HOUR_OF_DAY);
         String est="正常";
