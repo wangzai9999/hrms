@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 public class TestDEP {
 
 
@@ -23,7 +25,9 @@ public class TestDEP {
     public  void ttt11(){
         ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
         UserinfoDao dao=context.getBean(UserinfoDao.class);
-        Userinfo userinfo=dao.getOne(1L);
-        System.out.println(userinfo.getUs_id()+","+userinfo.getUs_pos().getPos_name()+","+userinfo.getUs_dep().getDe_name()+","+userinfo.getRo_id().getRo_name());
+        List<Userinfo> list=dao.getAllByDep(1L);
+        for (Userinfo u : list) {
+            System.out.println(u.getUs_id()+","+u.getUs_name());
+        }
     }
 }
