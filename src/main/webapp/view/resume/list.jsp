@@ -50,7 +50,7 @@
         }
 
         function show(page){
-            var enid;
+            var enid=0;
             if(${enid != null}){
                 enid = ${enid}+"";
             }
