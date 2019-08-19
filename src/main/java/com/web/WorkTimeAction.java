@@ -37,7 +37,7 @@ public class WorkTimeAction {
         int nh=nt.get(Calendar.HOUR_OF_DAY);
         String st="正常";
         System.out.println(nh);
-        if(nh>9){
+        if(nh>=9){
            st="迟到";
         }
 
@@ -54,7 +54,7 @@ public class WorkTimeAction {
         Calendar nt =Calendar.getInstance();
         int nh=nt.get(Calendar.HOUR_OF_DAY);
         String est="正常";
-        if(nh<18){
+        if(nh<=18){
             est="早退";
         }
         wt.setUs_id(us);
