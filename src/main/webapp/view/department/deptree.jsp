@@ -34,9 +34,7 @@
         }
       });
     })
-    function addpos() {
-      
-    }
+
 
 
   </script>
@@ -50,9 +48,7 @@
 </div>
 
 <div id="depmenu" class="easyui-menu" style="width:120px;">
-  <div onclick="addpos()" data-options="iconCls:'icon-add'">增加职位</div>
-  <div onclick="delpos()" data-options="iconCls:'icon-remove'">删除职位</div>
-  <div onclick="modpos()" data-options="iconCls:'icon-edit'">修改职位</div>
+
   <div onclick="adddept()" data-options="iconCls:'icon-add'">增加部门</div>
   <div onclick="deldept()" data-options="iconCls:'icon-remove'">删除部门</div>
   <div onclick="moddept()" data-options="iconCls:'icon-edit'">修改部门</div>
