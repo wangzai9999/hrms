@@ -64,10 +64,9 @@ public class TrainingApplyFoAction {
     }
 
     @RequestMapping("/del")
-    @ResponseBody
     public String del(Long id){
         biz.del(id);
-        return "1";
+        return "taf/list";
     }
 
     @RequestMapping("/mod")
@@ -92,4 +91,20 @@ public class TrainingApplyFoAction {
         PageBean pageBean=biz.getAllByParam(page,param);
         return pageBean;
     }
+
+    @RequestMapping("/cha")
+    @ResponseBody
+    public TrainingApplyFo cha(HttpServletRequest request){
+        Userinfo u= (Userinfo) request.getSession().getAttribute("loger");
+        return biz.getByTfUs(u.getUs_id());
+    }
+
+    @RequestMapping("/shen")
+    public ModelAndView shen(Long id,ModelAndView mv){
+        TrainingApplyFo fo=biz.getOne(id);
+        mv.setViewName("taf/shen");
+        mv.addObject("mv",mv);
+        return mv;
+    }
+
 }

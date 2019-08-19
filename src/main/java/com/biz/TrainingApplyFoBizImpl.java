@@ -59,5 +59,10 @@ public class TrainingApplyFoBizImpl implements TrainingApplyFoBiz {
         return pageBean;
     }
 
+    @Override
+    public TrainingApplyFo getByTfUs(Long id) {
+        return dao.getByTfUs(id);
+    }
+
 
 }

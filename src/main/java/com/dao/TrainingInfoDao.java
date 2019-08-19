@@ -28,4 +28,7 @@ public interface TrainingInfoDao extends Mapper<TrainingInfo> {
             " <if test='maxstarttime!=null' > and tr_starttime &lt;=#{maxstarttime} </if> " +
             "</where> </script>")
     public Long getCount(TrainingInfoParam param);
+
+    @Select("select * from training_info where  tr_id=#{id}")
+    public TrainingInfo getOne(Long id);
 }
