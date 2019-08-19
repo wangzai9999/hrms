@@ -38,7 +38,8 @@ public class DepartmentAction {
     @RequestMapping("/add")
     @ResponseBody
     public String add(Department dep){
-       biz.add(dep);
+        System.out.println(dep.toString());
+        biz.add(dep);
         return "1";
     }
     @RequestMapping("/mod")
@@ -61,6 +62,11 @@ public class DepartmentAction {
     public String del(Long id){
         biz.del(id);
         return "1";
+    }
+    @ResponseBody
+    @RequestMapping("/getbyid")
+    public Department getOneById(Long did){
+       return biz.getOne(did);
     }
 
 

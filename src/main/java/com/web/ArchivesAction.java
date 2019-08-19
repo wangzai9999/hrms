@@ -6,15 +6,17 @@ import com.entity.Userinfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -70,7 +72,18 @@ public class ArchivesAction {
     }
 
     @RequestMapping("/add")
-    public String add(Archives archives, MultipartFile file, HttpServletRequest req){
+    public String add(@Valid Archives archives, BindingResult res, MultipartFile file, HttpServletRequest req, Model mo){
+        if (res.hasErrors()){
+            List<FieldError> list=res.getFieldErrors();
+            for (FieldError er:list){
+                mo.addAttribute(er.getField(),er.getDefaultMessage());
+            }
+            mo.addAttribute("arc",archives);
+            return "arcs/add";
+
+        }else {
+
+
         String filename=file.getOriginalFilename();
         Userinfo us=(Userinfo) req.getSession().getAttribute("loger");
         archives.setAr_regist(us.getUs_name());
@@ -85,6 +98,8 @@ public class ArchivesAction {
         }
         biz.add(archives);
         return "user/list" ;
+
+        }
     }
 
     @RequestMapping("/mod")

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -92,5 +93,11 @@ public class UserinfoAction {
         request.removeAttribute("loger");
         return "login";
     }
+    @ResponseBody
+    @RequestMapping("/getnotm")
+    public List<Userinfo> getAllNotDm(){
+       return biz.getAllNotDm();
+    }
+
 
 }

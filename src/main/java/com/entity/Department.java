@@ -71,4 +71,14 @@ public class Department  implements Serializable {
     public void setDe_man(Userinfo de_man) {
         this.de_man = de_man;
     }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "de_id=" + de_id +
+                ", de_name='" + de_name + '\'' +
+                ", id=" + id +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

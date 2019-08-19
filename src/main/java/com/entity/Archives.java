@@ -1,10 +1,10 @@
 package com.entity;
 
-import org.apache.ibatis.annotations.ResultMap;
-import org.springframework.format.annotation.DateTimeFormat;
 
 
-import java.beans.Transient;
+
+
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,6 +12,7 @@ public class Archives implements Serializable {
 
     private Long ar_id;
     private Userinfo ar_uid;
+    @Pattern(regexp="/^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$/",message = "请输入正确的身份证号码！")
     private String ar_id_card;
     private String ar_photo;
     private String ar_regist;
@@ -20,6 +21,7 @@ public class Archives implements Serializable {
     private Date ar_change_time;
     private String ar_status="正常";
     private String ar_address;
+    @Pattern(regexp = "/^1[3|4|5|7|8][0-9]{9}$/",message = "请输入正确的电话号码！")
     private String ar_telephone;
     private String ar_email;
     private String ar_speciality="无";
