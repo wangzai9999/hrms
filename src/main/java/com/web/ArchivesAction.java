@@ -56,11 +56,17 @@ public class ArchivesAction {
     public ModelAndView getOne(Long id, @RequestParam(defaultValue = "0") Long goid, ModelAndView mv){
        if(goid==0){
            Archives archives=biz.getOne(id);
+           if (archives==null){
+               mv.addObject("usid",id);
+               mv.setViewName("arcs/add");
+               return mv;
+           }
            mv.setViewName("arcs/show");
            mv.addObject("arc",archives);
 
        }else if (goid==1){
            Archives archives=biz.getOne(id);
+
            mv.setViewName("arcs/mod");
            mv.addObject("arc",archives);
        }else {

@@ -17,6 +17,12 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
+
+
+
+
+
+
   function getQueryVariable(variable)
   {
     var query = window.location.search.substring(1);
@@ -33,7 +39,29 @@
          $("#usid").attr("value",res.us_id);
          $("#usname").attr("value",res.us_name);
     });
-  })
+
+    $("#telephone").change(function () {
+      $(this).next("span").html("");
+      var phone=$(this).val();
+      var ph=/^1[3|4|5|7|8][0-9]{9}$/;
+      if (!ph.test(phone)) {
+        $(this).next("span").html("请输入正确的电话号码！");
+      }
+    });
+    $("#idcard").change(function () {
+      $(this).next("span").html("");
+      var ic=$(this).val();
+      var reg=/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+      if (!reg.test(ic)) {
+        $(this).next("span").html("请输入正确的身份证号码！");
+      }
+    })
+  });
+
+
+
+
+
 </script>
 </head>
 
@@ -49,7 +77,7 @@
         <tr>
           <input type="hidden" name="ar_uid.us_id" value="" id="usid">
           <td>员工姓名：<input type="text" name="name" value="" id="usname" disabled></td>
-          <td>身份证号：<input type="text" name="ar_id_card" required size="18" pattern="/^\d{15}$)|(^\d{17}([0-9]|X)$/" /></td>
+          <td>身份证号：<input type="text" name="ar_id_card" required id="idcard"/><span style="color: red"></span></td>
         </tr>
         <tr>
           <td>性别：男<input type="radio" name="ar_sex" value="男" checked/>女<input type="radio" name="ar_sex" value="女"/></td>
@@ -86,7 +114,7 @@
         </tr>
         <tr>
           <td>电子邮件：<input type="email" name="ar_email" required></td>
-          <td>手机号码：<input type="text" name="ar_telephone" required size="11"/></td>
+          <td>手机号码：<input type="text" name="ar_telephone" required id="telephone"/><span style="color: red"></span></td>
 
         </tr>
         <tr>
