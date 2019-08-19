@@ -32,16 +32,11 @@
         $("body").on("click","#papa a",function(){
             var pp=$(this).attr("name");
             list(pp);
-        })
-
-
-
+        });
         $.post("tra/all.action", "", function (res) {
             for (var i = 0; i < res.length; i++) {
-
-                $("#trid").append("<option value='" + res[i].tr_id + "'>" + res[i].tr_subject + "</option>");
+                $("#trid1").append("<option value='" + res[i].tr_id + "'>" + res[i].tr_subject + "</option>");
             }
-
         }, "json");
     })
     function query() {
@@ -65,10 +60,10 @@
     
     function list(page) {
         var param=$("#form_taf").serialize()+"&page="+page;
-        $.post("taf/getall.action",param,function (res) {
+        $.post("taf/getAll.action",param,function (res) {
             var taf=res.list;
             $("#us").html("");
-            for(var i=0;i<tra.length;i++){
+            for(var i=0;i<taf.length;i++){
                 var  tr=$("<tr></tr>");
                 var td1=$("<td>"+taf[i].tf_us_id.us_name+"</td>");
                 tr.append(td1);
@@ -82,9 +77,9 @@
                 tr.append(td5);
                 var td6=$("<td>"+taf[i].tf_opinion+"</td>");
                 tr.append(td6);
-                var shen ="<a href='taf/add.action?id="+taf[i].tr_id+"'>审批</a>|"
-                if (tra[i].tr_status=="本次培训已结束") {shen="";}
-                var td7=$("<td>"+shen+"<a href='taf/del.action?id="+taf[i].tr_id+"'>删除</a></td>");
+                var shen ="<a href='taf/shen.action?id="+taf[i].tf_id+"'>审批</a>|";
+                if (taf[i].tf_status=="本次培训已结束") {shen="";}
+                var td7=$("<td>"+shen+"<a href='taf/del.action?id="+taf[i].tf_tr_id.tr_id+"'>删除</a></td>");
                 tr.append(td7);
                 $("#us").append(tr);
             }
@@ -120,7 +115,6 @@
          <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;培训信息
              <hr class="hr1" />
          </div>
-         <a href="view/tra/add.jsp">添加</a>
          <a>申请</a>
          <div class="operation_button">
              <button value="查询" onclick="query()">查询</button>
@@ -129,7 +123,7 @@
              <form id="form_taf">
              <ul class="txt">
                  <li>培训项目：
-                     <select name="tr_subject" id="trid">
+                     <select name="tr_id" id="trid1">
                          <option value="0">请选择...</option>
                      </select>
                  </li>
@@ -148,14 +142,13 @@
              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list" >
                  <thead>
                  <tr>
-                     <th width="10%">培训人</th>
-                     <th width="13%">培训项目</th>
-                     <th width="13%">状态</th>
-                     <th width="13%">培训开始时间</th>
-                     <th width="13%">培训结束时间</th>
-                     <th width="13%">备注</th>
-                     <th width="13%">培训人数</th>
-                     <th width="14%">操作</th>
+                     <th width="10%">申请人</th>
+                     <th width="15%">申请项目</th>
+                     <th width="15%">申请状态</th>
+                     <th width="15%">申请时间</th>
+                     <th width="15%">审批人</th>
+                     <th width="15%">审批意见</th>
+                     <th width="15%">操作</th>
                  </tr>
                  </thead>
                  <tbody id="us">

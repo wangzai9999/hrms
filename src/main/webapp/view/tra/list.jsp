@@ -26,15 +26,19 @@
 </head>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
+    window.cha1;
     $(function(){
-        list(1);
 
         $("body").on("click","#papa a",function(){
             var pp=$(this).attr("name");
             list(pp);
         })
+        $.post("taf/cha.action","",function (res) {
+            cha1=res.tf_tr_id.tr_id;
+            alert(cha1);
+        },"json");
 
-        $("#")
+        list(1);
 
     })
     function query() {
@@ -55,6 +59,7 @@
 //        s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
         return Y+M+D;
     }
+
     
     function list(page) {
         var param=$("#form_us").serialize()+"&page="+page;
@@ -77,9 +82,12 @@
                 tr.append(td6);
                 var td7=$("<td>"+tra[i].tr_num+"</td>");
                 tr.append(td7);
-                var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a>|"
-                if (tra[i].tr_status=="本次培训已结束") {update="";}
-                var td8=$("<td>"+update+"<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a></td>");
+                var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|";
+                var sq="<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a>|";
+                var shang="<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>";
+                if (tra[i].tr_status=="本次培训已结束") {update="";sq="";}
+                if (tra[i].tr_id==cha1){sq="";}
+                var td8=$("<td>"+update+sq+shang+"</td>");
                 tr.append(td8);
                 $("#us").append(tr);
             }

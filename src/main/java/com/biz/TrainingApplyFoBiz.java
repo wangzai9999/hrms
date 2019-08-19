@@ -17,4 +17,6 @@ public interface TrainingApplyFoBiz {
     public TrainingApplyFo getOne(Long id);
     public List<TrainingApplyFo> getAll();
     public PageBean getAllByParam(int page, TrainingApplyFoParam param);
+
+    public TrainingApplyFo getByTfUs(Long id);
 }
