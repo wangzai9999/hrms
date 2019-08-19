@@ -45,6 +45,7 @@ public class DepartmentAction {
     @RequestMapping("/mod")
     @ResponseBody
     public String mod(Department dep){
+        System.out.println(dep.toString());
         biz.mod(dep);
         return "1";
     }

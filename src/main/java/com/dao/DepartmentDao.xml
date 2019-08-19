@@ -29,4 +29,11 @@
         select * from department where de_id=#{id}
     </select>
 
+    <update id="mod">
+      begin
+        update department set de_name=#{de_name},de_man=#{de_man.us_id}  where de_id=#{de_id};
+        update userinfo set us_dep=#{de_id} where us_id=#{de_man.us_id};
+      end;
+    </update>
+
 </mapper>
