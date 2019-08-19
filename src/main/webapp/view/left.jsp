@@ -55,7 +55,14 @@
                         <li><a href="view/en/add.jsp" target="rightFrame" id="a_nav_13" onclick="a_sub_nav(id)">招聘信息添加</a></li>
                     </ul>
                 </li>
-                <li> <a href="#" class="nav-top-item" id="man_nav_5" onclick="list_sub_nav(id)"> 基础数据 </a>
+                <li> <a href="#" class="nav-top-item" id="man_nav_5" onclick="list_sub_nav(id)"> 部门管理 </a>
+                    <ul>
+                        <li><a href="view/department/deptree.jsp" target="rightFrame" id="a_nav_8" onclick="a_sub_nav(id)">部门员工展示</a></li>
+
+                    </ul>
+                </li>
+
+                <li> <a href="#" class="nav-top-item" id="man_nav_6" onclick="list_sub_nav(id)"> 基础数据 </a>
                     <ul>
                         <li><a href="crm_base/dict.html" target="rightFrame" id="a_nav_14" onclick="a_sub_nav(id)">数据字典管理</a></li>
                         <li><a href="crm_base/product.html" target="rightFrame" id="a_nav_15" onclick="a_sub_nav(id)">查询产品信息</a></li>
