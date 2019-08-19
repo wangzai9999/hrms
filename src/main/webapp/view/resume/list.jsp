@@ -51,10 +51,8 @@
 
         function show(page){
             var enid;
-            if(${enid eq null}){
-                enid=0;
-            }else{
-                enid = ${enid};
+            if(${enid != null}){
+                enid = ${enid}+"";
             }
 
             $.post("resume/getall.action","page="+page+"&enid="+enid,function (res) {
