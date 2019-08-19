@@ -28,7 +28,6 @@
     <script type="text/javascript">
 
         $(function () {
-            alert("**********");
             show(1);
 
             $("body").on("click","#pages a",function(){
@@ -51,9 +50,13 @@
         }
 
         function show(page){
-            alert("------");
-            var enid = ${enid};
-            alert(enid);
+            var enid;
+            if(${enid eq null}){
+                enid=0;
+            }else{
+                enid = ${enid};
+            }
+
             $.post("resume/getall.action","page="+page+"&enid="+enid,function (res) {
                 $("#resumes").html("");
                 for (var i=0;i<res.list.length;i++){

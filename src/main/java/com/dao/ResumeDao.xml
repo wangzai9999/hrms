@@ -6,7 +6,7 @@
     <select id="getAll" resultMap="re">
         select * from (select re.*,rownum r from resume re
         <where>
-            <if test='param3!=null'>
+            <if test='param3!=0'>
                and re.re_enid=#{enid}
             </if>
         </where>
