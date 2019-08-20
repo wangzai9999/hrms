@@ -27,6 +27,16 @@
      </mvc:interceptor>
      
     </mvc:interceptors>
+    <!-- 验证 -->
+    <bean id="myval" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+    </bean>
+
+    <mvc:annotation-driven validator="myval" />
+
+
+
+
 
   
    
