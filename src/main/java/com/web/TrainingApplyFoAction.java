@@ -71,9 +71,10 @@ public class TrainingApplyFoAction {
 
     @RequestMapping("/mod")
     @ResponseBody
-    public String mod(TrainingApplyFo trainingApplyFo){
+    public String mod(TrainingApplyFo trainingApplyFo,HttpServletRequest request){
+        Userinfo userinfo= (Userinfo) request.getSession().getAttribute("loger");
+        trainingApplyFo.setTf_auditor(userinfo.getUs_name());
         biz.mod(trainingApplyFo);
-
         return "1";
     }
 

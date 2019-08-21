@@ -62,6 +62,7 @@
         var param=$("#form_taf").serialize()+"&page="+page;
         $.post("taf/getAll.action",param,function (res) {
             var taf=res.list;
+            var tdiv=res.div;
             $("#us").html("");
             for(var i=0;i<taf.length;i++){
                 var  tr=$("<tr></tr>");
@@ -78,7 +79,7 @@
                 var td6=$("<td>"+taf[i].tf_opinion+"</td>");
                 tr.append(td6);
                 var shen ="<a href='taf/shen.action?id="+taf[i].tf_id+"'>审批</a>|";
-                if (taf[i].tf_status=="本次培训已结束") {shen="";}
+                if (taf[i].tf_status!="申请中") {shen="";}
                 var td7=$("<td>"+shen+"<a href='taf/del.action?id="+taf[i].tf_tr_id.tr_id+"'>删除</a></td>");
                 tr.append(td7);
                 $("#us").append(tr);
