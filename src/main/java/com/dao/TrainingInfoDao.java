@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface TrainingInfoDao extends Mapper<TrainingInfo> {
 
-    @Insert("insert into training_info values(tr_seq.nextval,#{tr_man},#{tr_subject},#{tr_status},#{tr_starttime},#{tr_endtime},#{tr_remark},#{tr_num})")
+    @Insert("insert into training_info values(tr_seq.nextval,#{tr_man},#{tr_subject},#{tr_status},#{tr_starttime},#{tr_endtime},#{tr_remark},#{tr_num},0)")
     public void add(TrainingInfo trainingInfo);
 
     @Select("<script> select * from (select t.*,rownum r from (select * from training_info " +
