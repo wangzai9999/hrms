@@ -6,8 +6,8 @@ public class Trainers implements Serializable {
 
     private Long ts_id;
     private Userinfo ts_usid;
-    private Resume ts_trid;
-    private String ts_comm;
+    private TrainingInfo ts_trid;
+    private String ts_comm="wu";
 
     public Long getTs_id() {
         return ts_id;
@@ -25,11 +25,11 @@ public class Trainers implements Serializable {
         this.ts_usid = ts_usid;
     }
 
-    public Resume getTs_trid() {
+    public TrainingInfo getTs_trid() {
         return ts_trid;
     }
 
-    public void setTs_trid(Resume ts_trid) {
+    public void setTs_trid(TrainingInfo ts_trid) {
         this.ts_trid = ts_trid;
     }
 

@@ -39,6 +39,7 @@
                         <li><a href="view/tra/list.jsp" target="rightFrame" id="a_nav_3" onclick="a_sub_nav(id)">培训信息管理</a></li>
                         <li><a href="view/tra/add.jsp" target="rightFrame" id="a_nav_4" onclick="a_sub_nav(id)">培训信息添加</a></li>
                         <li><a href="view/taf/list.jsp" target="rightFrame" id="a_nav_7" onclick="a_sub_nav(id)">申请培训人员表</a></li>
+                        <li><a href="view/trs/list.jsp" target="rightFrame" id="a_nav_9" onclick="a_sub_nav(id)">培训人员表</a></li>
                     </ul>
                 </li>
                 <li> <a href="#" class="nav-top-item" id="man_nav_3" onclick="list_sub_nav(id)"> 薪酬标准管理 </a>

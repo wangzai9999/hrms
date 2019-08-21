@@ -1,6 +1,8 @@
 package com.biz;
 
+import com.dao.TrainersDao;
 import com.dao.TrainingApplyFoDao;
+import com.entity.Trainers;
 import com.entity.TrainingApplyFo;
 import com.util.PageBean;
 import com.util.TrainingApplyFoParam;
@@ -14,6 +16,8 @@ public class TrainingApplyFoBizImpl implements TrainingApplyFoBiz {
 
     @Autowired
     private TrainingApplyFoDao dao;
+    @Autowired
+    private TrainersDao to;
 
     public TrainingApplyFoDao getDao() {
         return dao;
@@ -21,6 +25,14 @@ public class TrainingApplyFoBizImpl implements TrainingApplyFoBiz {
 
     public void setDao(TrainingApplyFoDao dao) {
         this.dao = dao;
+    }
+
+    public TrainersDao getTo() {
+        return to;
+    }
+
+    public void setTo(TrainersDao to) {
+        this.to = to;
     }
 
     @Override
@@ -32,6 +44,13 @@ public class TrainingApplyFoBizImpl implements TrainingApplyFoBiz {
     @Override
     public void mod(TrainingApplyFo trainingApplyFo) {
         dao.mod(trainingApplyFo);
+        if (trainingApplyFo.getTf_status().equals("同意")){
+            TrainingApplyFo fo= dao.getOne(trainingApplyFo.getTf_id());
+            Trainers trainers=new Trainers();
+            trainers.setTs_usid(fo.getTf_us_id());
+            trainers.setTs_trid(fo.getTf_tr_id());
+            to.add(trainers);
+        }
     }
 
     @Override
