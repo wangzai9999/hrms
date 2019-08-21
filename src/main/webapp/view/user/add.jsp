@@ -45,17 +45,23 @@
                 }
 
             }, "json");
+
         })
         function save(prop,url){
-            var us=$("#form_us").serialize();
-            $.post("user/add.action",us,function (res) {
-                if(res!=null) {
-                    alert(prop+'成功！');
-                    location.href=url+"?id="+res;
-                } else {
-                    alert(prop+"失败");
-                }
-            });
+            var  name=$("#name").val();
+            if (name==null||name=="") {
+                alert("姓名不能为空");
+            }else {
+                var us=$("#form_us").serialize();
+                $.post("user/add.action",us,function (res) {
+                    if(res!=null) {
+                        alert(prop+'成功！');
+                        location.href=url+"?id="+res;
+                    } else {
+                        alert(prop+"失败");
+                    }
+                });
+            }
         }
 
     </script>
@@ -77,7 +83,7 @@
                     <td width="126"></td>
                     <td width="126"></td>
                     <td width="126">姓名</td>
-                    <td width="411"><input type="text" name="us_name"   /></td>
+                    <td width="411"><input type="text" name="us_name"  id="name" /></td>
                     <td width="126"></td>
                     <td  width="411"></td>
                 </tr>
