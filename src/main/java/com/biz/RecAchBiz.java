@@ -18,4 +18,6 @@ public interface RecAchBiz {
 
     public PageBean getAllByPage(int page);
 
+    public RecAch getOneByRe(Long resid);
+
 }

@@ -48,4 +48,9 @@ public class RecAchBizImpl implements RecAchBiz{
         pb.setList(dao.getAllByPage(page,5));
         return pb;
     }
+
+    @Override
+    public RecAch getOneByRe(Long resid) {
+        return dao.getOneByRe(resid);
+    }
 }

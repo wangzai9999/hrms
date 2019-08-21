@@ -34,7 +34,17 @@
                 var page = $(this).attr("name");
                 show(page);
             })
-
+            /*$("body").on("click","#isman",function(){
+                var reid = $(this).attr("name");
+                $.post("resume/ismanager.action","reid="+reid,function (res) {
+                    if(res!="1"){
+                        alert(res);
+                        location.href=view/resume/list.jsp;
+                    }else{
+                        location.href="resume/getone.action?re_id='"+reid+"'";
+                    }
+                })
+            })*/
         })
 
         function formateTime(time)
@@ -63,7 +73,7 @@
 
                     var td1=$("<td>"+re.re_id+"</td>");
                     tr1.append(td1);
-                    var td2=$("<td>"+re.re_name+"</td>");
+                    var td2=$("<td><a href='ach/getonebyre.action?resid="+re.re_id+"'>"+re.re_name+"</a></td>");
                     tr1.append(td2);
                     var td3=$("<td>"+re.re_position+"</td>");
                     tr1.append(td3);
@@ -76,10 +86,10 @@
                     var td6=$("<td><a href='resume/download.action?filename="+re.re_url+"'>查看<a/></td>");
                     tr1.append(td6);
                     if(re.re_status=="新增"){
-                        var td7=$("<td><a href='resume/getone.action?re_id="+re.re_id+"'>考核<a/>||<a href='resume/del.action?re_id="+re.re_id+"'>删除</a></td>");
+                        var td7=$("<td><a id='isman' name='"+re.re_id+"' href='resume/getone.action?re_id="+re.re_id+"'>考核<a/>||<a href='resume/del.action?re_id="+re.re_id+"'>删除</a></td>");
                         tr1.append(td7);
                     }
-                    if(re.re_status=="未通过"){
+                    if(re.re_status=="已考核"){
                         var td7 = $("<td><a href='resume/del.action?re_id="+re.re_id+"'>删除</a></td>");
                         tr1.append(td7);
                     }
@@ -89,10 +99,14 @@
                 $("#pages").html("");
                 var a1=$("<a name='1'>首页</a>");
                 $("#pages").append(a1);
-                var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
-                $("#pages").append(a2);
-                var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
-                $("#pages").append(a3);
+                //if(res.currpage>1){
+                    var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
+                    $("#pages").append(a2);
+                //}
+                //if(res.currpage<res.totalPage){
+                    var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
+                    $("#pages").append(a3);
+                //}
                 var a4=$("<a name='"+(res.totalPage)+"'>尾页</a>");
                 $("#pages").append(a4);
             })
