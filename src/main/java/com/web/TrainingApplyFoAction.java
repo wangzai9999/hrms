@@ -72,7 +72,8 @@ public class TrainingApplyFoAction {
     @RequestMapping("/mod")
     @ResponseBody
     public String mod(TrainingApplyFo trainingApplyFo){
-        biz.add(trainingApplyFo);
+        biz.mod(trainingApplyFo);
+
         return "1";
     }
 
@@ -103,7 +104,7 @@ public class TrainingApplyFoAction {
     public ModelAndView shen(Long id,ModelAndView mv){
         TrainingApplyFo fo=biz.getOne(id);
         mv.setViewName("taf/shen");
-        mv.addObject("mv",mv);
+        mv.addObject("mv",fo);
         return mv;
     }
 

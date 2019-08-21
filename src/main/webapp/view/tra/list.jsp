@@ -35,7 +35,6 @@
         })
         $.post("taf/cha.action","",function (res) {
             cha1=res.tf_tr_id.tr_id;
-            alert(cha1);
         },"json");
 
         list(1);

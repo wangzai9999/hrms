@@ -18,10 +18,12 @@ public class TrainingInfo implements Serializable {
     private String tr_subject;
     private String tr_status="新增，请等待";
     private Long tr_num;
+    private Long tr_havnum;
     private Date tr_starttime;
     private Date tr_endtime;
     private String tr_remark;
 
+    public TrainingInfo(){}
     public Long getTr_id() {
         return tr_id;
     }
@@ -84,5 +86,13 @@ public class TrainingInfo implements Serializable {
 
     public void setTr_num(Long tr_num) {
         this.tr_num = tr_num;
+    }
+
+    public Long getTr_havnum() {
+        return tr_havnum;
+    }
+
+    public void setTr_havnum(Long tr_havnum) {
+        this.tr_havnum = tr_havnum;
     }
 }

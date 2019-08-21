@@ -25,9 +25,6 @@ public class TestDEP {
     public  void ttt11(){
         ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
         UserinfoDao dao=context.getBean(UserinfoDao.class);
-        List<Userinfo> list=dao.getAllByDep(1L);
-        for (Userinfo u : list) {
-            System.out.println(u.getUs_id()+","+u.getUs_name());
-        }
+
     }
 }

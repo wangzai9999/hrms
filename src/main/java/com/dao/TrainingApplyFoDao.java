@@ -12,7 +12,7 @@ public interface TrainingApplyFoDao {
     @Insert("insert into training_apply_fo values(taf_seq.nextval,#{tf_us_id.us_id},#{tf_tr_id.tr_id},#{tf_status},sysdate,#{tf_auditor},#{tf_opinion})")
     public void add(TrainingApplyFo trainingApplyFo);
 
-    @Update("update training_apply_fo set tf_us_id=#{tf_us_id.us_id},tf_tr_id=#{tf_tr_id.tr_id} where tf_id=#{tf_id}")
+    @Update("update training_apply_fo set tf_status=#{tf_status},tf_opinion=#{tf_opinion} where tf_id=#{tf_id}")
     public void mod(TrainingApplyFo trainingApplyFo);
 
     @Delete("delete from training_apply_fo where tf_id=#{id}")

@@ -9,6 +9,9 @@ public class PageBean  implements Serializable {
 	private int totalNum;//总条数
 	private int totalPage;//总页码
 	private List  list;//装  翻页数据
+
+	private List  div;
+
 	public int getCurrpage() {
 		return currpage;
 	}
@@ -49,5 +52,11 @@ public class PageBean  implements Serializable {
 		this.list = list;
 	}
 
+	public List getDiv() {
+		return div;
+	}
 
+	public void setDiv(List div) {
+		this.div = div;
+	}
 }
