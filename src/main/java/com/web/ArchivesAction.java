@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/arc")
@@ -104,12 +105,19 @@ public class ArchivesAction {
         }
         biz.add(archives);
         return "user/list" ;
-
         }
     }
 
     @RequestMapping("/mod")
-    public String mod(Archives archives, MultipartFile file, HttpServletRequest req){
+    public String mod(@Valid Archives archives,BindingResult res, MultipartFile file, HttpServletRequest req,Model mo){
+        if (res.hasErrors()){
+            List<FieldError> list=res.getFieldErrors();
+            for (FieldError er:list){
+                mo.addAttribute(er.getField(),er.getDefaultMessage());
+            }
+            mo.addAttribute("arc",archives);
+            return "arcs/mod";
+        }else {
         Userinfo us=(Userinfo) req.getSession().getAttribute("loger");
         archives.setAr_change(us.getUs_name());
         if (file!=null){
@@ -124,9 +132,9 @@ public class ArchivesAction {
                 e.printStackTrace();
             }
         }
-        System.out.println(archives.toString());
         biz.mod(archives);
         return "user/list" ;
+        }
     }
 
     @RequestMapping("/del")

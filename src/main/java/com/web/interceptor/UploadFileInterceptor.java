@@ -28,18 +28,9 @@ public class UploadFileInterceptor extends HandlerInterceptorAdapter {
                    response.getWriter().print("<script>alert('不支持图片以外的文件格式！;');history.go(-1)</script>");
                    return false;
                }
-
-
            }
            return true;
-
-
-
        }
-
-
-
-
         return false;
     }
 }

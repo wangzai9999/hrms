@@ -5,6 +5,7 @@
           + path + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
@@ -35,15 +36,23 @@
   }
   $(function () {
     var usid=getQueryVariable("id");
-    $.getJSON("user/getone.action","usid="+usid,function (res) {
-         $("#usid").attr("value",res.us_id);
-         $("#usname").attr("value",res.us_name);
-    });
+    if (usid==false){
+        var uid=$("#usid").val();
+        $.post("user/getone.action","usid="+uid,function (user) {
+            $("#usname").attr("value",user.us_name);
+        },"json");
+    }else {
+        $.getJSON("user/getone.action","usid="+usid,function (res) {
+            $("#usid").attr("value",res.us_id);
+            $("#usname").attr("value",res.us_name);
+        });
+    }
+
 
     $("#telephone").change(function () {
       $(this).next("span").html("");
       var phone=$(this).val();
-      var ph=/^1[3|4|5|7|8][0-9]{9}$/;
+      var ph=/^1[0-9]{10}$/;
       if (!ph.test(phone)) {
         $(this).next("span").html("请输入正确的电话号码！");
       }
@@ -51,7 +60,7 @@
     $("#idcard").change(function () {
       $(this).next("span").html("");
       var ic=$(this).val();
-      var reg=/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+      var reg=/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
       if (!reg.test(ic)) {
         $(this).next("span").html("请输入正确的身份证号码！");
       }
@@ -75,60 +84,60 @@
     <div class="in_bg">
       <table border="0" cellpadding="0" cellspacing="0" class="table_input txt">
         <tr>
-          <input type="hidden" name="ar_uid.us_id" value="" id="usid">
-          <td>员工姓名：<input type="text" name="name" value="" id="usname" disabled></td>
-          <td>身份证号：<input type="text" name="ar_id_card" required id="idcard"/><span style="color: red"></span></td>
+          <input type="hidden" name="ar_uid.us_id" value="${arc.ar_uid.us_id}" id="usid">
+          <td>员工姓名：<input type="text" name="name" value="${arc.ar_uid.us_name}" id="usname" disabled></td>
+          <td>身份证号：<input type="text" name="ar_id_card" value="${arc.ar_id_card}" id="idcard" required/><span style="color: red">${ar_id_card}</span></td>
         </tr>
         <tr>
-          <td>性别：男<input type="radio" name="ar_sex" value="男" checked/>女<input type="radio" name="ar_sex" value="女"/></td>
-          <td>年龄：<input type="number" name="ar_age" required min="18" max="65"/></td>
+          <td>性别：男<input type="radio" name="ar_sex" value="男" ${((arc.ar_sex eq '男') or (arc.ar_sex eq null)) ?'checked':''}/>女<input type="radio" name="ar_sex" value="女" ${arc.ar_sex eq '女'?'checked':''}/></td>
+          <td>年龄：<input type="number" name="ar_age" required value="${arc.ar_age}" min="18" max="65"/></td>
 
         </tr>
         <tr>
-          <td>工龄：<input type="number" name="ar_gl" required max="60"></td>
-          <td>国籍：<input type="text" name="ar_nationality" required></td>
+          <td>工龄：<input type="number" name="ar_gl" required max="60" value="${arc.ar_gl}"></td>
+          <td>国籍：<input type="text" name="ar_nationality" value="${arc.ar_nationality}" required></td>
 
         </tr>
 
         <tr>
-          <td>民族：<input type="text" name="ar_race" required /></td>
-          <td>政治面貌：<input type="text" name="ar_party" required></td>
+          <td>民族：<input type="text" name="ar_race" value="${arc.ar_race}" required /></td>
+          <td>政治面貌：<input type="text" name="ar_party" value="${arc.ar_party}" required></td>
 
         </tr>
         <tr>
-          <td>出生日期：<input type="date" name="ar_birthday" required max="2001-12-31" min="1959-12-31"></td>
-          <td>出生地：<input type="text" name="ar_birthplace" required /></td>
+          <td>出生日期：<input type="date" name="ar_birthday" value='<fmt:formatDate value="${arc.ar_birthday}" pattern="yyyy-MM-dd"/>' required max="2001-12-31" min="1959-12-31"></td>
+          <td>出生地：<input type="text" name="ar_birthplace" value="${arc.ar_birthplace}" required /></td>
         </tr>
         <tr>
-          <td>专业：<input type="text" name="ar_educated_major" required></td>
+          <td>专业：<input type="text" name="ar_educated_major" value="${arc.ar_educated_major}" required></td>
           <td>学历：
             <select name="ar_educated_degree">
-              <option value="高中">高中</option>
-              <option value="中专">中专</option>
-              <option value="大专">大专</option>
-              <option value="本科">本科</option>
-              <option value="硕士">硕士</option>
-              <option value="博士">博士</option>
+              <option value="高中" ${arc.ar_educated_degree eq '高中'?'selected':''}>高中</option>
+              <option value="中专" ${arc.ar_educated_degree eq '中专'?'selected':''}>中专</option>
+              <option value="大专" ${arc.ar_educated_degree eq '大专'?'selected':''}>大专</option>
+              <option value="本科" ${arc.ar_educated_degree eq '本科'?'selected':''}>本科</option>
+              <option value="硕士" ${arc.ar_educated_degree eq '硕士'?'selected':''}>硕士</option>
+              <option value="博士" ${arc.ar_educated_degree eq '博士'?'selected':''}>博士</option>
           </select>
           </td>
         </tr>
         <tr>
-          <td>电子邮件：<input type="email" name="ar_email" required></td>
-          <td>手机号码：<input type="text" name="ar_telephone" required id="telephone"/><span style="color: red"></span></td>
+          <td>电子邮件：<input type="email" name="ar_email" value="${arc.ar_email}" required></td>
+          <td>手机号码：<input type="text" name="ar_telephone" value="${arc.ar_telephone}" required  id="telephone"/><span style="color: red">${ar_telephone}</span></td>
 
         </tr>
         <tr>
-          <td>QQ号码：<input type="text" name="ar_qq" required /></td>
-          <td>特长：<input type="text" name="ar_speciality"  /></td>
+          <td>QQ号码：<input type="text" name="ar_qq" required value="${arc.ar_qq}"/></td>
+          <td>特长：<input type="text" name="ar_speciality" value="${arc.ar_speciality}" /></td>
         </tr>
         <tr>
-          <td colspan="2">家庭住址：<input type="text" name="ar_address" required></td>
+          <td colspan="2">家庭住址：<input type="text" name="ar_address" value="${arc.ar_address}" required></td>
         </tr>
         <tr>
-          <td colspan="2"><span >爱好:</span><textarea rows="6" cols="72" name="ar_love" ></textarea></td>
+          <td colspan="2"><span >爱好:</span><textarea rows="6" cols="72" name="ar_love" >${arc.ar_love}</textarea></td>
         </tr>
         <tr>
-          <td colspan="2"><span >工作经历:</span><textarea rows="6" cols="72" name="ar_gzjl" ></textarea></td>
+          <td colspan="2"><span >工作经历:</span><textarea rows="6" cols="72" name="ar_gzjl" >${arc.ar_gzjl}</textarea></td>
         </tr>
         <tr>
 
