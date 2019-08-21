@@ -12,7 +12,7 @@ public interface WorkTimeDao {
 
     public List<WorkTime> getAll();
 
-    public WorkTime getWtId(Long usid);
+    public List<WorkTime> getWtId(Long usid);
 
 
 }

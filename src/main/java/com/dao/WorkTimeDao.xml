@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.WorkTimeDao">
+
+    <resultMap id="workmap" type="workTime">
+        <id property="wt_id" column="wt_id"/>
+        <result property="wt_begin" column="wt_begin"/>
+        <result property="wt_end" column="wt_end"/>
+        <result property="wt_bstatus" column="wt_bstatus"/>
+        <result property="wt_estatus" column="wt_estatus"/>
+        <association property="us_id" column="us_id" select="com.dao.UserinfoDao.getOne"/>
+    </resultMap>
     <insert id="add">
         insert into worktime values (wt_seq.nextval,#{us_id.us_id},sysdate,'',#{wt_bstatus},'')
     </insert>
@@ -11,6 +20,8 @@
 <select id="getWtId" resultType="workTime">
     select * from worktime where wt_id=(select max(wt_id) from worktime where us_id=#{us_id.us_id})
 </select>
-
+<select id="getWtId" resultMap="workmap">
+    select * from worktime where us_id=#{usid}
+</select>
 
 </mapper>
