@@ -20,8 +20,6 @@
 <select id="getWtId" resultType="workTime">
     select * from worktime where wt_id=(select max(wt_id) from worktime where us_id=#{us_id.us_id})
 </select>
-<select id="getWtId" resultMap="workmap">
-    select * from worktime where us_id=#{usid}
-</select>
+
 
 </mapper>
