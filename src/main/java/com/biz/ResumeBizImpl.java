@@ -2,6 +2,7 @@ package com.biz;
 
 import com.dao.ResumeDao;
 import com.entity.Resume;
+import com.entity.Userinfo;
 import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,11 @@ public class ResumeBizImpl implements ResumeBiz{
     @Override
     public Resume getOne(Long re_id) {
         return dao.getOne(re_id);
+    }
+
+    @Override
+    public Userinfo getUserinfoByReid(Long reid) {
+        return dao.getUserinfoByReid(reid);
     }
 
 }

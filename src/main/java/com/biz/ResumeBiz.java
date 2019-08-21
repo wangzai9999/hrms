@@ -1,6 +1,7 @@
 package com.biz;
 
 import com.entity.Resume;
+import com.entity.Userinfo;
 import com.util.PageBean;
 
 import java.util.List;
@@ -14,5 +15,7 @@ public interface ResumeBiz {
     public void del(Long id);
 
     public Resume getOne(Long re_id);
+
+    public Userinfo getUserinfoByReid(Long reid);
 
 }

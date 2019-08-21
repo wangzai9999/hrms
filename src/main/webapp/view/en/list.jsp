@@ -104,10 +104,14 @@
             $("#pages").html("");
             var a1=$("<a name='1'>首页</a>");
             $("#pages").append(a1);
-            var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
-            $("#pages").append(a2);
-            var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
-            $("#pages").append(a3);
+            if(res.currpage>1){
+                var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
+                $("#pages").append(a2);
+            }
+            if(res.currpage<res.totalPage){
+                var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
+                $("#pages").append(a3);
+            }
             var a4=$("<a name='"+(res.totalPage)+"'>尾页</a>");
             $("#pages").append(a4);
 

@@ -14,7 +14,10 @@ public interface EngageMajorReleaseDao {
 
     public Long getCount(@Param("enp") EngageParam enp);
 
-    @Delete("delete from engage_major_release where en_id=#{en_id}")
+    @Delete("begin " +
+            " delete from resume where re_enid=#{en_id}" +
+            "delete from engage_major_release where en_id=#{en_id};" +
+            "end;")
     public void del(Long en_id);
 
     @Results(value = {

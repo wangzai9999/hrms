@@ -2,6 +2,7 @@ package com.web;
 
 import com.biz.ResumeBiz;
 import com.entity.Resume;
+import com.entity.Userinfo;
 import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -114,8 +115,23 @@ public class ResumeAction {
 
     @RequestMapping("/getone")
     public String getOne(Long re_id, Model m){
+        System.out.print("************************:"+re_id);
         m.addAttribute("re",biz.getOne(re_id));
         return "ach/add";
+    }
+
+    @RequestMapping("/ismanager")
+    @ResponseBody
+    public String getOneDepMan(Long reid,HttpServletRequest req){
+        Userinfo u1 = (Userinfo)req.getSession().getAttribute("loger");
+        Userinfo u2 = biz.getUserinfoByReid(reid);
+        if(u1!=u2){
+            System.out.print("您不是该部门的经理，无法考核！");
+            return "您不是该部门的经理，无法考核！";
+        }else{
+            System.out.print("部门经理，可以考核！");
+            return "1";
+        }
     }
 
 }

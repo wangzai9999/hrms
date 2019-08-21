@@ -6,6 +6,7 @@ import com.entity.Userinfo;
 import com.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,8 +40,9 @@ public class RecAchAction {
         return "ach/list";
     }
     @RequestMapping("/getone")
-    public String getOne(Long ach_id){
-        biz.getOne(ach_id);
+    public String getOne(Long ach_id, Model m){
+        RecAch ach = biz.getOne(ach_id);
+        m.addAttribute("ach",ach);
         return "ach/update";
     }
     @RequestMapping("/update")
@@ -54,4 +56,10 @@ public class RecAchAction {
         return biz.getAllByPage(page);
     }
 
+    @RequestMapping("getonebyre")
+    public String getOneByRe(Long resid, Model m){
+        RecAch ach = biz.getOneByRe(resid);
+        m.addAttribute("ach",ach);
+        return "ach/oneach";
+    }
 }

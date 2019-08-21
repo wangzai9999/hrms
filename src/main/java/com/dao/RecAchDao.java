@@ -18,7 +18,10 @@ public interface RecAchDao {
     @Select("select count(1) from rec_ach")
     public Long getCount();
 
-    @Insert("insert into rec_ach values(ach_seq.nextval,#{ach_resid.re_id},#{ach_exam},#{ach_interview},#{ach_auditor.us_id},#{ach_status},#{ach_comm})")
+    @Insert("begin " +
+            " update resume set re_status='已考核' where re_id=#{ach_resid.re_id};" +
+            "insert into rec_ach values(ach_seq.nextval,#{ach_resid.re_id},#{ach_exam},#{ach_interview},#{ach_auditor.us_id},#{ach_status},#{ach_comm});" +
+            " end;")
     public void add(RecAch ach);
 
     @Results({
@@ -33,5 +36,8 @@ public interface RecAchDao {
 
     @Delete("delete from rec_ach where ach_id=#{ach_id}")
     public void del(Long ach_id);
+
+    @Select("select * from rec_ach where ach_resid=#{resid}")
+    public RecAch getOneByRe(Long resid);
 
 }
