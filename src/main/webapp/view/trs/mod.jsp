@@ -52,7 +52,7 @@
                 <tr>
                     <td ></td><td></td>
                     <td>评论</td>
-                    <td><input type="text" name="ts_comm" value="${trs.ts_comm}"  />
+                    <td><textarea style="height: 150px;width: 200px" name="ts_comm">${trs.ts_comm}</textarea>
                         </td>
                 </tr>
                 <tr>
