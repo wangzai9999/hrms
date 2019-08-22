@@ -11,10 +11,10 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <base href="<%=basePath%>">
     <title>Title</title>
     <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
@@ -23,15 +23,36 @@
     <script type="text/javascript">
 
         function save(prop,url){
-            var tra=$("#form_tra").serialize();
-            $.post("tra/add.action",tra,function (res) {
-                if(res!=null) {
-                    alert(prop+'成功！');
-                    location.href=url;
-                } else {
-                    alert(prop+"失败");
-                }
-            });
+            var  tr_man=$("#tr_man").val();
+            var  tr_subject=$("#tr_subject").val();
+            var tr_starttime=$("#tr_starttime").val();
+            var tr_endtime=$("#tr_endtime").val();
+            var tr_num=$("#tr_num").val();
+
+            var num=/^\d+$/;
+            if (tr_man==null||tr_man=="") {
+                alert("培训人:不能为空");
+            }else if (tr_subject==null||tr_subject=="") {
+                alert("培训项目:不能为空");
+            }else if (tr_starttime==null||tr_starttime=="") {
+                alert("培训开始时间:不能为空");
+            }else if (tr_endtime==null||tr_endtime=="") {
+                alert("培训结束时间:不能为空");
+            }else if (tr_num==null||tr_num=="") {
+                alert("培训人数:不能为空");
+            }else if (!num.test(tr_num)) {
+                alert("培训人数:请填写数字");
+            }else {
+                var tra=$("#form_tra").serialize();
+                $.post("tra/add.action",tra,function (res) {
+                    if(res!=null) {
+                        alert(prop+'成功！');
+                        location.href=url;
+                    } else {
+                        alert(prop+"失败");
+                    }
+                });
+            }
         }
 
     </script>
@@ -53,29 +74,29 @@
                     <td width="126"></td>
                     <td width="126"></td>
                     <td width="126">培训人</td>
-                    <td><input type="text"  name="tr_man"/></td>
+                    <td><input type="text"  name="tr_man" id="tr_man" required="required"/></td>
                     <td width="126"></td>
                     <td  width="411"></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训项目</td>
-                    <td><input type="text"  name="tr_subject" /></td>
+                    <td><input type="text"  name="tr_subject" id="tr_subject"  required="required"/></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训开始时间</td>
-                    <td><input type="text"  name="tr_starttime" /></td>
+                    <td><input type="text"  name="tr_starttime"  id="tr_starttime" required="required"/></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训结束时间</td>
-                    <td><input type="text"name="tr_endtime" /></td>
+                    <td><input type="text"name="tr_endtime" id="tr_endtime"  required="required"/></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训人数</td>
-                    <td><input type="text"  name="tr_num" /></td>
+                    <td><input type="text"  name="tr_num" id="tr_num" required="required" /></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>

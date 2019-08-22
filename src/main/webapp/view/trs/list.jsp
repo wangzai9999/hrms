@@ -39,22 +39,21 @@
     })
 
     function div(i){
-        if($("#show0").css('display')=='none'){
-            $("#show0").css("display","block");
+        var s="#show"+i;
+        if($(s).css('display')=='none'){
+            $(s).css("display","block");
         }else{
-            $("#show0").css("display","none");
-        }
-    }
+            $(s).css("display","none");
+    }}
     function query() {
-        list(1);
+        list();
     }
     function gopage() {
         var page=document.getElementById("page").value;
         list(page);
     }
     
-    function list(page) {
-        var param=$("#form_us").serialize()+"&page="+page;
+    function list() {
         $.post("trs/getall.action","",function (res) {
             var trs=res.list;
             var tra=res.div;
@@ -68,22 +67,21 @@
                 var td3=$("<td>"+tra[i].tr_havnum+"</td>");
                 tr.append(td3);
                 var traaaa =tra[i].tr_id;
-                $("#trs").append(tr);
                 var div=$("<div id='show"+i+"' style='left:400px;color: #0E2D5F;display:none;'></div>");
                 var tt=$("<tr><td>员工姓名</td><td>对本次培训评价</td><td>操作</td></tr>");
                 div.append(tt);
-                for(var i=0;i<trs.length;i++){
-                    var tr1=$("<tr></tr>");
-                    if (trs[i].ts_trid.tr_id==traaaa){
-                        var td1=$("<td>"+trs[i].ts_usid.us_name+"</td>");
-                        var td2=$("<td>"+trs[i].ts_comm+"</td>");
-                        var td3=$("<td><a href='trs/getOne.action?id="+trs[i].ts_id+"'>修改</a></td>")
+                for(var j=0;j<trs.length;j++){
+                    if (trs[j].ts_trid.tr_id==traaaa){var tr1=$("<tr></tr>");
+                        var td1=$("<td>"+trs[j].ts_usid.us_name+"</td>");
+                        var td2=$("<td>"+trs[j].ts_comm+"</td>");
+                        var td3=$("<td><a href='trs/getOne.action?id="+trs[j].ts_id+"'>修改</a></td>")
                         tr1.append(td1);
                         tr1.append(td2);
                         tr1.append(td3);
                     }
                     div.append(tr1);
                 }
+                $("#trs").append(tr);
                 $("#trs").append(div);
             }
 
