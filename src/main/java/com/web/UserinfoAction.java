@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -36,6 +37,7 @@ public class UserinfoAction {
         if (u != null) {
             if (u.getUs_password().equals(password)) {
                 req.getSession().setAttribute("loger", u);
+                req.getSession().setAttribute("depid",u.getUs_dep().getDe_id());
                 return "main";
             } else {
                 return "login";
@@ -98,6 +100,9 @@ public class UserinfoAction {
     public List<Userinfo> getAllNotDm(){
        return biz.getAllNotDm();
     }
-
-
+    @ResponseBody
+    @RequestMapping("/getallbydid")
+    public List<Userinfo> getAllByDep(Long did, Map m){
+       return biz.getAllByDep(did);
+    }
 }

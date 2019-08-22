@@ -63,6 +63,13 @@
                     </ul>
                 </li>
 
+                <li> <a href="#" class="nav-top-item" id="man_nav_7" onclick="list_sub_nav(id)"> 绩效管理 </a>
+                    <ul>
+                        <li><a href="view/achs/list.jsp" target="rightFrame" id="a_nav_17" onclick="a_sub_nav(id)">部门员工绩效</a></li>
+
+                    </ul>
+                </li>
+
                 <li> <a href="#" class="nav-top-item" id="man_nav_6" onclick="list_sub_nav(id)"> 基础数据 </a>
                     <ul>
                         <li><a href="crm_base/dict.html" target="rightFrame" id="a_nav_14" onclick="a_sub_nav(id)">数据字典管理</a></li>

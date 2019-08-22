@@ -21,5 +21,14 @@
     select * from worktime where wt_id=(select max(wt_id) from worktime where us_id=#{us_id.us_id})
 </select>
 
+    <select id="getTs" resultType="long">
+        select count(1) from worktime where us_id=#{0} and (wt_begin between #{1} and #{2})
+    </select>
+    <select id="getCd" resultType="long">
+        select count(1) from  (select * from worktime w  where w.us_id =#{0} and ( wt_bstatus='迟到'or wt_bstatus is null) and (wt_begin between #{1} and #{2}))
+    </select>
+    <select id="getZt" resultType="long">
+        select count(1) from  (select * from worktime w  where w.us_id =#{0} and ( wt_estatus='早退'or wt_estatus is null) and (wt_begin between #{1} and #{2}) )
+    </select>
 
 </mapper>
