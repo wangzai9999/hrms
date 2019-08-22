@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/wt")
@@ -39,7 +40,6 @@ public class WorkTimeAction {
         if(nh>=9){
            st="迟到";
         }
-
         wt.setWt_bstatus(st);
         biz.add(wt);
         return "上班签到成功！";
@@ -49,7 +49,6 @@ public class WorkTimeAction {
     public String mod(WorkTime wt,HttpServletRequest req){
         Userinfo us= (Userinfo) req.getSession().getAttribute("loger");
         wt=biz.getWtId(us.getUs_id());
-
         Calendar nt =Calendar.getInstance();
         int nh=nt.get(Calendar.HOUR_OF_DAY);
         String est="正常";
@@ -60,7 +59,14 @@ public class WorkTimeAction {
         wt.setWt_estatus(est);
         biz.mod(wt);
         return "下班签退成功！";
+    }
 
+    @RequestMapping("/getwt")
+    public String getWt(Long usid, Map map){
+        map.put("ts",biz.getTs(usid));
+        map.put("cd",biz.getCd(usid));
+        map.put("zt",biz.getZt(usid));
+        return "achs/add" ;
     }
 
 

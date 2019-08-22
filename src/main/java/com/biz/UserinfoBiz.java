@@ -17,4 +17,6 @@ public interface UserinfoBiz {
     public Long getNowID();
 
     public List<Userinfo> getAllNotDm();
+    public List<Userinfo> getAllByDep(Long id);
+
 }

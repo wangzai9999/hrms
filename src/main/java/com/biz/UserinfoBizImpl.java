@@ -79,4 +79,9 @@ public class UserinfoBizImpl implements UserinfoBiz{
     public List<Userinfo> getAllNotDm() {
         return dao.getAllNotDm();
     }
+
+    @Override
+    public List<Userinfo> getAllByDep(Long id) {
+        return dao.getAllByDep(id);
+    }
 }

@@ -13,4 +13,10 @@ public interface WorkTimeBiz {
 
     public WorkTime getWtId(Long usid);
 
+    public Long getTs(Long usid);
+
+    public Long getCd(Long usid);
+
+    public Long getZt(Long usid);
+
 }

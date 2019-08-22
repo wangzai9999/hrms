@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper
 public interface UserinfoDao {
 
+    @ResultMap("us")
     @Select("select * from userinfo where us_name=#{name}")
     public Userinfo UserLogin( String name);
 
@@ -56,6 +57,7 @@ public interface UserinfoDao {
     public Userinfo getAllByUsid(Long id);
 
     @Select("select * from userinfo where us_dep=#{id}")
+    @ResultMap("us")
     public List<Userinfo> getAllByDep(Long id);
     @Select("select * from userinfo where us_id not in (select de_man from department)")
     public List<Userinfo> getAllNotDm();
