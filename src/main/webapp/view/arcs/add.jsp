@@ -67,6 +67,31 @@
     })
   });
 
+  $(function () {
+    $("#subt").click(function () {
+
+
+
+     var phone1=$("#telephone").val();
+      var ph=/^1[0-9]{10}$/;
+      if (!ph.test(phone1)) {
+        alert("请输入正确的电话号码！");
+        return false;
+      }
+
+
+      var icd=$("#idcard").val();
+      var reg=/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+      if (!reg.test(icd)) {
+        alert("请输入正确的身份证号码！");
+        return false;
+      }
+
+     $("#arcsform").submit();
+
+    });
+  })
+
 
 
 
@@ -77,7 +102,7 @@
 <body>
 
 
-<form action="arc/add.action" method="post" enctype="multipart/form-data" >
+<form action="arc/add.action" method="post" enctype="multipart/form-data" id="arcsform" >
 <!--标准表单-->
 <div style="padding:5px;">
   <div class="out_bg">
@@ -146,7 +171,7 @@
         </tr>
         <tr>
 
-          <td colspan="3"><input type="submit" value="增加"></td>
+          <td colspan="3"><input type="button" value="增加" id="subt"></td>
 
         </tr>
       </table>

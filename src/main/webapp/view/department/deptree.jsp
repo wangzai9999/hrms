@@ -89,6 +89,10 @@
      },"json");
    }
 
+   function remove() {
+     alert("该部门下有员工等其它信息！如要删除请先清除员工等信息！");
+   }
+
   </script>
 </head>
 
@@ -103,6 +107,7 @@
 
   <div onclick="adddept()" data-options="iconCls:'icon-add'">增加部门</div>
   <div onclick="moddept()" data-options="iconCls:'icon-edit'">修改部门</div>
+  <div onclick="remove()" data-options="iconCls:'icon-remove'">移除</div>
 </div>
 
 <div id="addwin" class="easyui-window" style="width: 500px ;height: 400px" data-options="title:'增加部门',closed:true,modal:true">
