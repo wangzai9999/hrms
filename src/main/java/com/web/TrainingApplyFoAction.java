@@ -46,7 +46,11 @@ public class TrainingApplyFoAction {
     public void setTrz(TrainingInfoBiz trz) {
         this.trz = trz;
     }
-
+    @InitBinder
+    public void convertTime(WebDataBinder binder){
+        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class,new CustomDateEditor(ss,true));
+    }
 
     @RequestMapping("/add")
     public String add(Long id, HttpServletRequest request){

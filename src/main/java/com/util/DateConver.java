@@ -19,7 +19,7 @@ public class DateConver implements Converter<String, Date> {
     public Date convert(String time) {
         for (DateFormat dateFormat : format) {
             try {
-                return new Date(dateFormat.parse(time).getDate());
+                return dateFormat.parse(time.toString());
             } catch (ParseException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
