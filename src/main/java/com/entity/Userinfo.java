@@ -1,10 +1,14 @@
 package com.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 public class Userinfo implements Serializable {
 
     private Long us_id;
+    @NotEmpty(message = "员工姓名不能为空")
     private String us_name;
     private String us_password="123";
     private Role ro_id;

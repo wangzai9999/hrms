@@ -63,20 +63,9 @@
                     </ul>
                 </li>
 
-                <li> <a href="#" class="nav-top-item" id="man_nav_7" onclick="list_sub_nav(id)"> 绩效管理 </a>
+                <li> <a href="#" class="nav-top-item" id="man_nav_6" onclick="list_sub_nav(id)"> 权限管理 </a>
                     <ul>
-                        <li><a href="view/achs/list.jsp" target="rightFrame" id="a_nav_17" onclick="a_sub_nav(id)">部门员工绩效考核</a></li>
-                        <li><a href="view/av/list.jsp" target="rightFrame" id="a_nav_18" onclick="a_sub_nav(id)">员工绩效</a></li>
-
-
-                    </ul>
-                </li>
-
-                <li> <a href="#" class="nav-top-item" id="man_nav_6" onclick="list_sub_nav(id)"> 基础数据 </a>
-                    <ul>
-                        <li><a href="crm_base/dict.html" target="rightFrame" id="a_nav_14" onclick="a_sub_nav(id)">数据字典管理</a></li>
-                        <li><a href="crm_base/product.html" target="rightFrame" id="a_nav_15" onclick="a_sub_nav(id)">查询产品信息</a></li>
-                        <li><a href="crm_base/stock.html" target="rightFrame" id="a_nav_16" onclick="a_sub_nav(id)">查询库存</a></li>
+                        <li><a href="view/power/powers.jsp" target="rightFrame" id="a_nav_15" onclick="a_sub_nav(id)">权限树</a></li>
                     </ul>
                 </li>
             </ul>

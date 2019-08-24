@@ -7,6 +7,9 @@ import com.util.TrainingInfoParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -32,11 +36,7 @@ public class TrainingInfoAction {
     public void setBiz(TrainingInfoBiz biz) {
         this.biz = biz;
     }
-    @InitBinder
-    public void convertTime(WebDataBinder binder){
-        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd");
-        binder.registerCustomEditor(Date.class,new CustomDateEditor(ss,true));
-    }
+
     @RequestMapping("/get")
     public ModelAndView get(Long id, ModelAndView mv){
         TrainingInfo trainingInfo=biz.getOne(id);
@@ -66,10 +66,19 @@ public class TrainingInfoAction {
     }
 
     @RequestMapping("/add")
-    @ResponseBody
-    public String add(TrainingInfo trainingInfo){
-        biz.add(trainingInfo);
-        return "1";
+    public String add(@Valid TrainingInfo trainingInfo, BindingResult result, Model model){
+        if (result.hasErrors()){
+            List<FieldError> list=result.getFieldErrors();
+            for (FieldError er:list){
+                model.addAttribute(er.getField(),er.getDefaultMessage());
+            }
+            model.addAttribute("tra",trainingInfo);
+            return "tra/add";
+
+        }else {
+            biz.add(trainingInfo);
+            return "tra/list";
+        }
     }
 
     @RequestMapping("/del")

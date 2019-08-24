@@ -32,22 +32,19 @@
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
     </bean>
 
-    <mvc:annotation-driven validator="myval" />
+    <mvc:annotation-driven validator="myval"  conversion-service="conver"/>
 
 
+    <bean id="conver" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.util.DateConver"/>
 
+            </list>
 
+        </property>
 
-  
-   
-
-    
-    
-    
-
-    
-
-
+    </bean>
     
 
     <bean id="multipartResolver"

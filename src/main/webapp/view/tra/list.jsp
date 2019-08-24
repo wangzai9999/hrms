@@ -39,10 +39,12 @@
 
         list(1);
 
+        $("#sta,#mint,#maxt").blur(function() {
+            list(1);
+        })
+
     })
-    function query() {
-        list(1);
-    }
+
     function gopage() {
         var page=document.getElementById("page").value;
         list(page);
@@ -124,9 +126,6 @@
          </div>
          <a href="view/tra/add.jsp">添加</a>
          <a>申请</a>
-         <div class="operation_button">
-             <button value="查询" onclick="query()">查询</button>
-         </div>
          <div class="search_input">
              <form id="form_us">
              <ul class="txt">

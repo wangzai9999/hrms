@@ -10,7 +10,7 @@ public interface RoleBiz {
 
     public Role getOne(Long id);
 
-    public void add(Role r);
+    public void add(String name,Integer[] id);
 
     public void del(Long id);
 

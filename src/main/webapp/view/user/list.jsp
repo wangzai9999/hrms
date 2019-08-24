@@ -56,10 +56,13 @@
             var pp=$(this).attr("name");
             list(pp);
         })
+
+        $("#forid,#deoid,#roid,#posid").blur(function() {
+            list(1);
+        })
+
+
     })
-    function query() {
-        list(1);
-    }
     function gopage() {
         var page=document.getElementById("page").value;
         list(page);
@@ -121,17 +124,14 @@
          <div class="txt" style="padding-top:3px;" >当前位置：客户开发计划&nbsp;&gt;&nbsp;客户流失管理&nbsp;&gt;&nbsp;流失信息
              <hr class="hr1" />
          </div>
-         <div class="operation_button">
-             <button value="查询" onclick="query()">查询</button>
-         </div>
          <div class="search_input">
              <form id="form_us">
              <ul class="txt">
                  <li>员工名称：
-                     <input type="text" size="30" name="name"/>
+                     <input type="text" id="forid" size="30" name="name"/>
                  </li>
                  <li>角色：
-                     <select name="ro_id" id="roid">
+                     <select name="ro_id"  id="roid">
                          <option value="0">请选择...</option>
                      </select>
                  </li>
