@@ -87,7 +87,7 @@
                 var sq="<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a>|";
                 var shang="<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>";
                 if (tra[i].tr_status=="本次培训已结束") {update="";sq="";}
-                if (tra[i].tr_id==cha1){sq="";}
+
                 var td8=$("<td>"+update+sq+shang+"</td>");
                 tr.append(td8);
                 $("#us").append(tr);
