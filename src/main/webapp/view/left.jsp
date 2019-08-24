@@ -62,7 +62,17 @@
 
                     </ul>
                 </li>
-
+                <li> <a href="#" class="nav-top-item" id="man_nav_7" onclick="list_sub_nav(id)"> 绩效管理 </a>
+                    <ul>
+                        <li><a href="view/achs/list.jsp" target="rightFrame" id="a_nav_17" onclick="a_sub_nav(id)">员工绩效考核</a></li>
+                        <li><a href="view/av/list.jsp" target="rightFrame" id="a_nav_18" onclick="a_sub_nav(id)">绩效成绩</a></li>
+                    </ul>
+                </li>
+                <li> <a href="#" class="nav-top-item" id="man_nav_8" onclick="list_sub_nav(id)"> 薪资 </a>
+                    <ul>
+                        <li><a href="view/sl/list.jsp" target="rightFrame" id="a_nav_20" onclick="a_sub_nav(id)">员工薪资</a></li>
+                    </ul>
+                </li>
                 <li> <a href="#" class="nav-top-item" id="man_nav_6" onclick="list_sub_nav(id)"> 权限管理 </a>
                     <ul>
                         <li><a href="view/power/powers.jsp" target="rightFrame" id="a_nav_15" onclick="a_sub_nav(id)">权限树</a></li>
