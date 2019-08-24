@@ -65,7 +65,9 @@
 
                 <li> <a href="#" class="nav-top-item" id="man_nav_7" onclick="list_sub_nav(id)"> 绩效管理 </a>
                     <ul>
-                        <li><a href="view/achs/list.jsp" target="rightFrame" id="a_nav_17" onclick="a_sub_nav(id)">部门员工绩效</a></li>
+                        <li><a href="view/achs/list.jsp" target="rightFrame" id="a_nav_17" onclick="a_sub_nav(id)">部门员工绩效考核</a></li>
+                        <li><a href="view/av/list.jsp" target="rightFrame" id="a_nav_18" onclick="a_sub_nav(id)">员工绩效</a></li>
+
 
                     </ul>
                 </li>

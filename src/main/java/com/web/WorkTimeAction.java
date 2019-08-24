@@ -1,5 +1,6 @@
 package com.web;
 
+import com.biz.UserinfoBiz;
 import com.biz.WorkTimeBiz;
 import com.entity.Userinfo;
 import com.entity.WorkTime;
@@ -20,6 +21,16 @@ public class WorkTimeAction {
 
     @Autowired
     private WorkTimeBiz biz;
+    @Autowired
+    private UserinfoBiz ubiz;
+
+    public UserinfoBiz getUbiz() {
+        return ubiz;
+    }
+
+    public void setUbiz(UserinfoBiz ubiz) {
+        this.ubiz = ubiz;
+    }
 
     public WorkTimeBiz getBiz() {
         return biz;
@@ -63,10 +74,11 @@ public class WorkTimeAction {
 
     @RequestMapping("/getwt")
     public String getWt(Long usid, Map map){
+        map.put("us",ubiz.getOne(usid));
         map.put("ts",biz.getTs(usid));
         map.put("cd",biz.getCd(usid));
         map.put("zt",biz.getZt(usid));
-        return "achs/add" ;
+        return "av/add";
     }
 
 
