@@ -32,7 +32,7 @@
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
     </bean>
 
-    <mvc:annotation-driven validator="myval" />
+    <mvc:annotation-driven validator="myval"  conversion-service="conver"/>
 
 
     <bean id="conver" class="org.springframework.context.support.ConversionServiceFactoryBean">
