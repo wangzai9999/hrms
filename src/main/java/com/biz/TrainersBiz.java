@@ -17,4 +17,6 @@ public interface TrainersBiz {
     public void add(Trainers trainers);
 
     public List<Trainers> getAllByTRid(Long id);
+
+    public void delBy(Long id);
 }

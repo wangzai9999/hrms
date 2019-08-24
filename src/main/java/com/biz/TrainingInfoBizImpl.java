@@ -1,9 +1,14 @@
 package com.biz;
 
+import com.dao.TrainersDao;
+import com.dao.TrainingApplyFoDao;
 import com.dao.TrainingInfoDao;
+import com.entity.Trainers;
+import com.entity.TrainingApplyFo;
 import com.entity.TrainingInfo;
 import com.util.PageBean;
 import com.util.TrainingInfoParam;
+import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +22,17 @@ public class TrainingInfoBizImpl implements TrainingInfoBiz{
 
     public TrainingInfoDao getDao() {
         return dao;
+    }
+
+    @Autowired
+    private TrainingApplyFoDao td;
+
+    public TrainingApplyFoDao getTd() {
+        return td;
+    }
+
+    public void setTd(TrainingApplyFoDao td) {
+        this.td = td;
     }
 
     public void setDao(TrainingInfoDao dao) {
@@ -50,6 +66,8 @@ public class TrainingInfoBizImpl implements TrainingInfoBiz{
         if (page>pageBean.getTotalPage()) page=pageBean.getTotalPage();
         pageBean.setCurrpage(page);
         pageBean.setList(dao.getAllByParam(page,pageBean.getPageSize(),param));
+
+        pageBean.setDiv(td.getAll());
         return pageBean;
     }
 

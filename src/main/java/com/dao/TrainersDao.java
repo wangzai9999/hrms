@@ -16,6 +16,8 @@ public interface TrainersDao {
 
     @Delete("delete from trainers where ts_id=#{id}")
     public void del(Long id);
+    @Delete("delete from trainers where ts_trid=#{id}")
+    public void delBy(Long id);
 
     @Results(value = {
             @Result(column ="ts_usid",property = "ts_usid",one = @One(select = "com.dao.UserinfoDao.getOne",fetchType = FetchType.EAGER)),

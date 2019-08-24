@@ -65,6 +65,7 @@ public class TrainingApplyFoAction {
     @RequestMapping("/del")
     public String del(Long id){
         biz.del(id);
+
         return "taf/list";
     }
 

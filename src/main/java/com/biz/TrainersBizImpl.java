@@ -67,4 +67,9 @@ public class TrainersBizImpl implements TrainersBiz {
     public List<Trainers> getAllByTRid(Long id) {
         return dao.getAllByTRid(id);
     }
+
+    @Override
+    public void delBy(Long id) {
+        dao.delBy(id);
+    }
 }

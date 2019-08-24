@@ -66,6 +66,7 @@
         var param=$("#form_us").serialize()+"&page="+page;
         $.post("tra/getall.action",param,function (res) {
             var tra=res.list;
+            var  div=res.div;
             $("#us").html("");
             for(var i=0;i<tra.length;i++){
                 var  tr=$("<tr></tr>");
@@ -84,10 +85,14 @@
                 var td7=$("<td>"+tra[i].tr_num+"</td>");
                 tr.append(td7);
                 var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|";
-                var sq="<a href='taf/add.action?id="+tra[i].tr_id+"'>申请</a>|";
+                var sq="<a href='taf/add.action?id="+tra[i].tr_id+"' >申请</a>|";
                 var shang="<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>";
                 if (tra[i].tr_status=="本次培训已结束") {update="";sq="";}
-
+               for (var j=0;j<div.length;j++){
+                    if (div[j].tf_tr_id.tr_id==tra[i].tr_id){
+                        sq="";
+                    }
+               }
                 var td8=$("<td>"+update+sq+shang+"</td>");
                 tr.append(td8);
                 $("#us").append(tr);

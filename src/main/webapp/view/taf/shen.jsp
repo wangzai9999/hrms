@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -67,13 +68,13 @@
                     </tr>
                     <tr>
                         <td ></td><td></td>
-                        <td>申请状态</td>
-                        <td><input type="text" name="tf_status" value="${mv.tf_status}"/></td>
+                        <td>状态</td>
+                        <td><input style="width: 20px" type="radio" name="tf_status" value="同意">同意 <input type="radio" name="tf_status" value="拒绝">拒绝</td>
                     </tr>
                     <tr>
                         <td ></td><td></td>
                         <td>申请时间</td>
-                        <td><input type="text" value="${mv.tf_date}"  disabled="disabled" /></td>
+                        <td><input type="text" value="<fmt:formatDate value="${mv.tf_date}" pattern="yyyy-MM-dd HH:mm:ss" />"  disabled="disabled" /></td>
                     </tr>
                     <tr>
                         <td ></td><td></td>
