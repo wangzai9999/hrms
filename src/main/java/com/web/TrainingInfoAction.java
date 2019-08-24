@@ -32,11 +32,7 @@ public class TrainingInfoAction {
     public void setBiz(TrainingInfoBiz biz) {
         this.biz = biz;
     }
-    @InitBinder
-    public void convertTime(WebDataBinder binder){
-        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd");
-        binder.registerCustomEditor(Date.class,new CustomDateEditor(ss,true));
-    }
+
     @RequestMapping("/get")
     public ModelAndView get(Long id, ModelAndView mv){
         TrainingInfo trainingInfo=biz.getOne(id);
