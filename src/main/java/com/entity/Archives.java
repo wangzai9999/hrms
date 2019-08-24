@@ -7,6 +7,7 @@ package com.entity;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
@@ -33,6 +34,7 @@ public class Archives implements Serializable {
     private String ar_nationality;
     private String ar_race;
 
+    @Past(message = "生日必须是过去的时间！")
     private Date ar_birthday;
     private String ar_birthplace;
     private Long ar_age;

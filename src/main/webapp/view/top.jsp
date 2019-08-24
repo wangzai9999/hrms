@@ -25,14 +25,16 @@
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
 function signin() {
+
         $.post("wt/add.action","",function (res) {
-        alert(res);
-    },"json");
+
+         },"json");
+        alert("上班签到成功！");
 }
 function signout() {
     $.post("wt/mod.action","",function (res) {
-        alert(res);
     },"json");
+    alert("下班签退成功！");
 }
 </script>
 <body>
