@@ -25,13 +25,6 @@
     <frame src="view/switch.jsp" scrolling="no" noresize="noresize" marginheight="0" marginwidth="0" />
     <frame src="view/right.jsp" noresize="noresize" marginheight="0" marginwidth="0" name="rightFrame" target="_self" />
 </frameset>
-<frame src="UntitledFrame-3">
-</frameset>
-<noframes>
-    <body>
-    </body>
-</noframes>
-
 <body>
 
 </body>

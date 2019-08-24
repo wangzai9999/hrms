@@ -68,7 +68,6 @@ public class PowersAction {
     @RequestMapping("/del")
     public void del(long did,HttpServletResponse response) throws IOException
     {
-
         biz.del(did);
         response.getWriter().print("1");
     }

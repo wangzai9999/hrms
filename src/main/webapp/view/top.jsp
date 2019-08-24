@@ -48,7 +48,7 @@ function signout() {
                         [系统管理员，<a href="user/out.action">退出</a>] </div>
                 </div>
             </li>
-            <li><a class="shortcut_button" href="view/main.jsp"><span> <img src="images/home.ico" alt="icon" /><br />
+            <li><a class="shortcut_button" href="view/right.jsp" target="rightFrame"><span> <img src="images/home.ico" alt="icon" /><br />
       首页 </span></a></li>
             <li><a class="shortcut_button" href="#"><span> <img src="images/calendar.ico" alt="icon" /><br />
       日程 </span></a></li>
