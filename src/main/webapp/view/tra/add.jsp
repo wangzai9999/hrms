@@ -22,7 +22,7 @@
     <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
     <script type="text/javascript">
 
-        function save(prop,url){
+        function save(){
             var  tr_man=$("#tr_man").val();
             var  tr_subject=$("#tr_subject").val();
             var tr_starttime=$("#tr_starttime").val();
@@ -44,17 +44,10 @@
                 alert("培训人数:请填写数字");
             }else {
                 var tra=$("#form_tra").serialize();
-                $.post("tra/add.action",tra,function (res) {
-                    if(res!=null) {
-                        alert(prop+'成功！');
-                        location.href=url;
-                    } else {
-                        alert(prop+"失败");
-                    }
-                });
+                window.location.href="tra/add.action?trainingInfo="+tra;
+
             }
         }
-
     </script>
 </head>
 
@@ -64,7 +57,7 @@
         <hr class="hr1" />
     </div><a href="view/tra/list.jsp"><button >列表员工</button></a>
     <div class="operation_button">
-        <button title="保存" onclick="save('保存','view/tra/list.jsp')">保存</button>
+        <button title="保存" onclick="save()">保存</button>
     </div>
     <div class="out_bg">
         <form id="form_tra" method="post">
@@ -74,29 +67,29 @@
                     <td width="126"></td>
                     <td width="126"></td>
                     <td width="126">培训人</td>
-                    <td><input type="text"  name="tr_man" id="tr_man" required="required"/></td>
+                    <td><input type="text" value="${tra.tr_man}" name="tr_man" id="tr_man" required="required"/>${tr_man}</td>
                     <td width="126"></td>
                     <td  width="411"></td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训项目</td>
-                    <td><input type="text"  name="tr_subject" id="tr_subject"  required="required"/></td>
+                    <td><input type="text" value="${tra.tr_subject}" name="tr_subject" id="tr_subject"  required="required"/>${tr_subject}</td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训开始时间</td>
-                    <td><input type="text"  name="tr_starttime"  id="tr_starttime" required="required"/></td>
+                    <td><input type="text" value="${tra.tr_starttime}" name="tr_starttime"  id="tr_starttime" required="required"/>${tr_starttime}</td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训结束时间</td>
-                    <td><input type="text"name="tr_endtime" id="tr_endtime"  required="required"/></td>
+                    <td><input type="text"  value="${tra.tr_endtime}" name="tr_endtime" id="tr_endtime"  required="required"/>${tr_endtime}</td>
                 </tr>
                 <tr>
                     <td ></td><td></td>
                     <td>培训人数</td>
-                    <td><input type="text"  name="tr_num" id="tr_num" required="required" /></td>
+                    <td><input type="text" value="${tra.tr_num}" name="tr_num" id="tr_num" required="required" />${tr_num}</td>
                 </tr>
                 <tr>
                     <td ></td><td></td>

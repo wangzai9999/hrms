@@ -1,8 +1,13 @@
 package com.entity;
 
+import org.aspectj.lang.annotation.After;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,13 +19,22 @@ public class TrainingInfo implements Serializable {
             generator = "select tr_seq.nextval from dual")
     private Long tr_id;
 
+    @NotEmpty(message = "不能为空")
     private String tr_man;
+    @NotEmpty(message = "不能为空")
     private String tr_subject;
     private String tr_status="新增，请等待";
+    @NotEmpty(message = "不能为空")
+    @Pattern(regexp = "/\\d+/",message = "请填写数字")
     private Long tr_num;
     private Long tr_havnum;
+    @NotEmpty(message = "不能为空")
+    @Future(message="开始时间不能早于当前时间！")
     private Date tr_starttime;
+    @NotEmpty(message = "不能为空")
+    @Future(message="结束时间不能早于当前时间！")
     private Date tr_endtime;
+
     private String tr_remark;
 
     public TrainingInfo(){}
