@@ -35,19 +35,16 @@
     <mvc:annotation-driven validator="myval" />
 
 
+    <bean id="conver" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.util.DateConver"/>
 
+            </list>
 
+        </property>
 
-  
-   
-
-    
-    
-    
-
-    
-
-
+    </bean>
     
 
     <bean id="multipartResolver"
