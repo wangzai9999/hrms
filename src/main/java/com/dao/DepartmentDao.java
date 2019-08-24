@@ -4,6 +4,7 @@ import com.entity.Department;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DepartmentDao {
 
@@ -19,8 +20,8 @@ public interface DepartmentDao {
 
     public Department getOne(Long id);
 
-
-
     public List<Department> getAll();
+
+    public List<Map<String,Integer>> getDepNum();
 
 }

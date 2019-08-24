@@ -3,8 +3,6 @@ package com.web;
 
 import com.biz.DepartmentBiz;
 import com.entity.Department;
-import com.entity.Role;
-import com.sun.org.apache.bcel.internal.generic.LNEG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/dep")
@@ -70,6 +71,37 @@ public class DepartmentAction {
        return biz.getOne(did);
     }
 
+    @ResponseBody
+    @RequestMapping("/getdepnum")
+     public ModelAndView getDepNum(ModelAndView mv){
+        List<Map<String,Integer>> li=biz.getDepNum();
+        List<String> xkey=new ArrayList<String>();
+        List<String> yval=new ArrayList<String>();
+
+        for (Map<String,Integer> map:li){
+            Set<String> kset=map.keySet();
+
+                for (String s:kset){
+                    if (s.equals("ENUM")){
+                        yval.add(map.get(s)+"");
+                    }
+                    if (s.equals("DNAME")){
+                        String s2="'"+map.get(s)+"'";
+
+                        xkey.add(s2);
+                    }
+
+
+                }
+
+        }
+
+
+        mv.addObject("xk",xkey);
+        mv.addObject("yv",yval);
+        mv.setViewName("department/deptnum");
+        return mv;
+     }
 
 
 }

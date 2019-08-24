@@ -101,6 +101,8 @@
 <ul id="deptree" class="easyui-tree" data-options="url:'dep/getall.action',dnd:true">
 
 </ul>
+
+  <a href="dep/getdepnum.action">部门人数统计图</a>
 </div>
 
 <div id="depmenu" class="easyui-menu" style="width:120px;">

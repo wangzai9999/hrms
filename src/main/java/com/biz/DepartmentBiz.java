@@ -3,6 +3,7 @@ package com.biz;
 import com.entity.Department;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DepartmentBiz {
     public  void add(Department department);
@@ -12,4 +13,6 @@ public interface DepartmentBiz {
     public Department getOne(Long id);
 
     public List<Department> getAll();
+
+    public List<Map<String,Integer>> getDepNum();
 }

@@ -15,6 +15,8 @@
         <association property="de_man" column="de_man" select="com.dao.UserinfoDao.getAllByUsid" fetchType="eager"/>
     </resultMap>
 
+
+
     <select id="getAll" resultMap="dusmap">
         select * from department
     </select>
@@ -35,5 +37,10 @@
         update userinfo set us_dep=#{de_id} where us_id=#{de_man.us_id};
       end;
     </update>
+
+    <select id="getDepNum" resultType="map" >
+        select d.de_name dname,count(1) enum from department d join userinfo u on d.de_id=u.us_dep group by d.de_name
+
+    </select>
 
 </mapper>

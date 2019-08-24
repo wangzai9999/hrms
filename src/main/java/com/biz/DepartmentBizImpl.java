@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DepartmentBizImpl implements DepartmentBiz {
@@ -44,5 +45,10 @@ public class DepartmentBizImpl implements DepartmentBiz {
     @Override
     public List<Department> getAll() {
         return dao.getAll();
+    }
+
+    @Override
+    public List<Map<String, Integer>> getDepNum() {
+        return dao.getDepNum();
     }
 }
