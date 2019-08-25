@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <base href="<%=basePath%>">
 
-  <title>增加员工档案信息</title>
+  <title>展示员工档案信息</title>
 <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>

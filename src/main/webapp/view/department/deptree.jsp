@@ -39,6 +39,11 @@
     });
 
    function adddept() {
+     if (${depid!=2}){
+       alert("你没有权限操作！请向上级获取权限后再进行操作！");
+       return false;
+     }else {
+
      $("#addwin").window("open");
        $.post("user/getnotm.action","",function (ulist) {
 
@@ -47,7 +52,12 @@
          }
        },"json")
    }
+   }
    function moddept() {
+     if (${depid!=2}){
+       alert("你没有权限操作！请向上级获取权限后再进行操作！");
+       return false;
+     }else {
      $("#modwin").window("open");
      var deid=selectednode.id;
      $.getJSON("dep/getbyid.action?did="+deid,"",function (dept) {
@@ -61,9 +71,11 @@
        }
      },"json")
    }
+   }
 
 
    function adddepoption() {
+
     var usid= $("#depman").val();
      if(usid!=0){
        var dept=$("#adddep").serialize();
@@ -76,8 +88,8 @@
      }else {
        alert("请重新添加部门！部门经理不能为空！");
      }
-   }
 
+   }
 
    function moddepoption() {
      var mform=$("#moddep").serialize();
@@ -90,7 +102,12 @@
    }
 
    function remove() {
-     alert("该部门下有员工等其它信息！如要删除请先清除员工等信息！");
+     if (${depid!=2}){
+       alert("你没有权限操作！请向上级获取权限后再进行操作！");
+       return false;
+     }else {
+       alert("该部门下有员工等其它信息！如要删除请先清除员工等信息！");
+     }
    }
 
   </script>
@@ -101,8 +118,6 @@
 <ul id="deptree" class="easyui-tree" data-options="url:'dep/getall.action',dnd:true">
 
 </ul>
-
-  <a href="dep/getdepnum.action">部门人数统计图</a>
 </div>
 
 <div id="depmenu" class="easyui-menu" style="width:120px;">

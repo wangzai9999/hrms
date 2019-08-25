@@ -24,6 +24,7 @@
      location="salt/getall.action?page="+page;
    }
 
+
 </script>
 </head>
 
@@ -31,7 +32,11 @@
 <div style="padding:5px;">
   <div class="txt" style="padding-top:3px;" >当前位置：人力资源服务管理&nbsp;&gt;&nbsp;薪酬标准列表
     <hr class="hr1" />
-    <a href="view/salary/add.jsp">增加薪酬标准</a>
+
+    <c:if test="${depid==2}" >
+      <a href="view/salary/add.jsp">增加薪酬标准</a>
+    </c:if>
+
   </div>
 
 
@@ -57,11 +62,19 @@
           <td>${sd.sa_pos.pos_name}</td>
           <td>${sd.sa_cre_id.us_id}</td>
           <td><fmt:formatDate value="${sd.sa_date}" pattern="yyyy-MM-dd HH:mm" /></td>
-          <td><a href="salt/delst.action?delsaid=${sd.sa_id}">删除</a>|<a href="salt/getonest.action?gsid=${sd.sa_id}">修改</a></td>
+          <c:if test="${depid==2}" >
+            <td><a href="salt/delst.action?delsaid=${sd.sa_id}">删除</a>|<a href="salt/getonest.action?gsid=${sd.sa_id}">修改</a></td>
+
+          </c:if>
+
+
+
+
         </tr>
       </c:forEach>
       </tbody>
     </table>
+
   </div>
   <div class="position"> 
   	共${pb.totalNum}条记录&nbsp;每页${pb.pageSize}条&nbsp;第${pb.currpage}页/共${pb.totalPage}页
