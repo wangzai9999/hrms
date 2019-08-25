@@ -37,6 +37,10 @@ public interface RecAchDao {
     @Delete("delete from rec_ach where ach_id=#{ach_id}")
     public void del(Long ach_id);
 
+    @Results({
+            @Result(column = "ach_resid",property = "ach_resid",one=@One(select = "com.dao.ResumeDao.getOne",fetchType = FetchType.EAGER)),
+            @Result(column = "ach_auditor",property = "ach_auditor",one=@One(select = "com.dao.UserinfoDao.getOne",fetchType = FetchType.EAGER))
+    })
     @Select("select * from rec_ach where ach_resid=#{resid}")
     public RecAch getOneByRe(Long resid);
 

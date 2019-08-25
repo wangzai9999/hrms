@@ -34,18 +34,16 @@
                 var page = $(this).attr("name");
                 show(page);
             })
-            /*$("body").on("click","#isman",function(){
-                var reid = $(this).attr("name");
-                $.post("resume/ismanager.action","reid="+reid,function (res) {
-                    if(res!="1"){
-                        alert(res);
-                        location.href=view/resume/list.jsp;
-                    }else{
-                        location.href="resume/getone.action?re_id='"+reid+"'";
-                    }
-                })
-            })*/
         })
+        
+        function  showscore(resid) {
+            location="ach/getonebyre.action?resid="+resid;
+        }
+
+        function gopage() {
+            var page=document.getElementById("page").value;
+            show(page);
+        }
 
         function formateTime(time)
         {
@@ -73,8 +71,13 @@
 
                     var td1=$("<td>"+re.re_id+"</td>");
                     tr1.append(td1);
-                    var td2=$("<td><a href='ach/getonebyre.action?resid="+re.re_id+"'>"+re.re_name+"</a></td>");
-                    tr1.append(td2);
+                    if(re.re_status=="已考核"){
+                        var td2=$("<td><a onclick='showscore("+re.re_id+")'>"+re.re_name+"</a></td>");
+                        tr1.append(td2);
+                    }else{
+                        var td2=$("<td>"+re.re_name+"</td>");
+                        tr1.append(td2);
+                    }
                     var td3=$("<td>"+re.re_position+"</td>");
                     tr1.append(td3);
                     var td4=$("<td>"+re.re_enid.en_major_describe+"</td>");
@@ -97,18 +100,25 @@
                     $("#resumes").append(tr1);
                 }
                 $("#pages").html("");
+                $("#pages").append("共"+res.totalNum+"条记录&nbsp;每页"+res.pageSize+"条&nbsp;第"+res.currpage+"页/共"+res.totalPage+"页");
                 var a1=$("<a name='1'>首页</a>");
                 $("#pages").append(a1);
-                //if(res.currpage>1){
+                if(res.currpage>1){
                     var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
                     $("#pages").append(a2);
-                //}
-                //if(res.currpage<res.totalPage){
+                }
+                for(var i=1;i<=res.totalPage;i++) {
+                    var cla="";
+                    if(i==res.currpage) cla="current";
+                    $("#pages").append(" <a name='"+i+"' class='"+cla+"'>"+i+"</a>");
+                }
+                if(res.currpage<res.totalPage){
                     var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
                     $("#pages").append(a3);
-                //}
+                }
                 var a4=$("<a name='"+(res.totalPage)+"'>尾页</a>");
                 $("#pages").append(a4);
+                $("#pages").append("转到&nbsp;<input size='2' id='page'/>&nbsp;页<button  id='gosalpage' onclick='gopage()'>GO</button>");
             })
         }
 

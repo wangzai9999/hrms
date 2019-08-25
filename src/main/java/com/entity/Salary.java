@@ -30,4 +30,13 @@ public class Salary implements Serializable {
     public void setSl_sal(Long sl_sal) {
         this.sl_sal = sl_sal;
     }
+
+    @Override
+    public String toString() {
+        return "Salary{" +
+                "sl_id=" + sl_id +
+                ", sl_ud_id=" + sl_ud_id +
+                ", sl_sal=" + sl_sal +
+                '}';
+    }
 }

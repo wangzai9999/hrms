@@ -33,4 +33,19 @@ public class SalaryBizImpl implements SalaryBiz{
         pb.setTotalNum(dao.getCount().intValue());
         return pb;
     }
+
+    @Override
+    public Double getSalByUsPos(Long usid) {
+        return dao.getSalByUsPos(usid);
+    }
+
+    @Override
+    public Long getAvByUs(Long usid) {
+        return dao.getAvByUs(usid);
+    }
+
+    @Override
+    public Salary getOneByUsid(Long usid) {
+        return dao.getOneByUsid(usid);
+    }
 }

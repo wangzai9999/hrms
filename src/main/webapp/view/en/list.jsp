@@ -55,6 +55,12 @@
             show(1);
         })
     })
+
+    function gopage() {
+        var page=document.getElementById("page").value;
+        show(page);
+    }
+
     function formateTime(time)
     {
         var date = new Date(time);
@@ -100,13 +106,18 @@
                 tr.append(td11);
                 $("#ens").append(tr);
             }
-
             $("#pages").html("");
+            $("#pages").append("共"+res.totalNum+"条记录&nbsp;每页"+res.pageSize+"条&nbsp;第"+res.currpage+"页/共"+res.totalPage+"页");
             var a1=$("<a name='1'>首页</a>");
             $("#pages").append(a1);
             if(res.currpage>1){
                 var a2=$("<a name='"+(res.currpage-1)+"'>上一页</a>");
                 $("#pages").append(a2);
+            }
+            for(var i=1;i<=res.totalPage;i++) {
+                var cla="";
+                if(i==res.currpage) cla="current";
+                $("#pages").append(" <a name='"+i+"' class='"+cla+"'>"+i+"</a>");
             }
             if(res.currpage<res.totalPage){
                 var a3=$("<a name='"+(res.currpage+1)+"'>下一页</a>");
@@ -114,6 +125,7 @@
             }
             var a4=$("<a name='"+(res.totalPage)+"'>尾页</a>");
             $("#pages").append(a4);
+            $("#pages").append("转到&nbsp;<input size='2' id='page'/>&nbsp;页<button  id='gosalpage' onclick='gopage()'>GO</button>");
 
         },"json")
     }

@@ -43,13 +43,13 @@
                     </tr>
                     <tr>
                         <td>笔试成绩</td>
-                        <td><input type="text" name="ach_exam" value="${ach.ach_exam}"/></td>
+                        <td><input type="text" name="ach_exam" value="${ach.ach_exam}"  disabled="disabled"/></td>
                         <td>面试成绩</td>
-                        <td><input type="text" name="ach_interview" value="${ach.ach_interview}"/></td>
+                        <td><input type="text" name="ach_interview" value="${ach.ach_interview}"  disabled="disabled"/></td>
                     </tr>
                     <tr>
                         <td>状态</td>
-                        <td><input type="text" name="ach_status" value="${ach.ach_status}"/></td>
+                        <td><input type="text" name="ach_status" value="${ach.ach_status}"  disabled="disabled"/></td>
                         <td></td>
                         <td></td>
                     </tr>
