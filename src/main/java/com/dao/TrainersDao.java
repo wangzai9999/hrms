@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface TrainersDao {
 
-    @Insert("insert into trainers values (ts_seq.nextval,#{ts_trid.tr_id},#{ts_comm},#{ts_usid.us_id})")
+    @Insert("insert into trainers values (ts_seq.nextval,#{ts_trid.tr_id},#{ts_comm},#{ts_usid.us_id}),#{starNum}")
     public void add(Trainers trainers);
 
-    @Update("update trainers set ts_comm=#{ts_comm} where ts_id=#{ts_id}")
+    @Update("update trainers set ts_comm=#{ts_comm},starNum=#{starNum} where ts_id=#{ts_id}")
     public void mod(Trainers trainers);
 
     @Delete("delete from trainers where ts_id=#{id}")
