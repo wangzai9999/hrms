@@ -19,7 +19,12 @@
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
    function modarcs(arid) {
-     location="arc/getOne.action?goid=1&id="+arid;
+     if (${depid==2}){
+       location="arc/getOne.action?goid=1&id="+arid;
+     } else {
+       alert("请获取修改权限后再修改权限！");
+     }
+
    }
 </script>
 </head>
