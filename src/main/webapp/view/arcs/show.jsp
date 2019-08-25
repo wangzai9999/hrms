@@ -13,13 +13,18 @@
   <meta charset="UTF-8">
   <base href="<%=basePath%>">
 
-  <title>增加员工档案信息</title>
+  <title>展示员工档案信息</title>
 <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
    function modarcs(arid) {
-     location="arc/getOne.action?goid=1&id="+arid;
+     if (${depid==2}){
+       location="arc/getOne.action?goid=1&id="+arid;
+     } else {
+       alert("请获取修改权限后再修改权限！");
+     }
+
    }
 </script>
 </head>

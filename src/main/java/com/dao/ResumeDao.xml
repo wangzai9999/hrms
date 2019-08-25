@@ -6,7 +6,7 @@
     <select id="getAll" resultMap="re">
         select * from (select re.*,rownum r from resume re
         <where>
-            <if test='param3!=0'>
+            <if test='param3!=0 and param3!=null and param3!=""'>
                and re.re_enid=#{enid}
             </if>
         </where>
@@ -15,7 +15,7 @@
     <select  id="getCount" resultType="long">
         select count(1) from resume
         <where>
-         <if test='param1!=null'> and re_enid=#{enid} </if>
+         <if test='param1!=0  and param1!=null and param1!=""'> and re_enid=#{enid} </if>
         </where>
     </select>
 </mapper>
