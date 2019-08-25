@@ -90,15 +90,15 @@
                 tr.append(td12);
                 var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|";
                 var sq="<a href='taf/add.action?id="+tra[i].tr_id+"' >申请</a>|";
-                var shang="<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>";
+
                 var pj="";
-                if (tra[i].tr_status=="本次培训已结束") {update="";sq="";pj="|<a href='tra/get.action?num=1&&id="+tra[i].tr_id+"'>评价</a>";}
+                if (tra[i].tr_status=="本次培训已结束") {update="";sq="";pj="<a href='tra/get.action?num=1&&id="+tra[i].tr_id+"'>评价</a>";}
                for (var j=0;j<div.length;j++){
                     if (div[j].tf_tr_id.tr_id==tra[i].tr_id){
                         sq="";
                     }
                }
-                var td8=$("<td>"+update+sq+shang+pj+"</td>");
+                var td8=$("<td>"+update+sq+pj+"</td>");
                 tr.append(td8);
                 $("#us").append(tr);
             }
