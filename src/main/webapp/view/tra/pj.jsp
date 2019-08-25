@@ -47,22 +47,18 @@ $(function () {
         <hr class="hr1" />
     </div>
     <div class="out_bg">
-        <form action="trs/mod.action" method="post">
+        <form action="tra/pinglun.action" method="post">
         <div class="in_bg" >
             <table border="0" cellpadding="0" cellspacing="0" class="table_input txt" style="text-align: center;">
-                <input type="hidden" name="ts_id" value="${trs.ts_id}">
+                <input type="hidden" name="tr_id" value="${tra.tr_id}">
+                <input type="hidden" name="tr_status" value="${tra.tr_status}" >
                 <tr style="margin: auto">
                     <td width="126"></td>
                     <td width="126"></td>
-                    <td width="126">姓名</td>
-                    <td width="411"><input type="text" value="${trs.ts_usid.us_name}" disabled="disabled" /></td>
+                    <td width="126">培训名</td>
+                    <td width="411"><input type="text" value="${tra.tr_subject}" disabled="disabled" /></td>
                     <td width="126"></td>
                     <td  width="411"></td>
-                </tr>
-                <tr>
-                    <td ></td><td></td>
-                    <td>培训名</td>
-                    <td><input type="text"  value="${trs.ts_trid.tr_subject}"  disabled="disabled"/></td>
                 </tr>
                 <tr> <div class="panel panel-default">
                     <td ></td><td></td>
@@ -70,7 +66,7 @@ $(function () {
                         <div class="panel-heading">满意度&nbsp;：</div>
                     </td><td>
                         <div class="panel-body">
-                            <input name="starNum" id="starNum" type="hidden"/>
+                            <input name="pf" id="starNum" type="hidden"/>
                             <div class="starability-container">
                                 <fieldset class="starability-slot">
                                     <input type="radio" id="rate_1_0_1_5" name="starLevel" value="5" />
@@ -92,7 +88,7 @@ $(function () {
                 <tr>
                     <td ></td><td></td>
                     <td>评论</td>
-                    <td><textarea style="height: 150px;width: 200px" name="ts_comm">${trs.ts_comm}</textarea>
+                    <td><textarea style="height: 150px;width: 200px" name="pj">${tra.pj}</textarea>
                         </td>
                 </tr>
                 <tr>

@@ -84,16 +84,21 @@
                 tr.append(td6);
                 var td7=$("<td>"+tra[i].tr_num+"</td>");
                 tr.append(td7);
+                var td11=$("<td>"+tra[i].pf+"</td>");
+                tr.append(td11);
+                var td12=$("<td>"+tra[i].pj+"</td>");
+                tr.append(td12);
                 var update ="<a href='tra/get.action?id="+tra[i].tr_id+"'>修改</a>|";
                 var sq="<a href='taf/add.action?id="+tra[i].tr_id+"' >申请</a>|";
                 var shang="<a href='tra/del.action?id="+tra[i].tr_id+"'>删除</a>";
-                if (tra[i].tr_status=="本次培训已结束") {update="";sq="";}
+                var pj="";
+                if (tra[i].tr_status=="本次培训已结束") {update="";sq="";pj="|<a href='tra/get.action?num=1&&id="+tra[i].tr_id+"'>评价</a>";}
                for (var j=0;j<div.length;j++){
                     if (div[j].tf_tr_id.tr_id==tra[i].tr_id){
                         sq="";
                     }
                }
-                var td8=$("<td>"+update+sq+shang+"</td>");
+                var td8=$("<td>"+update+sq+shang+pj+"</td>");
                 tr.append(td8);
                 $("#us").append(tr);
             }
@@ -159,13 +164,15 @@
                  <thead>
                  <tr>
                      <th width="10%">培训人</th>
-                     <th width="13%">培训项目</th>
-                     <th width="13%">状态</th>
-                     <th width="13%">培训开始时间</th>
-                     <th width="13%">培训结束时间</th>
-                     <th width="13%">备注</th>
-                     <th width="13%">培训人数</th>
-                     <th width="14%">操作</th>
+                     <th width="10%">培训项目</th>
+                     <th width="10%">状态</th>
+                     <th width="10%">培训开始时间</th>
+                     <th width="10%">培训结束时间</th>
+                     <th width="10%">备注</th>
+                     <th width="10%">培训人数</th>
+                     <th width="10%">评分</th>
+                     <th width="10%">评价</th>
+                     <th width="10%">操作</th>
                  </tr>
                  </thead>
                  <tbody id="us">

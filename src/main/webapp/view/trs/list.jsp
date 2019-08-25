@@ -68,16 +68,18 @@
                 tr.append(td3);
                 var traaaa =tra[i].tr_id;
                 var div=$("<div id='show"+i+"' style='left:400px;color: #0E2D5F;display:none;'></div>");
-                var tt=$("<tr><td>员工姓名</td><td>对本次培训评价</td><td>操作</td></tr>");
+                var tt=$("<tr><td>员工姓名</td><td>对本次培训评价</td><td>评分</td></tr>");
                 div.append(tt);
                 for(var j=0;j<trs.length;j++){
                     if (trs[j].ts_trid.tr_id==traaaa){var tr1=$("<tr></tr>");
                         var td1=$("<td>"+trs[j].ts_usid.us_name+"</td>");
                         var td2=$("<td>"+trs[j].ts_comm+"</td>");
-                        var td3=$("<td><a href='trs/getOne.action?id="+trs[j].ts_id+"'>修改</a></td>")
+                        var td3=$("<td>"+trs[j].starNum+"</td>");
+//                        var td4=$("<td><a href='trs/getOne.action?id="+trs[j].ts_id+"'>修改</a></td>")
                         tr1.append(td1);
                         tr1.append(td2);
                         tr1.append(td3);
+//                        tr1.append(td4);
                     }
                     div.append(tr1);
                 }
@@ -115,9 +117,13 @@
              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list" >
                  <thead>
                  <tr>
+
                      <th width="15%">培训项目编号</th>
                      <th width="10%">培训项目名称</th>
                      <th width="15%">培训项目确认人数</th>
+                     <th width="15%">评价</th>
+                     <th width="15%">评分</th>
+                     <th width="15%">操作</th>
                  </tr>
                  </thead>
                  <tbody id="trs">
