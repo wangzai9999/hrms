@@ -42,10 +42,15 @@ public class TrainingInfoAction {
         binder.registerCustomEditor(Date.class,new CustomDateEditor(ss,true));
     }
     @RequestMapping("/get")
-    public ModelAndView get(Long id, ModelAndView mv){
+    public ModelAndView get(Long num,Long id, ModelAndView mv){
         TrainingInfo trainingInfo=biz.getOne(id);
-        mv.setViewName("tra/mod");
-        mv.addObject("tra",trainingInfo);
+        if (num==1){
+            mv.setViewName("tra/pj");
+            mv.addObject("tra",trainingInfo);
+        }else {
+            mv.setViewName("tra/mod");
+            mv.addObject("tra", trainingInfo);
+        }
         return mv;
     }
 
@@ -88,6 +93,12 @@ public class TrainingInfoAction {
     @RequestMapping("/del")
     public String del(Long id){
         biz.del(id);
+        return "tra/list";
+    }
+
+    @RequestMapping("/pinglun")
+    public String pinglun(TrainingInfo trainingInfo){
+        biz.mod(trainingInfo);
         return "tra/list";
     }
 }

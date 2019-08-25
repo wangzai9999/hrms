@@ -121,9 +121,6 @@
                      <th width="15%">培训项目编号</th>
                      <th width="10%">培训项目名称</th>
                      <th width="15%">培训项目确认人数</th>
-                     <th width="15%">评价</th>
-                     <th width="15%">评分</th>
-                     <th width="15%">操作</th>
                  </tr>
                  </thead>
                  <tbody id="trs">

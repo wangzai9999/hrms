@@ -37,6 +37,9 @@ public class TrainingInfo implements Serializable {
 
     private String tr_remark;
 
+    private String pj;
+    private Long pf;
+
     public TrainingInfo(){}
     public Long getTr_id() {
         return tr_id;
@@ -108,5 +111,21 @@ public class TrainingInfo implements Serializable {
 
     public void setTr_havnum(Long tr_havnum) {
         this.tr_havnum = tr_havnum;
+    }
+
+    public String getPj() {
+        return pj;
+    }
+
+    public void setPj(String pj) {
+        this.pj = pj;
+    }
+
+    public Long getPf() {
+        return pf;
+    }
+
+    public void setPf(Long pf) {
+        this.pf = pf;
     }
 }

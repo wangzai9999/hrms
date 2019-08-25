@@ -7,7 +7,9 @@ public class Trainers implements Serializable {
     private Long ts_id;
     private Userinfo ts_usid;
     private TrainingInfo ts_trid;
-    private String ts_comm="wu";
+    private String ts_comm="无";
+
+    private String starNum="0";
 
     public Long getTs_id() {
         return ts_id;
@@ -39,5 +41,13 @@ public class Trainers implements Serializable {
 
     public void setTs_comm(String ts_comm) {
         this.ts_comm = ts_comm;
+    }
+
+    public String getStarNum() {
+        return starNum;
+    }
+
+    public void setStarNum(String starNum) {
+        this.starNum = starNum;
     }
 }
