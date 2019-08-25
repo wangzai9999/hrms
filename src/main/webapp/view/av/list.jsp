@@ -39,8 +39,6 @@
         function havesal(usid){
             $.getJSON("sl/getonebyus.action","usid="+usid,function (res) {
                 if(res=="0"){
-                    alert("*********");
-                    alert(usid);
                     location.href="sl/add.action?usid="+usid;
                 }else{
                     alert("已有工资，不能重复生成！");

@@ -17,8 +17,8 @@
 <head>
     <base href="<%=basePath%>">
     <title>Title</title>
-    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
     <script type="text/javascript">
 
